@@ -1,4 +1,4 @@
-{ STRING, ENUM, TEXT } = require('sequelize');
+const { STRING, ENUM, TEXT } = require('sequelize');
 
 module.exports = db => db.define('reviews', {
   title: STRING,
@@ -13,6 +13,6 @@ module.exports.associations = (Review, {
   Product,
   User
 }) => {
-  Review.hasOne(Product) // check to see that the complement has been made
-  Review.hasOne(User)
+  //  Review.hasOne(Product) // check to see that the complement has been made
+  Review.belongsTo(User)
 }

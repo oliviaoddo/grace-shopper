@@ -51,7 +51,6 @@ module.exports.associations = (User, {
   Address
 }) => {
   User.hasOne(OAuth)
-  User.hasOne(Address)
 }
 
 function setEmailAndPassword(user) {
