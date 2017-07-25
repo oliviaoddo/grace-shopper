@@ -49,6 +49,7 @@ module.exports = db => db.define('users', {
   }
 })
 
+
 // USER ASSOCIATION IS LOCATED IN THE ADDRESS TABLE, but I'll make one here just in case
 module.exports.associations = (User, {
   OAuth,
@@ -58,6 +59,7 @@ module.exports.associations = (User, {
   User.hasOne(OAuth)
   User.hasMany(Review);
   User.belongsTo(Address);
+
 }
 
 function setEmailAndPassword(user) {

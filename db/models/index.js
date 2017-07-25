@@ -14,12 +14,15 @@ const app = require('APP')
     // about.
     , metaModels = {
       OAuth: require('./oauth'),
-      Thing: require('./thing'),
-      Favorite: require('./favorite'),
-      // ---------- Add new models here ----------
+
+      User: require('./user'),
+      LineItem: require('./LineItem'),
+      Product: require('./Product'),
+      Order: require('./Order'),
+      Tag: require('./Tag'),
+      Category: require('./Category'),
       Address: require('./address'),
-      Review: require('./review'),
-      User: require('./user')
+      Review: require('./review')
     }
     , {mapValues} = require('lodash')
 
