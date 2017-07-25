@@ -14,5 +14,5 @@ module.exports = db => db.define('tags', {
 })
 
 module.exports.associations = (Tag, {Product}) => {
-  Tag.belongsToMany(Product)
+  Tag.belongsToMany(Product, {through: 'productTag'})
 }
