@@ -1,43 +1,29 @@
-const { STRING, INTEGER } = require('sequelize');
+const { STRING } = require('sequelize');
 
 module.exports = db => db.define('addresses', {
   street: {
     type: STRING,
-    allowNull: false,
-    validate: {
-      isAlphanumeric: true
-    }
+    allowNull: false
   },
   street2: {
     type: STRING,
-    validate: {
-      isAlphanumeric: true
-    }
   },
   city: {
     type: STRING,
-    allowNull: false,
-    validate: {
-      isAlphanumeric: true
-    }
+    allowNull: false
   },
   zip: {
-    type: INTEGER,
-    allowNull: false,
-    validate: {
-      isNumeric: true
-    }
+    type: STRING,
+    allowNull: false
   },
   state: {
     type: STRING,
-    allowNull: false,
-    validate: {
-      isAlphanumeric: true
-    }
+    allowNull: false
   },
   country: {
     type: STRING,
-    allowNull: false
+    allowNull: false,
+    defaultValue: 'United States of America'
   }
 })
 
