@@ -1,11 +1,12 @@
 'use strict'
 
 // bcrypt docs: https://www.npmjs.com/package/bcrypt
-const bcrypt = require('bcryptjs')
-    , {STRING, VIRTUAL} = require('sequelize')
+const bcrypt = require('bcryptjs'),
+  { STRING, VIRTUAL } = require('sequelize')
 
 module.exports = db => db.define('users', {
-  name: STRING,
+  firstName: STRING,
+  lastName: STRING,
   email: {
     type: STRING,
     validate: {
@@ -18,13 +19,23 @@ module.exports = db => db.define('users', {
   password_digest: STRING, // This column stores the hashed password in the DB, via the beforeCreate/beforeUpdate hooks
   password: VIRTUAL // Note that this is a virtual, and not actually stored in DB
 }, {
-  indexes: [{fields: ['email'], unique: true}],
+  indexes: [{
+    fields: ['email'],
+    unique: true
+  }],
   hooks: {
     beforeCreate: setEmailAndPassword,
     beforeUpdate: setEmailAndPassword,
   },
   defaultScope: {
-    attributes: {exclude: ['password_digest']}
+    attributes: {
+      exclude: ['password_digest']
+    }
+  },
+  getterMethods: {
+    fullName() {
+      return this.firstName + ' ' + this.lastName;
+    }
   },
   instanceMethods: {
     // This method is a Promisified bcrypt.compare
@@ -34,9 +45,13 @@ module.exports = db => db.define('users', {
   }
 })
 
-module.exports.associations = (User, {OAuth, Thing, Favorite}) => {
+// USER ASSOCIATION IS LOCATED IN THE ADDRESS TABLE, but I'll make one here just in case
+module.exports.associations = (User, {
+  OAuth,
+  Address
+}) => {
   User.hasOne(OAuth)
-  User.belongsToMany(Thing, {as: 'favorites', through: Favorite})
+  User.hasOne(Address)
 }
 
 function setEmailAndPassword(user) {
