@@ -1,7 +1,9 @@
 'use strict'
 
-const db = require('APP/db')
-const User = db.model('users')
+const {
+  Review,
+  User
+} = require('APP/db')
 
 const {
   mustBeLoggedIn,
@@ -40,6 +42,10 @@ module.exports = require('express').Router()
   .get('/:id',
     // mustBeLoggedIn,
     (req, res, next) =>
-    User.findById(req.params.id)
+    User.findById(req.params.id, {
+      include: [{
+        model: Review
+      }]
+    })
     .then(user => res.json(user))
     .catch(next))
