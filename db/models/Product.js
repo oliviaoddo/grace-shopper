@@ -14,6 +14,7 @@ module.exports = db => db.define('products', {
   price: {
     type: INTEGER,
     allowNull: false
+    // default value of 0 -- KHND
   },
   name: {
     type: STRING,
@@ -31,14 +32,14 @@ module.exports = db => db.define('products', {
       min: 0
     }
   },
-  rating: FLOAT,
+  rating: FLOAT, // consider Decimal (can't remember but weird rounding things with floats) -- KHND - ACTION ITEM
   images: {
     type: ARRAY(STRING),
     defaultValue: ['http://www.keil.com/Content/images/photo_default.png']
   }
 }, {
   getterMethods: {
-    price: function() {
+    price: function() { // consider 1 line OR decimal(10,2) -- KHND
       const dollarAmt = this.getDataValue('price') / 100
       return dollarAmt.toFixed(2)
     }

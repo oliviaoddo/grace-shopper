@@ -27,7 +27,7 @@ module.exports = require('express').Router()
     .catch(next)
   })
   //  update the status of the order
-  .put('/:id', (req, res, next) => {
+  .put('/:id', (req, res, next) => { // consider updating multiple items (do you add or replace numbers). Can touch lineItem Db from here -- KHND
     Order.update(req.body, {where: {id: req.params.id}})
     .then(order => res.json(order[1]))
   .catch(next)

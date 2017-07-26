@@ -16,7 +16,7 @@ module.exports = db => db.define('lineItems', {
   }
 }, {
   getterMethods: {
-    price: function() {
+    price: function() { // consider decimal(10,2) -- KHND
       const dollarAmt = this.getDataValue('price') / 100
       return dollarAmt.toFixed(2)
     }
@@ -27,3 +27,6 @@ module.exports = db => db.define('lineItems', {
     }
   }
 })
+
+
+// sometimes useful to have associations. lineItem belongs to Order -- lineItem belongs to Product

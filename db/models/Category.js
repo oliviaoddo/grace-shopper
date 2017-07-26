@@ -11,7 +11,7 @@ module.exports = db => db.define('categories', {
       notEmpty: true
     }
   }
-})
+}) // consider setter for upper/lower case so you don't get weird similar ones -- KHND
 
 module.exports.associations = (Category, {Product}) => {
   Category.belongsToMany(Product, {through: 'productCategory'})

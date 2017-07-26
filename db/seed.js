@@ -1,5 +1,7 @@
 'use strict'
 
+// MAKE ME WORK FOR YOU -- KHND
+
 const db = require('APP/db')
     , {User, Thing, Favorite, Promise} = db
     , {mapValues} = require('lodash')

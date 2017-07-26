@@ -2,13 +2,13 @@
 const {Product, Review, User, Category, Tag, Order, Address, LineItem} = require('APP/db')
 module.exports = require('express').Router()
   .get('/', (req, res, next) => {
-    Order.findAll({include:
+    Order.findAll({include: // consider shorthand -- KHND
     [{model: User}]})
     .then(orders => res.json(orders))
     .catch(next)
   })
   .get('/:id', (req, res, next) => {
-    Order.findById(req.params.id,
+    Order.findById(req.params.id, // this should be searching lineItems table -- KHND
       { include: [{model: User,
         include: [{model: Address}]}, {model: Product}]})
     .then(order => res.json(order))
@@ -16,7 +16,7 @@ module.exports = require('express').Router()
   })
   .post('/', (req, res, next) => {
     //  userid, status=cart
-    Order.findOrCreate(req.body.orderId)
+    Order.findOrCreate(req.body.orderId) // lineItem -- KHND
     .then(order => res.json(order)
     .catch(next))
   })
@@ -27,6 +27,6 @@ module.exports = require('express').Router()
   .catch(next)
   })
   .delete('/:id', (req, res, next) => {
-    Product.destroy({where: {id: req.params.id}})
+    Product.destroy({where: {id: req.params.id}}) // lineItem -- KHND
     .then(() => res.sendStatus(202))
   })

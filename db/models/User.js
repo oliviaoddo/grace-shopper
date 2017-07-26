@@ -51,15 +51,15 @@ module.exports = db => db.define('users', {
 })
 
 
-// USER ASSOCIATION IS LOCATED IN THE ADDRESS TABLE, but I'll make one here just in case
-module.exports.associations = (User, {
+// USER ASSOCIATION IS LOCATED IN THE ADDRESS TABLE, but I'll make one here just in case // comments in master!??!! -- KHND
+module.exports.associations = (User, { // same here -- KHND
   OAuth,
   Address,
   Review
 }) => {
   User.hasOne(OAuth)
   User.hasMany(Review);
-  User.belongsTo(Address);
+  User.belongsTo(Address); // consider hasMany -- KHND
 
 }
 

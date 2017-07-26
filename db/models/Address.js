@@ -12,11 +12,11 @@ module.exports = db => db.define('addresses', {
     type: STRING,
     allowNull: false
   },
-  zip: {
+  zip: { //length 5, hook that on create/update ensured only numbers -- KHND
     type: STRING,
     allowNull: false
   },
-  state: {
+  state: { // ENUM; AND I understand not making that -- KHND
     type: STRING,
     allowNull: false
   },
@@ -30,5 +30,5 @@ module.exports = db => db.define('addresses', {
 module.exports.associations = (Address, {
   User
 }) => {
-  Address.hasMany(User)
+  Address.hasMany(User) // consider belongsTo -- KHND
 }

@@ -1,3 +1,5 @@
+// consider sub folders for different areas (routes, models) -- KHND
+
 const request = require('supertest')
 const {expect} = require('chai')
 const db = require('APP/db'), {User} = db

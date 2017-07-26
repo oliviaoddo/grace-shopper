@@ -26,7 +26,7 @@ describe('/api/users', () => {
             email: 'beth@secrets.org',
             password: '12345'
           })
-          .expect(201))
+          .expect(201)) // we don't give you a good test. I would expect you to go to the db and make sure something was created. Also check return values -- KHND
 
       it('redirects to the user it just made', () =>
         request(app)

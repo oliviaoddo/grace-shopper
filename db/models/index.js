@@ -14,7 +14,6 @@ const app = require('APP')
     // about.
     , metaModels = {
       OAuth: require('./oauth'),
-
       User: require('./User'),
       LineItem: require('./LineItem'),
       Product: require('./Product'),
@@ -50,7 +49,7 @@ module.exports = db => {
   Object.keys(metaModels)
     .forEach(name => {
       const {associations} = metaModels[name]
-      if (typeof associations === 'function') {
+      if (typeof associations === 'function') { // do something like this for hooks that need other models OR be terrible and add hook in association -- KHND
         debug('associating model %s', name)
         // Metamodel::associations(self: Model, others: {[name: String]: Model}) -> ()
         //
