@@ -14,16 +14,19 @@ module.exports = require('express').Router()
     .then(product => res.json(product))
     .catch(next)
   })
+  //  only admins should be able to create products
   .post('/', (req, res, next) => {
     Product.create(req.body)
     .then(product => res.json(product)
     .catch(next))
   })
+  //  only admins should be able to edit products
   .put('/:id', (req, res, next) => {
     Product.update(req.body, {where: {id: req.params.id}})
     .then(product => res.json(product[1]))
   .catch(next)
   })
+  //  only admins should be able to delete products
   .delete('/:id', (req, res, next) => {
     Product.destroy({where: {id: req.params.id}})
     .then(() => res.sendStatus(202))
