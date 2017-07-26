@@ -13,18 +13,14 @@ module.exports = db => db.define('reviews', {
     type: ENUM,
     values: [1, 2, 3, 4, 5]
   }
-},{
+}, {
   getterMethods: {
     shortTitle() {
       return this.title.substring(0, 20) + '...';
     }
   }
 })
-
-module.exports.associations = (Review, {
-  Product,
-  User
-}) => {
-  //  Review.hasOne(Product) // check to see that the complement has been made
+module.exports.associations = (Review, {Product, User}) => {
   Review.belongsTo(User)
+  Review.belongsTo(Product)
 }
