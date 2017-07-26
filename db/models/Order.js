@@ -1,37 +1,16 @@
 'use strict'
 
-const {STRING, DATE, ENUM, INTEGER, TEXT, FLOAT, DECIMAL} = require('sequelize')
+const {DATE, ENUM, DECIMAL} = require('sequelize')
 
 module.exports = db => db.define('orders', {
-  checkoutDateTime: {
-    type: DATE,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
-  },
+  checkoutDateTime: DATE,
   subtotal: {
-    type: INTEGER,
-    allowNull: true
+    type: DECIMAL(10, 2)
   },
   status: {
     type: ENUM('cart', 'pending', 'shipped', 'delivered'),
     allowNull: false,
-    validate: {
-      notEmpty: true
-    }
-  }
-}, {
-  getterMethods: {
-    total: function() {
-      const dollarAmt = this.getDataValue('subtotal') / 100
-      return dollarAmt.toFixed(2)
-    }
-  },
-  setterMethods: {
-    total: function(dollars) {
-      this.setDataValue('subtotal', dollars * 100)
-    }
+    defaultValue: 'cart'
   }
 })
 
