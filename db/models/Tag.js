@@ -11,6 +11,14 @@ module.exports = db => db.define('tags', {
       notEmpty: true
     }
   }
+}, {
+  setterMethods: {
+    formatTag: function(name) {
+      this.setDataValue('name', name.replace(/\w\S*/g, function(txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+      }))
+    }
+  }
 })
 
 module.exports.associations = (Tag, {Product}) => {
