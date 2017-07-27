@@ -17,6 +17,9 @@ import Navbar from './components/Navbar'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
+import ProductList from './components/admin/ProductList'
+import ProductForm from './components/admin/ProductForm'
+
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -26,6 +29,8 @@ const ExampleApp = connect(
       <main>
         <Switch>
           <Route path="/navbar" component={Navbar} />
+          <Route path="/products" component={ProductList} />
+          <Route path={`/single/:id`} component={ProductForm} />
           <Redirect exact from="/" to="/Navbar" />
           <Route component={NotFound} />
         </Switch>
