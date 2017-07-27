@@ -1,4 +1,9 @@
 'use strict'
+
+/* TO DO:
+ - Add admin access to post put delete
+*/
+
 const {Product, Review, User, Category, Tag} = require('APP/db')
 module.exports = require('express').Router()
   .get('/', (req, res, next) => {
@@ -17,13 +22,13 @@ module.exports = require('express').Router()
   //  only admins should be able to create products
   .post('/', (req, res, next) => {
     Product.create(req.body)
-    .then(product => res.json(product)
+    .then(product => res.status(201).json(product)
     .catch(next))
   })
   //  only admins should be able to edit products
   .put('/:id', (req, res, next) => {
     Product.update(req.body, {where: {id: req.params.id}})
-    .then(product => res.json(product[1]))
+    .then(([count, product]) => res.json(product))
   .catch(next)
   })
   //  only admins should be able to delete products
@@ -31,3 +36,26 @@ module.exports = require('express').Router()
     Product.destroy({where: {id: req.params.id}})
     .then(() => res.sendStatus(202))
   })
+
+  // REVIEWS ROUTES
+
+  .get('/:id/reviews', (req, res, next) =>
+    Review.findAll({where: {productId: req.params.id}})
+    .then(reviews => res.status(200).json(reviews))
+    .catch(next))
+  .get('/:id/reviews/:reviewId', (req, res, next) =>
+    Review.findById(req.params.reviewId)
+    .then(review => res.status(200).json(review))
+    .catch(next))
+  .post('/:id/reviews', (req, res, next) =>
+    Review.create(req.body)
+    .then(review => res.status(201).json(review))
+    .catch(next))
+  .put('/:id/reviews/:reviewId', (req, res, next) =>
+    Review.update(req.body, {where: {id: req.params.reviewId}})
+    .then(([count, review]) => res.json(review))
+    .catch(next))
+  .delete('/:id/reviews/:reviewId', (req, res, next) =>
+    Review.delete({where: {id: req.params.reviewId}})
+    .then(() => res.sendStatus(202))
+    .catch(next))

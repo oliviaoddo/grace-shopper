@@ -10,25 +10,17 @@ module.exports = require('express').Router()
     .then(orders => res.json(orders))
     .catch(next)
   })
-  //  get all of the orders for a specific user
-  // user logged in should be the same as the user requesting this unless it is an admin
-  .get('/user/:userId', (req, res, next) => {
-    Order.findAll({where: {userId: req.params.userId},
-      include: [{model: User, include: [{model: Address}]}, {model: Product}]})
-    .then(order => res.json(order))
-    .catch(next)
-  })
   //  get a single order to display on the admin single order view and user single order view
   .get('/:id', (req, res, next) => {
     Order.findById(req.params.id,
       { include: [{model: User,
-        include: [{model: Address}]}, {model: Product}]})
+        include: [{model: Address}]}, {model: LineItem}]})
     .then(order => res.json(order))
     .catch(next)
   })
   //  update the status of the order
   .put('/:id', (req, res, next) => {
     Order.update(req.body, {where: {id: req.params.id}})
-    .then(order => res.json(order[1]))
+    .then(([count, order]) => res.json(order))
   .catch(next)
   })
