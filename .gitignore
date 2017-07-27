@@ -1,6 +1,9 @@
 # Ignore all node_modules
 node_modules/*
 
+.vscode
+package-lock.json
+
 # ...except the symlink to ourselves.
 !node_modules/APP
 
