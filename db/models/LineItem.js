@@ -1,6 +1,6 @@
 'use strict'
 
-const {STRING, INTEGER} = require('sequelize')
+const {STRING, INTEGER, DECIMAL} = require('sequelize')
 
 module.exports = db => db.define('lineItems', {
   quantity: {
@@ -11,19 +11,12 @@ module.exports = db => db.define('lineItems', {
     }
   },
   price: {
-    type: INTEGER,
+    type: DECIMAL(10, 2),
     allowNull: true
   }
-}, {
-  getterMethods: {
-    price: function() {
-      const dollarAmt = this.getDataValue('price') / 100
-      return dollarAmt.toFixed(2)
-    }
-  },
-  setterMethods: {
-    price: function(dollars) {
-      this.setDataValue('price', dollars * 100)
-    }
-  }
 })
+
+module.exports.associations = (LineItem, {Product, Order}) => {
+  LineItem.belongsTo(Product)
+  LineItem.bleongsTo(Order)
+}

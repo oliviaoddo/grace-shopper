@@ -11,6 +11,14 @@ module.exports = db => db.define('categories', {
       notEmpty: true
     }
   }
+}, {
+  setterMethods: {
+    formatCategory: function(name) {
+      this.setDataValue('name', name.replace(/\w\S*/g, function(txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+      }))
+    }
+  }
 })
 
 module.exports.associations = (Category, {Product}) => {
