@@ -22,7 +22,6 @@ import SingleProduct from './components/admin/SingleProduct'
 import ProductCards from './components/ProductList'
 import Cart from './components/Cart'
 import Home from './components/Home'
-import TheContainer from './components/text'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
