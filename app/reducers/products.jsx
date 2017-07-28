@@ -3,6 +3,7 @@ import axios from 'axios'
 // ACTION TYPE CONSTANT
 
 const GET_PRODUCTS = 'GET_PRODUCTS'
+const GET_PRODUCT = 'GET_PRODUCT'
 const ADD_PRODUCT = 'ADD_PRODUCT'
 const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 const EDIT_PRODUCT = 'EDIT_PRODUCT'
@@ -13,6 +14,13 @@ const getProducts = products => {
   return {
     type: GET_PRODUCTS,
     products
+  }
+}
+
+const getProduct = product => {
+  return {
+    type: GET_PRODUCTS,
+    product
   }
 }
 
@@ -47,6 +55,14 @@ export const fetchProducts = () =>
     dispatch(getProducts(products))
   })
 
+export const fetchProduct = (product) =>
+  dispatch =>
+  axios.get(`/api/products/${product.id}`)
+  .then(res => res.data)
+  .then(product => {
+    dispatch(getProduct(product))
+  })
+
 export const postProduct = product =>
   dispatch =>
   axios.post('/api/products', product)
@@ -75,6 +91,8 @@ export default function reducer(state=[], action) {
   switch (action.type) {
   case GET_PRODUCTS:
     return (action.products)
+  case GET_PRODUCT:
+    return (action.product)
   case ADD_PRODUCT:
     return [...state, action.product]
   case REMOVE_PRODUCT:

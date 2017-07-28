@@ -2,6 +2,7 @@
 
 /* TO DO:
  - consider admin access for all routes
+ need to use OAuth for query
 */
 
 const {Review, User, Order, LineItem, Product} = require('APP/db')
@@ -40,7 +41,7 @@ module.exports = require('express').Router()
     .catch(next))
   // cant create a new user with admin status
   .post('/', (req, res, next) =>
-      User.create(req.body)
+      User.create({firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email, password: req.body.password})
       .then(user => res.status(201).json(user))
       .catch(next))
   .put('/:id', (req, res, next) =>
@@ -77,11 +78,13 @@ module.exports = require('express').Router()
     Order.create(req.body)
     .then(order => res.status(202).json(order))
     .catch(next))
+  // changing order status from cart to pending
   .put('/:id/orders/:orderId', (req, res, next) => {
     Order.update(req.body, {where: {id: req.params.orderId}})
     .then(([count, order]) => res.json(order))
   .catch(next)
   })
+
   // LINEITEM ROUTES
 
   .post('/:id/product', (req, res, next) =>
