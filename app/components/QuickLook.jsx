@@ -23,14 +23,14 @@ class QuickLook extends Component{
               <img src={`${product.photos[0]}`} />
             </div>
             <div className='col m12'>
-              <h1>{product.name}</h1>
+              <Link to={`/single-product/${product.id}`}><h1>{this.props.product.name}</h1></Link>
               <div className='row'>
                 <div className='col s6'>
-                <Stars id={product.id} rating={product.rating} count={product.reviews.length}/>
-                <p>{product.price}</p>
-                {product.categories.map(category => {
+                <Stars id={this.props.product.id} rating={product.rating} count={product.reviews.length}/>
+                <p>{this.props.product.price}</p>
+                {this.props.product.categories.map(category => {
                   return (
-                            <Link to='/allproducts'><Chip key={category.id} close={false}>{category.name}</Chip></Link>
+                            <Link key={category.id} to='/allproducts'><Chip key={category.id} close={false}>{category.name}</Chip></Link>
                           )
                   })
                 }
@@ -48,7 +48,7 @@ class QuickLook extends Component{
                   </div>
                 </div>
               </div>
-              <p>{product.description}</p>
+              <p>{this.props.product.description}</p>
             </div>
         </div>
         </div>

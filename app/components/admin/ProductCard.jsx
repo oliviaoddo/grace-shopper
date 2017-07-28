@@ -13,7 +13,7 @@ export default props => {
                   trigger={
                     <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="fa fa-search" aria-hidden="true"></i></a>
                   }>
-                 <QuickLook />
+                 <QuickLook product={props.product}/>
                 </Modal>
               </div>
               <div className="card-content">

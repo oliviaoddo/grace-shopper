@@ -21,6 +21,8 @@ import ProductForm from './components/admin/ProductForm'
 import SingleProduct from './components/admin/SingleProduct'
 import ProductCards from './components/ProductList'
 import Cart from './components/Cart'
+import Home from './components/Home'
+import TheContainer from './components/text'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -29,13 +31,13 @@ const ExampleApp = connect(
     <div>
       <main>
         <Switch>
-          <Route path="/navbar" component={Navbar} />
-          <Route path="/products" component={ProductList} />
-          <Route path={`/single/:id`} component={ProductForm} />
-          <Route path={`/single-product/:id`} component={SingleProduct} />
-          <Route path={`/allproducts`} component={ProductCards} />
-          <Route path={`/cart`} component={Cart} />
-          <Redirect exact from="/" to="/Navbar" />
+          <Route exact path='/' component={Home} />
+          <Route exact path="/navbar" component={Navbar} />
+          <Route exact path="/products" component={ProductList} />
+          <Route exact path={`/single/:id`} component={ProductForm} />
+          <Route exact path={`/single-product/:id`} component={SingleProduct} />
+          <Route exact path={`/allproducts`} component={ProductCards} />
+          <Route exact path={`/cart`} component={Cart} />
           <Route component={NotFound} />
         </Switch>
       </main>

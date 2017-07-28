@@ -4,6 +4,7 @@ import {Input, Chip, Modal} from 'react-materialize'
 import Lightbox from 'react-images';
 import ProductList from '../ProductList'
 import Stars from '../Stars'
+import CartModal from '../CartModal'
 
 class SingleProduct extends Component{
   constructor(props) {
@@ -139,7 +140,11 @@ class SingleProduct extends Component{
                   </Input>
                 </div>
                 <div className='col m6'>
-                   <button type="submit" className="btn waves-effect waves-light teal addButton">Add to Cart <i className="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                  <Modal
+                   trigger={<button type="submit" className="btn waves-effect waves-light teal addButton">Add to Cart <i className="fa fa-shopping-cart" aria-hidden="true"></i></button>}
+                   >
+                   <CartModal product={product} />
+                  </Modal>
                 </div>
               </div>
             </div>
