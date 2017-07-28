@@ -4,7 +4,7 @@
  - consider admin access for all routes
 */
 
-const {Review, User, Order, LineItem} = require('APP/db')
+const {Review, User, Order, LineItem, Product} = require('APP/db')
 
 const {mustBeLoggedIn, forbidden} = require('./auth.filters')
 
@@ -77,13 +77,58 @@ module.exports = require('express').Router()
     Order.create(req.body)
     .then(order => res.status(202).json(order))
     .catch(next))
-  .put('/:id/orders/orderId', (req, res, next) => {
+  .put('/:id/orders/:orderId', (req, res, next) => {
     Order.update(req.body, {where: {id: req.params.orderId}})
     .then(([count, order]) => res.json(order))
   .catch(next)
   })
   // LINEITEM ROUTES
-  .post('/:id/orders/:orderId/', (req, res, next) =>
-    Order.findById(req.params.orderId)
-    .then(order => order.addProduct(req.body, {through: {price: req.body.price, quantity: req.body.quantity}}))
-    .then(lineItem => res.json(lineItem)))
+
+  .post('/:id/product', (req, res, next) =>
+    Promise.all([
+      Order.findOne({
+        where: {
+          user_id: req.params.id,
+          status: 'cart'
+        }
+      }),
+      Product.findById(req.body.productId)
+    ])
+    .then(([order, product]) =>
+      order.addProduct(product,
+      {price: product.price, quantity: req.body.quantity}))
+    .then(lineItem => res.status(202).json(lineItem))
+    .catch(next))
+
+  .put('/:id/product', (req, res, next) =>
+    Promise.all([
+      Order.findOne({
+        where: {
+          user_id: req.params.id,
+          status: 'cart'
+        }
+      }),
+      Product.findById(req.body.productId)
+    ])
+    .then(([order, product]) =>
+      order.setProducts(product,
+      {quantity: req.body.quantity}))
+    .then(count =>
+      res.status(202).json(count)
+    )
+    .catch(next))
+
+  .delete('/:id/cart/product', (req, res, next) =>
+    Promise.all([
+      Order.findOne({
+        where: {
+          user_id: req.params.id,
+          status: 'cart'
+        }
+      }),
+      Product.findById(req.body.productId)
+    ])
+    .then(([order, product]) =>
+      order.removeProduct(product))
+    .then(res.sendStatus(204))
+    .catch(next))

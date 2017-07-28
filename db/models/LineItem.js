@@ -18,5 +18,5 @@ module.exports = db => db.define('lineItems', {
 
 module.exports.associations = (LineItem, {Product, Order}) => {
   LineItem.belongsTo(Product)
-  LineItem.bleongsTo(Order)
+  LineItem.belongsTo(Order)
 }

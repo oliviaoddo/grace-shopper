@@ -4,7 +4,7 @@
  - Add admin access to post put delete
 */
 
-const {Product, Review, User, Category, Tag} = require('APP/db')
+const {Product, Review, User, Category, Tag, Order, LineItem} = require('APP/db')
 module.exports = require('express').Router()
   .get('/', (req, res, next) => {
     Product.findAll({include:
@@ -22,15 +22,46 @@ module.exports = require('express').Router()
   //  only admins should be able to create products
   .post('/', (req, res, next) => {
     Product.create(req.body)
-    .then(product => res.status(201).json(product)
-    .catch(next))
+    .then(product => res.status(201).json(product))
+    .catch(next)
   })
   //  only admins should be able to edit products
+  // .put('/:id', (req, res, next) => {
+  //   Product.update(req.body, {
+  //     where: {
+  //       id: req.params.id
+  //     },
+  //     returning: true,
+  //     plain: true
+  //   })
+  // .then(([count, product]) => res.status(201).json(product))
+  // .catch(next)
+  // })
+
   .put('/:id', (req, res, next) => {
-    Product.update(req.body, {where: {id: req.params.id}})
-    .then(([count, product]) => res.json(product))
-  .catch(next)
+    Promise.all([
+      Product.update(req.body, {
+        where: {
+          id: req.params.id
+        },
+        returning: true,
+        plain: true
+      }),
+      Order.findAll({
+        where: {
+          status: 'cart'
+        },
+      })
+    ])
+    .then(([[count, product], orders]) => {
+      console.log('product', product)
+      orders.forEach(order =>
+        order.setProducts(product, {price: product.price}))
+    })
+    .then(() => res.sendStatus(201))
+    .catch(next)
   })
+
   //  only admins should be able to delete products
   .delete('/:id', (req, res, next) => {
     Product.destroy({where: {id: req.params.id}})

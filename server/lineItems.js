@@ -1,4 +1,6 @@
 'use strict'
+
+// maybe not neccessary
 const {Product, Review, User, Category, Tag, Order, Address, LineItem} = require('APP/db')
 module.exports = require('express').Router()
   .post('/', (req, res, next) => {
