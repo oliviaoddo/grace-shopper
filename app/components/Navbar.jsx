@@ -2,6 +2,7 @@
 
 import React, {Component} from 'react'
 import RatingStars from './RatingStars'
+import Footer from './Footer'
 
 export default class NavBar extends Component {
   componentDidMount() {
@@ -54,6 +55,7 @@ export default class NavBar extends Component {
           </div>
         </nav>
         <RatingStars />
+        <Footer />
       </div>
     )
   }
