@@ -20,7 +20,7 @@ import NotFound from './components/NotFound'
 import ProductList from './components/admin/ProductList'
 import ProductForm from './components/admin/ProductForm'
 import SingleProduct from './components/admin/SingleProduct'
-
+import ProductCards from './components/ProductList'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -33,6 +33,7 @@ const ExampleApp = connect(
           <Route path="/products" component={ProductList} />
           <Route path={`/single/:id`} component={ProductForm} />
           <Route path={`/single-product/:id`} component={SingleProduct} />
+          <Route path={`/allproducts`} component={ProductCards} />
           <Redirect exact from="/" to="/Navbar" />
           <Route component={NotFound} />
         </Switch>
