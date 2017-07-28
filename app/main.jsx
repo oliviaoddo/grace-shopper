@@ -14,8 +14,13 @@ import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom
 import store from './store'
 import Navbar from './components/Navbar'
 import Login from './components/Login'
-import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
+import ProductList from './components/admin/ProductList'
+import ProductForm from './components/admin/ProductForm'
+import SingleProduct from './components/admin/SingleProduct'
+import ProductCards from './components/ProductList'
+import Cart from './components/Cart'
+import Home from './components/Home'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -24,8 +29,13 @@ const ExampleApp = connect(
     <div>
       <main>
         <Switch>
-          <Route path="/navbar" component={Navbar} />
-          <Redirect exact from="/" to="/Navbar" />
+          <Route exact path='/' component={Home} />
+          <Route exact path="/navbar" component={Navbar} />
+          <Route exact path="/products" component={ProductList} />
+          <Route exact path={`/single/:id`} component={ProductForm} />
+          <Route exact path={`/single-product/:id`} component={SingleProduct} />
+          <Route exact path={`/allproducts`} component={ProductCards} />
+          <Route exact path={`/cart`} component={Cart} />
           <Route component={NotFound} />
         </Switch>
       </main>

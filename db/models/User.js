@@ -10,7 +10,6 @@ module.exports = db => db.define('users', {
   email: {
     type: STRING,
     validate: {
-      unique: true,
       isEmail: true,
       notEmpty: true,
     }
@@ -39,7 +38,7 @@ module.exports = db => db.define('users', {
   },
   getterMethods: {
     fullName() {
-      return this.firstName + ' ' + this.lastName;
+      return this.firstName + ' ' + this.lastName
     }
   },
   instanceMethods: {
@@ -50,15 +49,14 @@ module.exports = db => db.define('users', {
   }
 })
 
-
 module.exports.associations = (User, {
   OAuth,
   Address,
   Review
 }) => {
   User.hasOne(OAuth)
-  User.hasMany(Review);
-  User.hasMany(Address);
+  User.hasMany(Review)
+  User.hasMany(Address)
 }
 
 function setEmailAndPassword(user) {
