@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
-import {Input, Chip} from 'react-materialize'
+import {Input, Chip, Modal} from 'react-materialize'
 import Lightbox from 'react-images';
 import ProductList from '../ProductList'
 import Stars from '../Stars'
