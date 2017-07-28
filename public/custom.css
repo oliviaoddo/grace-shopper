@@ -1,4 +1,25 @@
-#logo{
+#logo {
   padding-left: 2%;
   background-color: #40b7b9;
+}
+
+#nav-btn-container {
+  position: absolute;
+  top: 0vh;
+  left: 85vw;
+}
+
+#search-bar {
+  width: 30vw;
+  margin-left: 10vw;
+}
+
+.star-rating-container{
+  width: 120px;
+  height: 24px;
+  margin: 2px;
+}
+
+.colored{
+  color: orange;
 }

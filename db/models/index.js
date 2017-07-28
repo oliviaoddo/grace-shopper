@@ -13,7 +13,7 @@ const app = require('APP')
     // This lets us avoid cyclic dependencies, which can be hard to reason
     // about.
     , metaModels = {
-      OAuth: require('./oauth'),
+      OAuth: require('./Oauth'),
 
       User: require('./User'),
       LineItem: require('./LineItem'),

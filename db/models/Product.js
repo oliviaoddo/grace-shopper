@@ -37,7 +37,7 @@ module.exports = db => db.define('products', {
     type: ARRAY(STRING),
     defaultValue: ['http://www.keil.com/Content/images/photo_default.png']
   }
-}
+})
 
 module.exports.associations = (Product, {Order, LineItem, Review, Category, Tag}) => {
   Product.belongsToMany(Order, {through: LineItem})
