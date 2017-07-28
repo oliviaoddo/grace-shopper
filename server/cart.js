@@ -1,11 +1,13 @@
 'use strict'
+
+// all of these are in users not really necessary
 const {Product, Review, User, Category, Tag, Order, Address, LineItem} = require('APP/db')
 const Promise = require('bluebird')
 
 module.exports = require('express').Router()
   // get the user's cart
   /*  when a user logs in, get an existing cart or create an empty one */
-  .get('/:userId', (req, res, next) => {
+  .get('/user/:userId', (req, res, next) => {
     Order.findOrCreate({where:
     {userId: req.params.userId,
       status: 'cart'},
