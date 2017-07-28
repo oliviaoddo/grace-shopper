@@ -1,5 +1,4 @@
 'use strict'
-
 /**
  * `babel-preset-env` converts this general import into a selection of specific
  * imports needed to polyfill the currently-supported environment (as specified
