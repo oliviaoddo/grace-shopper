@@ -13,14 +13,32 @@
   margin-left: 10vw;
 }
 
-.star-rating-container{
+.star-rating-container {
   width: 120px;
   height: 24px;
   margin: 2px;
 }
 
-.colored{
+#search {
+  border-radius: 15px;
+}
+
+.colored {
   color: orange;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer.page-footer {
+  background-color: #40b7b9;
 }
 
 h1, h2, h3, h4{
