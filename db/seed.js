@@ -5,6 +5,7 @@ const db = require('APP/db'),
   { mapValues } = require('lodash')
 
 function seedEverything() {
+  console.log('badbye')
   const seeded = {
     users: users(),
     products: products(),
@@ -282,6 +283,7 @@ if (module === require.main) {
       force: true
     }))
     .then(seedEverything)
+    .catch((err) => console.log(err))
     .finally(() => process.exit(0))
 }
 
