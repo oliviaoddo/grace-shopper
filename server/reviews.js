@@ -4,7 +4,7 @@ module.exports = require('express').Router()
 // single review
   .get('/:id', (req, res, next) => {
     Review.findById(req.params.id)
-    .then(review => res.json(review))
+    .then(review => res.status(200).json(review))
     .catch(next)
   })
 // all reviews associated with a product

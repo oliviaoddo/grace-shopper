@@ -2,7 +2,6 @@
   padding-left: 2%;
   background-color: #40b7b9;
 }
-
 #nav-btn-container {
   position: absolute;
   top: 0vh;
@@ -22,4 +21,88 @@
 
 .colored{
   color: orange;
+}
+
+h1, h2, h3, h4{
+  font-weight: 300;
+}
+
+
+.addButton, .galleryControl{
+  float: right;
+}
+
+.product-img{
+    width: 90%;
+}
+
+.sr-only{
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.checkout-btn{
+    float: right;
+}
+
+.added-cart-header{
+    font-size: 2.2em;
+}
+
+.product-cart-header{
+    font-size: 1.8em;
+}
+
+
+nav ul a,
+nav .brand-logo {
+  color: #444;
+}
+
+p {
+  line-height: 2rem;
+}
+
+.button-collapse {
+  color: #26a69a;
+}
+
+.parallax-container {
+  min-height: 500px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+
+.parallax-container .section {
+    width: 100%;
+}
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
 }

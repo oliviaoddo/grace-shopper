@@ -1,4 +1,9 @@
 'use strict'
+
+/* TO DO:
+ - Add admin access to post and put delete
+*/
+
 const {Tag} = require('APP/db')
 module.exports = require('express').Router()
   .get('/', (req, res, next) => {
@@ -11,17 +16,20 @@ module.exports = require('express').Router()
     .then(tag => res.json(tag))
     .catch(next)
   })
+  // admin only
   .post('/', (req, res, next) => {
     Tag.create(req.body)
-    .then(tag => res.json(tag)
+    .then(tag => res.status(201).json(tag)
     .catch(next))
   })
+  // admin only
   .put('/:id', (req, res, next) => {
     Tag.update(req.body, {where: {id: req.params.id}})
-    .then(tag => res.json(tag[1]))
-  .catch(next)
+    .then(([count, tag]) => res.json(tag))
+    .catch(next)
   })
+  // admin only
   .delete('/:id', (req, res, next) => {
     Tag.destroy({where: {id: req.params.id}})
-    .then(() => res.sendStatus(202))
+    .then(() => res.sendStatus(204))
   })
