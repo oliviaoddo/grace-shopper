@@ -15,12 +15,12 @@ import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom
 import store from './store'
 import Navbar from './components/Navbar'
 import Login from './components/Login'
-import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
 import ProductList from './components/admin/ProductList'
 import ProductForm from './components/admin/ProductForm'
 import SingleProduct from './components/admin/SingleProduct'
 import ProductCards from './components/ProductList'
+import Cart from './components/Cart'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -34,6 +34,7 @@ const ExampleApp = connect(
           <Route path={`/single/:id`} component={ProductForm} />
           <Route path={`/single-product/:id`} component={SingleProduct} />
           <Route path={`/allproducts`} component={ProductCards} />
+          <Route path={`/cart`} component={Cart} />
           <Redirect exact from="/" to="/Navbar" />
           <Route component={NotFound} />
         </Switch>

@@ -26,3 +26,7 @@ h1, h2, h3, h4{
     position: absolute;
     width: 1px;
 }
+
+.checkout-btn{
+    float: right;
+}

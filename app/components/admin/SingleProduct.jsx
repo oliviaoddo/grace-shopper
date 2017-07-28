@@ -139,7 +139,7 @@ class SingleProduct extends Component{
                   </Input>
                 </div>
                 <div className='col m6'>
-                   <button type="submit" className="btn waves-effect waves-light teal addButton">Add to Cart</button>
+                   <button type="submit" className="btn waves-effect waves-light teal addButton">Add to Cart <i className="fa fa-shopping-cart" aria-hidden="true"></i></button>
                 </div>
               </div>
             </div>
