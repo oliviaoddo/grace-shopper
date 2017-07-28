@@ -8,6 +8,21 @@ h1, h2, h3, h4{
 }
 
 
-.addButton{
+.addButton, .galleryControl{
   float: right;
+}
+
+.product-img{
+    width: 90%;
+}
+
+.sr-only{
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }
