@@ -13,8 +13,6 @@ function seedEverything() {
     orders: orders()
   }
 
-  seeded.favorites = favorites(seeded)
-
   return Promise.props(seeded)
 }
 
@@ -57,7 +55,7 @@ const users = seed(User, {
   god: {
     firstName: 'god',
     lastName: 'god',
-    email:'god@god.god',
+    email: 'god@god.god',
     password: 'godgodgodgod',
     isAdmin: true
   },
@@ -129,13 +127,13 @@ const addresses = seed(Address, {
     state: 'Tennessee',
     country: 'UnderWaterLand'
   },
-  addressC: {
+  addressD: {
     street: '5 Power rangers',
     city: 'South Dakota',
     zip: '29193',
     state: 'Alabama'
   },
-  addressD: {
+  addressE: {
     street: '21 David Yoon Court',
     city: 'GeorgiaCity',
     zip: '92810',
