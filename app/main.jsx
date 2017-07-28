@@ -19,6 +19,7 @@ import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
 import ProductList from './components/admin/ProductList'
 import ProductForm from './components/admin/ProductForm'
+import SingleProduct from './components/admin/SingleProduct'
 
 
 const ExampleApp = connect(
@@ -31,6 +32,7 @@ const ExampleApp = connect(
           <Route path="/navbar" component={Navbar} />
           <Route path="/products" component={ProductList} />
           <Route path={`/single/:id`} component={ProductForm} />
+          <Route path={`/single-product/:id`} component={SingleProduct} />
           <Redirect exact from="/" to="/Navbar" />
           <Route component={NotFound} />
         </Switch>
