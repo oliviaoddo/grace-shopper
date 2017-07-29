@@ -21,35 +21,35 @@ const reviews = seed(Review,({users, products})=> ({
   reviewA: {
   title: 'Loren Ipsum',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at augue semper, mollis urna eget, dictum mi. Etiam elit mi, commodo pharetra elit consequat, mollis rutrum ipsum. Nullam aliquet quam vitae congue facilisis. Morbi quis mattis diam, semper varius purus. Aliquam pellentesque iaculis varius. Fusce quis venenatis libero. Sed eget pellentesque arcu, sed vulputate leo. Ut venenatis dui egestas mauris pharetra, non placerat libero dignissim. In hac habitasse platea dictumst. Aliquam elit quam, tristique eu lacus quis, bibendum imperdiet dolor. Pellentesque lobortis dapibus porta. Vestibulum mollis turpis non turpis ullamcorper, vitae egestas lacus ullamcorper. Quisque nec ipsum magna. Quisque non ex sagittis, accumsan lacus nec, mollis diam. Nunc dapibus pretium justo quis facilisis. Praesent egestas velit lacinia elit sodales, vitae tincidunt nisl cursus.',
-  rating: 2,
+  rating: '2',
   product_id: products.productA.id,
   user_id: users.userA.id
   },
 reviewB: {
   title: 'Somethign',
   description: 'ssomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinomethin',
-  rating: 4,
+  rating: '4',
   product_id: products.productB.id,
   user_id: users.userB.id
   },
 reviewC: {
   title: 'hello',
   description: 'hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello',
-  rating: 5,
+  rating: '5',
   product_id: products.productC.id,
   user_id: users.userC.id
   },
 reviewD: {
   title: 'mate',
   description: 'mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate',
-  rating: 3,
+  rating: '3',
   product_id: products.productD.id,
   user_id: users.userD.id
   }, 
 reviewE: {
   title: 'Who let the dogs out?',
   description: 'who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who?',
-  rating: 1,
+  rating: '1',
   product_id: products.productE.id,
   user_id: users.userE.id
   }
