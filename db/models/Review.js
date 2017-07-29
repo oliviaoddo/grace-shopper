@@ -1,4 +1,4 @@
-const { STRING, ENUM, TEXT } = require('sequelize');
+const { STRING, ENUM, TEXT } = require('sequelize')
 
 module.exports = db => db.define('reviews', {
   title: {
@@ -16,7 +16,7 @@ module.exports = db => db.define('reviews', {
 }, {
   getterMethods: {
     shortTitle() {
-      return this.title.substring(0, 20) + '...';
+      return this.title.substring(0, 20) + '...'
     }
   }
 })

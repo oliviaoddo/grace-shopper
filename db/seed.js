@@ -1,59 +1,165 @@
 'use strict'
 
 const db = require('APP/db'),
-  { Product, Address, Category, LineItem, Order, Review, Tag, User, Promise } = db,
+  { ProductTag, ProductCategory, Product, Address, Category, LineItem, Order, Review, Tag, User, Promise } = db,
   { mapValues } = require('lodash')
 
 function seedEverything() {
   const seeded = {
     users: users(),
     products: products(),
-    categories: categories(),
-    orders: orders()
+    orders: orders(),
+    tags: tags()
   }
 
   seeded.addresses = addresses(seeded)
   seeded.reviews = reviews(seeded)
+  seeded.lineItems = lineItems(seeded)
+  seeded.categories = categories(seeded)
+  seeded.productCategories = productCategories(seeded)
+  seeded.productTags = productTags(seeded)
 
   return Promise.props(seeded)
 }
-const reviews = seed(Review,({users, products})=> ({
-  reviewA: {
-  title: 'Loren Ipsum',
-  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at augue semper, mollis urna eget, dictum mi. Etiam elit mi, commodo pharetra elit consequat, mollis rutrum ipsum. Nullam aliquet quam vitae congue facilisis. Morbi quis mattis diam, semper varius purus. Aliquam pellentesque iaculis varius. Fusce quis venenatis libero. Sed eget pellentesque arcu, sed vulputate leo. Ut venenatis dui egestas mauris pharetra, non placerat libero dignissim. In hac habitasse platea dictumst. Aliquam elit quam, tristique eu lacus quis, bibendum imperdiet dolor. Pellentesque lobortis dapibus porta. Vestibulum mollis turpis non turpis ullamcorper, vitae egestas lacus ullamcorper. Quisque nec ipsum magna. Quisque non ex sagittis, accumsan lacus nec, mollis diam. Nunc dapibus pretium justo quis facilisis. Praesent egestas velit lacinia elit sodales, vitae tincidunt nisl cursus.',
-  rating: '2',
-  product_id: products.productA.id,
-  user_id: users.userA.id
+
+const tags = seed(Tag, {
+  tagA: {
+    name: 'apples'
   },
-reviewB: {
-  title: 'Somethign',
-  description: 'ssomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinomethin',
-  rating: '4',
-  product_id: products.productB.id,
-  user_id: users.userB.id
+  tagB: {
+    name: 'oranges'
   },
-reviewC: {
-  title: 'hello',
-  description: 'hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello',
-  rating: '5',
-  product_id: products.productC.id,
-  user_id: users.userC.id
+  tagC: {
+    name: 'bananas'
   },
-reviewD: {
-  title: 'mate',
-  description: 'mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate',
-  rating: '3',
-  product_id: products.productD.id,
-  user_id: users.userD.id
-  }, 
-reviewE: {
-  title: 'Who let the dogs out?',
-  description: 'who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who?',
-  rating: '1',
-  product_id: products.productE.id,
-  user_id: users.userE.id
+  tagD: {
+    name: 'advocados'
+  },
+  tagE: {
+    name: 'coconuts'
+  },
+  tagF: {
+    name: 'star fruits'
+  },
+  tagG: {
+    name: 'durians'
+  },
+  tagH: {
+    name: 'pineapples'
   }
-  }))
+})
+const productTags = seed(ProductTag, ({
+  products,
+  tags
+}) => ({
+  pTA: {
+    product_id: products.productA.id,
+    tag_id: tags.tagA.id
+  }
+}))
+
+const productCategories = seed(ProductCategory, ({
+  products,
+  categories
+}) => ({
+  pCA: {
+    product_id: products.productA.id,
+    category_id: categories.categoryA.id
+  }
+}))
+const lineItems = seed(LineItem, ({
+  products,
+  orders
+}) => ({
+  lineItemA: {
+    quantity: 10,
+    price: 9.99,
+    product_id: products.productA.id,
+    order_id: orders.orderA.id
+  },
+  lineItemB: {
+    quantity: 5,
+    price: 19.99,
+    product_id: products.productB.id,
+    order_id: orders.orderA.id
+  },
+  lineItemC: {
+    quantity: 2,
+    price: 999.99,
+    product_id: products.productC.id,
+    order_id: orders.orderB.id
+  },
+  lineItemD: {
+    quantity: 2,
+    price: 999.99,
+    product_id: products.productD.id,
+    order_id: orders.orderB.id
+  },
+  lineItemE: {
+    quantity: 4,
+    price: 19.99,
+    product_id: products.productE.id,
+    order_id: orders.orderB.id
+  },
+  lineItemF: {
+    quantity: 10,
+    price: 5.22,
+    product_id: products.productA.id,
+    order_id: orders.orderC.id
+  },
+  lineItemG: {
+    quantity: 8,
+    price: 2.22,
+    product_id: products.productB.id,
+    order_id: orders.orderC.id
+  },
+  lineItemH: {
+    quantity: 1,
+    price: 9.12,
+    product_id: products.productC.id,
+    order_id: orders.orderD.id
+  }
+}))
+const reviews = seed(Review, ({
+  users,
+  products
+}) => ({
+  reviewA: {
+    title: 'Loren Ipsum',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at augue semper, mollis urna eget, dictum mi. Etiam elit mi, commodo pharetra elit consequat, mollis rutrum ipsum. Nullam aliquet quam vitae congue facilisis. Morbi quis mattis diam, semper varius purus. Aliquam pellentesque iaculis varius. Fusce quis venenatis libero. Sed eget pellentesque arcu, sed vulputate leo. Ut venenatis dui egestas mauris pharetra, non placerat libero dignissim. In hac habitasse platea dictumst. Aliquam elit quam, tristique eu lacus quis, bibendum imperdiet dolor. Pellentesque lobortis dapibus porta. Vestibulum mollis turpis non turpis ullamcorper, vitae egestas lacus ullamcorper. Quisque nec ipsum magna. Quisque non ex sagittis, accumsan lacus nec, mollis diam. Nunc dapibus pretium justo quis facilisis. Praesent egestas velit lacinia elit sodales, vitae tincidunt nisl cursus.',
+    rating: '2',
+    product_id: products.productA.id,
+    user_id: users.userA.id
+  },
+  reviewB: {
+    title: 'Somethign',
+    description: 'ssomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinsomethinomethin',
+    rating: '4',
+    product_id: products.productB.id,
+    user_id: users.userB.id
+  },
+  reviewC: {
+    title: 'hello',
+    description: 'hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello',
+    rating: '5',
+    product_id: products.productC.id,
+    user_id: users.userC.id
+  },
+  reviewD: {
+    title: 'mate',
+    description: 'mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate mate',
+    rating: '3',
+    product_id: products.productD.id,
+    user_id: users.userD.id
+  },
+  reviewE: {
+    title: 'Who let the dogs out?',
+    description: 'who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who? who?',
+    rating: '1',
+    product_id: products.productE.id,
+    user_id: users.userE.id
+  }
+}))
 const users = seed(User, {
   userA: {
     firstName: 'Jamie',
@@ -143,81 +249,85 @@ const products = seed(Product, {
 })
 
 const addresses = seed(Address,
-  ({ users }) => ({
-  addressA: {
-    street: '123 Fake Street',
-    city: 'Fake City',
-    zip: '12345',
-    state: 'Maryland',
-    country: 'FakeLand somewhere Fake',
-    user_id: users.userA.id
-  },
-  addressB: {
-    street: 'Something Something Broadway',
-    street2: 'Columbia University',
-    city: 'New York',
-    zip: '10004',
-    state: 'New York',
-    country: 'United States',
-    user_id: users.userB.id
-  },
-  addressC: {
-    street: '1 Bikini Bottom',
-    city: 'Bikini Bottom',
-    zip: '12914',
-    state: 'Tennessee',
-    country: 'UnderWaterLand',
-    user_id: users.userC.id
+  ({
+    users
+  }) => ({
+    addressA: {
+      street: '123 Fake Street',
+      city: 'Fake City',
+      zip: '12345',
+      state: 'Maryland',
+      country: 'FakeLand somewhere Fake',
+      user_id: users.userA.id
+    },
+    addressB: {
+      street: 'Something Something Broadway',
+      street2: 'Columbia University',
+      city: 'New York',
+      zip: '10004',
+      state: 'New York',
+      country: 'United States',
+      user_id: users.userB.id
+    },
+    addressC: {
+      street: '1 Bikini Bottom',
+      city: 'Bikini Bottom',
+      zip: '12914',
+      state: 'Tennessee',
+      country: 'UnderWaterLand',
+      user_id: users.userC.id
 
-  },
-  addressD: {
-    street: '5 Power rangers',
-    city: 'South Dakota',
-    zip: '29193',
-    state: 'Alabama',
-    user_id: users.userD.id
-  },
-  addressE: {
-    street: '21 David Yoon Court',
-    city: 'GeorgiaCity',
-    zip: '92810',
-    state: 'Georgia',
-    user_id: users.userE.id
-  }
-}))
+    },
+    addressD: {
+      street: '5 Power rangers',
+      city: 'South Dakota',
+      zip: '29193',
+      state: 'Alabama',
+      user_id: users.userD.id
+    },
+    addressE: {
+      street: '21 David Yoon Court',
+      city: 'GeorgiaCity',
+      zip: '92810',
+      state: 'Georgia',
+      user_id: users.userE.id
+    }
+  }))
 
-const categories = seed(Category, {
+const categories = seed(Category, ({
+  products
+}) => ({
   categoryA: {
-    name: 'asdfjkll'
+    name: 'asdfjkll',
   },
   categoryB: {
-    name: 'Tomatoes'
+    name: 'Tomatoes',
   },
   categoryC: {
-    name: 'Potatoes'
+    name: 'Potatoes',
   },
   categoryD: {
-    name: 'Colby-Jack'
+    name: 'Colby-Jack',
   },
   categoryE: {
-    name: 'right'
+    name: 'right',
   },
   categoryF: {
-    name: 'wrong'
+    name: 'wrong',
   },
   categoryG: {
-    name: 'yes'
+    name: 'yes',
   },
   categoryH: {
-    name: 'no'
+    name: 'no',
   },
   categoryI: {
-    name: 'Australian'
+    name: 'Australian',
   },
   categoryJ: {
-    name: 'European'
+    name: 'European',
   },
-})
+}))
 
 const orders = seed(Order, {
   orderA: {
@@ -246,66 +356,6 @@ const orders = seed(Order, {
     status: 'cart'
   },
 })
-
-/*
- *const reviews = seed(Review, {
- *  reviewA: {
- *    title: 'Wow what a great product!',
- *    description: 'I really love the feel of real mermaid skin against my own skin. Faux mermaid skin makes my skin feel scratchy. Quality is nice, ordered and got my item within 20 days. 5 stars from me.',
- *    rating: 5
- *  },
- *  reviewB: {
- *    title: 'WORST PRODUCT EVER',
- *    description: 'Ask yourself this: Do I REALLY need a lobster shell necklace? Of COURSE I do. I can\'t believe that anyone would need to ask themselves this question when in fact it is exactly that! My Lobster shell necklace broke a couple days later. They get a solid 1/5 from me',
- *    rating: 1
- *  },
- *  reviewC: {
- *    title: 'Can I even find this anywhere else?',
- *    description: 'When I look to buy something that is weird and a horrible gift, Ocean Spray is the first thing that comes to mind! All the gifts here are magnificently and horribly crafted with detail and negligence. Quite frankly, I\'m not even sure if I know why I love or hate this store so much!',
- *    rating: 3
- *  },
- *  reviewD: {
- *    title: 'pretty good',
- *    description: 'cool items',
- *    rating: 3
- *  },
- *  reviewE: {
- *    title: 'Mom is allergic to swordfish',
- *    description: 'After buying a gift for my mother for Mother\'s Day, she swelled up to the size of a blueberry after she put her authentic \'Seaweed\' brooch on. The only seafood she is allergic to is swordfish. I am going to sue this company for the hospital and legal fees.',
- *    rating: 1
- *  },
- *  reviewF: {
- *    title: 'I am low-vision impaired and I accessed this site by tabbing',
- *    description: 'I am so glad that your website is handicapped enabled. All my favorite websites are so hard to use but not this one!',
- *    rating: 5
- *  },
- *})
- */
-
-/*
- *const favorites = seed(Favorite,
- *  ({
- *    users,
- *    things
- *  }) => ({
- *    'obama loves surfing': {
- *      user_id: users.barack.id, // users.barack is an instance of the User model
- *      thing_id: things.surfing.id // Same thing for things.
- *    },
- *    'god is into smiting': {
- *      user_id: users.god.id,
- *      thing_id: things.smiting.id
- *    },
- *    'obama loves puppies': {
- *      user_id: users.barack.id,
- *      thing_id: things.puppies.id
- *    },
- *    'god loves puppies': {
- *      user_id: users.god.id,
- *      thing_id: things.puppies.id
- *    },
- *  }))
- */
 
 if (module === require.main) {
   db.didSync

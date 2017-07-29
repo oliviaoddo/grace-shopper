@@ -37,8 +37,8 @@ Object.assign(db, require('./models')(db),
 db.didSync = db.createAndSync()
 
 // sync the db, creating it if necessary
-function createAndSync(force=app.isTesting, retries=0, maxRetries=5) {
-  return db.sync({force:true})
+function createAndSync(force = app.isTesting, retries=0, maxRetries=5) {
+  return db.sync({force: true})
     .then(() => debug(`Synced models to db ${url}`))
     .catch(fail => {
       // Don't do this auto-create nonsense in prod, or
