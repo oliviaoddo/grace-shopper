@@ -23,7 +23,7 @@ export default props => {
             })
           }
         </div>
-        <button className='btn checkout-btn'>Checkout <i className="fa fa-chevron-circle-right" aria-hidden="true"></i></button>
+        <Link to='/cart'><button className='btn checkout-btn'>View Cart <i className="fa fa-chevron-circle-right" aria-hidden="true"></i></button></Link>
       </div>
     </div>
     )

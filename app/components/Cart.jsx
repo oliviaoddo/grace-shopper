@@ -59,7 +59,7 @@ class Cart extends Component{
                 return(
                   <tr>
                     <td><img src={product.photos[0]}/></td>
-                    <td><Link to={`/single-product/${product.id}`}>{product.name}</Link></td>
+                    <td><Link to={`/shop/${product.id}`}>{product.name}</Link></td>
                     <td>
                       <div className='row'>
                         <div className='col m6'>
