@@ -62,9 +62,261 @@ const productCategories = seed(ProductCategory, ({
   products,
   categories
 }) => ({
-  pCA: {
+  p1: {
     product_id: products.productA.id,
     category_id: categories.categoryA.id
+  },
+  p2: {
+    product_id: products.productA.id,
+    category_id: categories.categoryD.id
+  },
+  p3: {
+    product_id: products.productB.id,
+    category_id: categories.categoryA.id
+  },
+  p4: {
+    product_id: products.productB.id,
+    category_id: categories.categoryD.id
+  },
+  p5: {
+    product_id: products.productC.id,
+    category_id: categories.categoryA.id
+  },
+  p6: {
+    product_id: products.productC.id,
+    category_id: categories.categoryE.id
+  },
+  p7: {
+    product_id: products.productD.id,
+    category_id: categories.categoryA.id
+  },
+  p8: {
+    product_id: products.productD.id,
+    category_id: categories.categoryE.id
+  },
+  p9: {
+    product_id: products.productE.id,
+    category_id: categories.categoryA.id
+  },
+  p10: {
+    product_id: products.productE.id,
+    category_id: categories.categoryD.id
+  },
+  p11: {
+    product_id: products.productF.id,
+    category_id: categories.categoryA.id
+  },
+  p12: {
+    product_id: products.productF.id,
+    category_id: categories.categoryD.id
+  },
+  p13: {
+    product_id: products.productG.id,
+    category_id: categories.categoryA.id
+  },
+  p14: {
+    product_id: products.productG.id,
+    category_id: categories.categoryD.id
+  },
+  p15: {
+    product_id: products.productH.id,
+    category_id: categories.categoryA.id
+  },
+  p16: {
+    product_id: products.productH.id,
+    category_id: categories.categoryD.id
+  },
+  p17: {
+    product_id: products.productI.id,
+    category_id: categories.categoryA.id
+  },
+  p18: {
+    product_id: products.productI.id,
+    category_id: categories.categoryE.id
+  },
+  p19: {
+    product_id: products.productJ.id,
+    category_id: categories.categoryA.id
+  },
+  p20: {
+    product_id: products.productJ.id,
+    category_id: categories.categoryD.id
+  },
+  p21: {
+    product_id: products.productK.id,
+    category_id: categories.categoryA.id
+  },
+  p22: {
+    product_id: products.productK.id,
+    category_id: categories.categoryE.id
+  },
+  p23: {
+    product_id: products.productL.id,
+    category_id: categories.categoryA.id
+  },
+  p24: {
+    product_id: products.productL.id,
+    category_id: categories.categoryE.id
+  },
+  p27: {
+    product_id: products.productM.id,
+    category_id: categories.categoryA.id
+  },
+  p28: {
+    product_id: products.productM.id,
+    category_id: categories.categoryD.id
+  },
+  p29: {
+    product_id: products.productN.id,
+    category_id: categories.categoryA.id
+  },
+  p30: {
+    product_id: products.productN.id,
+    category_id: categories.categoryD.id
+  },
+  p31: {
+    product_id: products.productO.id,
+    category_id: categories.categoryA.id
+  },
+  p32: {
+    product_id: products.productO.id,
+    category_id: categories.categoryD.id
+  },
+  p33: {
+    product_id: products.productP.id,
+    category_id: categories.categoryA.id
+  },
+  p34: {
+    product_id: products.productP.id,
+    category_id: categories.categoryE.id
+  },
+  p35: {
+    product_id: products.productQ.id,
+    category_id: categories.categoryA.id
+  },
+  p36: {
+    product_id: products.productQ.id,
+    category_id: categories.categoryE.id
+  },
+  p37: {
+    product_id: products.productR.id,
+    category_id: categories.categoryA.id
+  },
+  p38: {
+    product_id: products.productR.id,
+    category_id: categories.categoryE.id
+  },
+  p39: {
+    product_id: products.productS.id,
+    category_id: categories.categoryB.id
+  },
+  p40: {
+    product_id: products.productS.id,
+    category_id: categories.categoryE.id
+  },
+  p41: {
+    product_id: products.productT.id,
+    category_id: categories.categoryB.id
+  },
+  p42: {
+    product_id: products.productT.id,
+    category_id: categories.categoryE.id
+  },
+  p43: {
+    product_id: products.productU.id,
+    category_id: categories.categoryB.id
+  },
+  p44: {
+    product_id: products.productU.id,
+    category_id: categories.categoryD.id
+  },
+  p45: {
+    product_id: products.productW.id,
+    category_id: categories.categoryB.id
+  },
+  p46: {
+    product_id: products.productW.id,
+    category_id: categories.categoryD.id
+  },
+  p47: {
+    product_id: products.productX.id,
+    category_id: categories.categoryB.id
+  },
+  p48: {
+    product_id: products.productX.id,
+    category_id: categories.categoryD.id
+  },
+  p49: {
+    product_id: products.productY.id,
+    category_id: categories.categoryB.id
+  },
+  p50: {
+    product_id: products.productY.id,
+    category_id: categories.categoryE.id
+  },
+  p51: {
+    product_id: products.product1.id,
+    category_id: categories.categoryC.id
+  },
+  p52: {
+    product_id: products.product2.id,
+    category_id: categories.categoryC.id
+  },
+  p53: {
+    product_id: products.product3.id,
+    category_id: categories.categoryC.id
+  },
+  p54: {
+    product_id: products.product4.id,
+    category_id: categories.categoryC.id
+  },
+  p55: {
+    product_id: products.product5.id,
+    category_id: categories.categoryC.id
+  },
+  p56: {
+    product_id: products.product5.id,
+    category_id: categories.categoryD.id
+  },
+  p57: {
+    product_id: products.product6.id,
+    category_id: categories.categoryC.id
+  },
+  p58: {
+    product_id: products.product6.id,
+    category_id: categories.categoryD.id
+  },
+  p59: {
+    product_id: products.product7.id,
+    category_id: categories.categoryC.id
+  },
+  p60: {
+    product_id: products.product7.id,
+    category_id: categories.categoryD.id
+  },
+  p61: {
+    product_id: products.product8.id,
+    category_id: categories.categoryC.id
+  },
+  p62: {
+    product_id: products.product8.id,
+    category_id: categories.categoryE.id
+  },
+  p63: {
+    product_id: products.product9.id,
+    category_id: categories.categoryC.id
+  },
+  p64: {
+    product_id: products.product9.id,
+    category_id: categories.categoryE.id
+  },
+  p65: {
+    product_id: products.product10.id,
+    category_id: categories.categoryC.id
+  },
+  p66: {
+    product_id: products.product10.id,
+    category_id: categories.categoryE.id
   }
 }))
 const lineItems = seed(LineItem, ({
