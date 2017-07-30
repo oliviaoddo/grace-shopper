@@ -5,13 +5,30 @@
 */
 
 const {Product, Review, User, Category, Tag, Order, LineItem} = require('APP/db')
+
+const {assertAdmin, mustBeLoggedIn} = require('APP/server/auth.filters.js')
+
 module.exports = require('express').Router()
   .get('/', (req, res, next) => {
-    Product.findAll({include:
-    [{model: Category}, {model: Tag}]})
-    .then(products => res.json(products))
+    Product.findAll({
+      include: [{model: Category}, {model: Tag}]
+    })
+    .then(products =>
+      req.query.category
+        ? products.filter((product) =>
+          product.categories.find(category =>
+            category.name === req.query.category))
+        : products)
+    .then(filteredProducts =>
+      req.query.sort
+        ? filteredProducts.sort((a, b) =>
+          a[req.query.sort] - b[req.query.sort])
+        : filteredProducts)
+    .then(sortedProducts =>
+      res.json(sortedProducts))
     .catch(next)
   })
+
   .get('/:id', (req, res, next) => {
     Product.findById(req.params.id,
       { include: [{model: Review,
@@ -20,7 +37,7 @@ module.exports = require('express').Router()
     .catch(next)
   })
   //  only admins should be able to create products
-  .post('/', (req, res, next) => {
+  .post('/', mustBeLoggedIn, assertAdmin, (req, res, next) => {
     Product.create(req.body)
     .then(product => res.status(201).json(product))
     .catch(next)
@@ -38,7 +55,7 @@ module.exports = require('express').Router()
   // .catch(next)
   // })
 
-  .put('/:id', (req, res, next) => {
+  .put('/:id', mustBeLoggedIn, assertAdmin, (req, res, next) => {
     Promise.all([
       Product.update(req.body, {
         where: {
