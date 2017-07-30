@@ -26,7 +26,6 @@ class SingleProduct extends Component{
   }
 
   openLightbox (index, event) {
-    console.log('Open!');
     event.preventDefault();
     this.setState({
       currentImage: index,
@@ -132,9 +131,9 @@ class SingleProduct extends Component{
                 />
               </div>
               <div className='col m6 s12'>
-                <h1>{this.props.product.name}</h1>
+                <h1 className='product-name'>{this.props.product.name}</h1>
                 <Stars id={this.props.product.id} rating={this.props.product.rating} count={this.props.product.reviews.length}/>
-                <p>{this.props.product.price}</p>
+                <p>${this.props.product.price}</p>
                 {this.props.product.categories.map(category => {
                   return (
                             <Link to='/allproducts'><Chip key={category.id} close={false}>{category.name}</Chip></Link>
@@ -160,11 +159,22 @@ class SingleProduct extends Component{
           </div>
         </div>
         : null}
+      {this.props.product.name ?
       <div className='container'>
         <h2>Top Rated</h2>
         <div className='row'>
+          <div className='col m4'>
+            <ProductCard product={this.props.product} />
+          </div>
+          <div className='col m4'>
+            <ProductCard product={this.props.product} />
+          </div>
+          <div className='col m4'>
+            <ProductCard product={this.props.product} />
+          </div>
         </div>
         </div>
+        : null}
       </div>
     )
   }
