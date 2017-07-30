@@ -1,8 +1,8 @@
 /* global $ */
 
 import React, {Component} from 'react'
-import RatingStars from './RatingStars'
 import Footer from './Footer'
+import { Link } from 'react-router-dom'
 
 export default class NavBar extends Component {
   componentDidMount() {
@@ -15,18 +15,21 @@ export default class NavBar extends Component {
       <div>
         <ul id="catDropdown" className="dropdown-content">
           <li>
-            <a href="#!">Necklace</a>
+            <Link to='/shop?category=necklaces'>Necklaces</Link>
           </li>
           <li>
-            <a href="#!">Earings</a>
+            <Link to='/shop?category=bracelets'>Bracelets</Link>
           </li>
           <li>
-            <a href="#!">Rings</a>
+            <Link to='/shop?category=rings'>Rings</Link>
+          </li>
+          <li>
+            <Link to='/shop?category=rings'>Rare Sea Glass Jewelery</Link>
           </li>
         </ul>
         <nav>
           <div id="logo" className="nav-wrapper">
-            <a href="#!" className="brand-logo">DEOS</a>
+            <Link to='/' className="brand-logo">Sea Candy</Link>
             <a>
               <form>
                 <div id="search-bar" className="input-field">
@@ -40,13 +43,13 @@ export default class NavBar extends Component {
             </a>
             <ul id="nav-btn-container" className="right hide-on-med-and-down">
               <li>
-                <a className="dropdown-button" href="#!" data-activates="catDropdown">Categories<i className="material-icons right">arrow_drop_down</i>
+                <a className="dropdown-button" href="#!" data-activates="catDropdown">Shop<i className="material-icons right">arrow_drop_down</i>
                 </a>
               </li>
               <li>
-                <a href="#!">
+                <Link to='/cart'>
                   <i className="material-icons">shopping_cart</i>
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="badges.html">Login</a>
@@ -54,8 +57,6 @@ export default class NavBar extends Component {
             </ul>
           </div>
         </nav>
-        <RatingStars />
-        <Footer />
       </div>
     )
   }

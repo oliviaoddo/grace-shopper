@@ -13,6 +13,7 @@ import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom
 
 import store from './store'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import Login from './components/Login'
 import NotFound from './components/NotFound'
 import ProductList from './components/admin/ProductList'
@@ -28,17 +29,19 @@ const ExampleApp = connect(
   ({ user, children }) =>
     <div>
       <main>
+      <Navbar />
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route exact path="/navbar" component={Navbar} />
-          <Route exact path="/products" component={ProductList} />
+          <Route exact path='/shop' component={ProductCards} />
+          <Route exact path='/products' component={ProductList} />
+          <Route exact path='/products' component={ProductList} />
           <Route exact path={`/single/:id`} component={ProductForm} />
-          <Route exact path={`/single-product/:id`} component={SingleProduct} />
-          <Route exact path={`/allproducts`} component={ProductCards} />
+          <Route exact path={`/shop/:id`} component={SingleProduct} />
           <Route exact path={`/cart`} component={Cart} />
           <Route component={NotFound} />
         </Switch>
       </main>
+      <Footer />
     </div>
 )
 

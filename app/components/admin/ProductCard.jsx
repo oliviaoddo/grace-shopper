@@ -17,7 +17,7 @@ export default props => {
                 </Modal>
               </div>
               <div className="card-content">
-                <Link to={`single-product/${product.id}`}><span className="card-title">{product.name}</span></Link>
+                <Link to={`/shop/${product.id}`}><span className="card-title">{product.name}</span></Link>
                 <p>{product.price}</p>
               </div>
         </div>

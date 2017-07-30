@@ -124,3 +124,16 @@ p {
 .icon-block .material-icons {
   font-size: inherit;
 }
+
+#shop-btn{
+  margin-top: 40%;
+}
+
+
+.brand-logo{
+  font-weight: 300;
+}
+
+.container-section {
+  margin-top: 5%;
+}

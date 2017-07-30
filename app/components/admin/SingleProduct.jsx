@@ -2,9 +2,12 @@ import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import {Input, Chip, Modal} from 'react-materialize'
 import Lightbox from 'react-images';
-import ProductList from '../ProductList'
+import ProductCard from './ProductCard'
 import Stars from '../Stars'
 import CartModal from '../CartModal'
+import { connect } from "react-redux";
+import {fetchProduct} from '../../reducers/products'
+
 
 class SingleProduct extends Component{
   constructor(props) {
@@ -42,7 +45,6 @@ class SingleProduct extends Component{
     });
   }
   gotoNext () {
-    console.log('NEXT!');
     this.setState({
       currentImage: this.state.currentImage + 1,
     });
@@ -58,7 +60,7 @@ class SingleProduct extends Component{
   }
 
   componentDidMount() {
-    console.log(this.state.categories)
+    this.props.fetchProduct()
   }
 
   deleteCategory(event){
@@ -102,59 +104,79 @@ class SingleProduct extends Component{
 
       }
     return (
-      <div>
-      <div className="container">
-        <div className='row'>
-            <div className='col m6 s12'>
-              <div>
-                {this.renderGallery()[this.state.currentImage]}
-              </div>
-            <div className='galleryControl'>
-              {this.state.images[this.state.currentImage - 1] ? <a onClick={this.gotoPrevious} disabled><i className="fa fa-chevron-circle-left fa-2x" aria-hidden="true"></i></a> : null}
-              {this.state.images[this.state.currentImage + 1] ? <a onClick={this.gotoNext}><i className="fa fa-chevron-circle-right fa-2x" aria-hidden="true"></i></a> : null}
-            </div>
-            <Lightbox
-                currentImage={this.state.currentImage}
-                images={this.state.images}
-                isOpen={this.state.lightboxIsOpen}
-                onClickPrev={this.gotoPrevious}
-                onClickNext={this.gotoNext}
-                onClose={this.closeLightbox}
-              />
-            </div>
-            <div className='col m6 s12'>
-              <h1>{product.name}</h1>
-              <Stars id={product.id} rating={product.rating} count={product.reviews.length}/>
-              <p>{product.price}</p>
-              {product.categories.map(category => {
-                return (
-                          <Link to='/allproducts'><Chip key={category.id} close={false}>{category.name}</Chip></Link>
-                        )
-                })
-              }
-              <p>{product.description}</p>
-              <div className='row'>
-                <div className='col m6'>
-                  <Input  type='select' defaultValue='' name="quantity" required>
-                  {quantity}
-                  </Input>
+      <div className='container-section'>
+        <div className="container">
+          <div className='row'>
+              <div className='col m6 s12'>
+                <div>
+                  {this.renderGallery()[this.state.currentImage]}
                 </div>
-                <div className='col m6'>
-                  <Modal
-                   trigger={<button type="submit" className="btn waves-effect waves-light teal addButton">Add to Cart <i className="fa fa-shopping-cart" aria-hidden="true"></i></button>}
-                   >
-                   <CartModal product={product} />
-                  </Modal>
+              <div className='galleryControl'>
+                {this.state.images[this.state.currentImage - 1] ? <a onClick={this.gotoPrevious} disabled><i className="fa fa-chevron-circle-left fa-2x" aria-hidden="true"></i></a> : null}
+                {this.state.images[this.state.currentImage + 1] ? <a onClick={this.gotoNext}><i className="fa fa-chevron-circle-right fa-2x" aria-hidden="true"></i></a> : null}
+              </div>
+              <Lightbox
+                  currentImage={this.state.currentImage}
+                  images={this.state.images}
+                  isOpen={this.state.lightboxIsOpen}
+                  onClickPrev={this.gotoPrevious}
+                  onClickNext={this.gotoNext}
+                  onClose={this.closeLightbox}
+                />
+              </div>
+              <div className='col m6 s12'>
+                <h1>{product.name}</h1>
+                <Stars id={product.id} rating={product.rating} count={product.reviews.length}/>
+                <p>{product.price}</p>
+                {product.categories.map(category => {
+                  return (
+                            <Link to='/allproducts'><Chip key={category.id} close={false}>{category.name}</Chip></Link>
+                          )
+                  })
+                }
+                <p>{product.description}</p>
+                <div className='row'>
+                  <div className='col m6'>
+                    <Input  type='select' defaultValue='' name="quantity" required>
+                    {quantity}
+                    </Input>
+                  </div>
+                  <div className='col m6'>
+                    <Modal
+                     trigger={<button type="submit" className="btn waves-effect waves-light teal addButton">Add to Cart <i className="fa fa-shopping-cart" aria-hidden="true"></i></button>}
+                     >
+                     <CartModal product={product} />
+                    </Modal>
+                  </div>
                 </div>
               </div>
-            </div>
+          </div>
         </div>
-      <h2>Top Rated</h2>
-      </div>
-      <ProductList />
+      <div className='container'>
+        <h2>Top Rated</h2>
+        <div className='row'>
+          <div className='col m4'>
+            <ProductCard />
+          </div>
+          <div className='col m4'>
+            <ProductCard />
+          </div>
+          <div className='col m4'>
+            <ProductCard />
+          </div>
+        </div>
+        </div>
       </div>
     )
   }
 }
 
-export default SingleProduct
+const mapStateToProps = state => ({
+  product: state.products.product
+});
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  fetchProduct: () => dispatch(fetchProduct(ownProps.match.params.id))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct)

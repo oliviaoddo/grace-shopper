@@ -28,7 +28,7 @@ class QuickLook extends Component{
                 <div className='col s6'>
                 <Stars id={this.props.product.id} rating={product.rating} count={product.reviews.length}/>
                 <p>{this.props.product.price}</p>
-                {this.props.product.categories.map(category => {
+                {product.categories.map(category => {
                   return (
                             <Link key={category.id} to='/allproducts'><Chip key={category.id} close={false}>{category.name}</Chip></Link>
                           )
