@@ -23,9 +23,6 @@ export default class NavBar extends Component {
           <li>
             <Link to='/shop?category=rings'>Rings</Link>
           </li>
-          <li>
-            <Link to='/shop?category=rings'>Rare Sea Glass Jewelery</Link>
-          </li>
         </ul>
         <nav>
           <div id="logo" className="nav-wrapper">

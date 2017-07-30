@@ -26,6 +26,9 @@ module.exports = db => db.define('products', {
   description: {
     type: TEXT
   },
+  details: {
+    type: TEXT
+  },
   inventory: {
     type: INTEGER,
     validate: {
