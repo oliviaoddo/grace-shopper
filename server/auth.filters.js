@@ -20,6 +20,14 @@ const assertAdminOrSelfForOrder = (req, res, next) => {
   }
 }
 
+const assertAdminOrSelfForUser = (req, res, next) => {
+  if (req.user.id === req.params.id || req.user.isAdmin) {
+    next()
+  } else {
+    res.sendStatus(403) // call throwError
+  }
+}
+
 const assertAdmin = (req, res, next) => {
   if (req.user.isAdmin) {
     next()
@@ -40,4 +48,4 @@ function throwError(status, message) {
 
 // Feel free to add more filters here (suggested: something that keeps out non-admins)
 
-module.exports = {mustBeLoggedIn, selfOnly, forbidden, assertAdminOrSelfForOrder, assertAdmin}
+module.exports = {mustBeLoggedIn, selfOnly, forbidden, assertAdminOrSelfForOrder, assertAdmin, assertAdminOrSelfForUser}

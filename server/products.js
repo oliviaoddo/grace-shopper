@@ -9,16 +9,36 @@ const {Product, Review, User, Category, Tag, Order, LineItem} = require('APP/db'
 const {assertAdmin, mustBeLoggedIn} = require('APP/server/auth.filters.js')
 
 module.exports = require('express').Router()
+  // .get('/', (req, res, next) => {
+  //   Product.findAll({
+  //     include: [{model: Category}, {model: Tag}]
+  //   })
+  //   .then(products =>
+  //     req.query.category
+  //       ? products.filter((product) =>
+  //         product.categories.find(category =>
+  //           category.name === req.query.category))
+  //       : products)
+  //   .then(filteredProducts =>
+  //     req.query.sort
+  //       ? filteredProducts.sort((a, b) =>
+  //         a[req.query.sort] + b[req.query.sort])
+  //       : filteredProducts)
+  //   .then(sortedProducts =>
+  //     res.json(sortedProducts))
+  //   .catch(next)
+  // })
+
+  // Another way of making the above request, might be faster
+  // not sure why tag filter isnt working
   .get('/', (req, res, next) => {
     Product.findAll({
-      include: [{model: Category}, {model: Tag}]
+      include: [{model: Category}, {model: Tag}],
+      where: {
+        '$Category.name$': req.query.category,
+        '$Tag.name$': req.query.tag
+      }
     })
-    .then(products =>
-      req.query.category
-        ? products.filter((product) =>
-          product.categories.find(category =>
-            category.name === req.query.category))
-        : products)
     .then(filteredProducts =>
       req.query.sort
         ? filteredProducts.sort((a, b) =>

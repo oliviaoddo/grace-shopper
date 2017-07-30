@@ -19,7 +19,7 @@ const getProducts = products => {
 
 const getProduct = product => {
   return {
-    type: GET_PRODUCTS,
+    type: GET_PRODUCT,
     product
   }
 }
