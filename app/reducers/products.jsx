@@ -73,12 +73,14 @@ export const fetchProduct = (productId) =>
 }
 
 export const postProduct = product =>
-  dispatch =>
-  axios.post('/api/products', product)
+  dispatch => {
+  console.log(product)
+  return axios.post('/api/products', product)
   .then(res => res.data)
   .then(newProduct => {
     dispatch(addProduct(newProduct))
   })
+}
 
 export const deleteProduct = product =>
   dispatch =>

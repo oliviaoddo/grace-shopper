@@ -1,8 +1,19 @@
 'use strict'
+const {resolve} = require('path')
+const multer = require('multer')
 
 /* TO DO:
  - Add admin access to post put delete
 */
+
+const storage = multer.diskStorage({
+  destination: resolve(__dirname, '../public', 'images'),
+  filename: function(req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now())
+  }
+})
+
+let upload = multer({ storage: storage })
 
 const {Product, Review, User, Category, Tag, Order, LineItem} = require('APP/db')
 module.exports = require('express').Router()
@@ -20,9 +31,17 @@ module.exports = require('express').Router()
     .catch(next)
   })
   //  only admins should be able to create products
-  .post('/', (req, res, next) => {
-    Product.create(req.body)
-    .then(product => res.status(201).json(product))
+  .post('/', upload.array('images'), (req, res, next) => {
+    console.log(req.files)
+    console.log(req.body)
+    const imageFiles = req.files.map(file => {
+      return '/images/' + file.filename
+    })
+    Product.create({SKU: req.body.SKU, name: req.body.name, price: req.body.price, description: req.body.description, inventory: req.body.inventory, images: imageFiles})
+    .then(product => {
+      console.log(product)
+      res.status(201).json(product)
+    })
     .catch(next)
   })
   //  only admins should be able to edit products

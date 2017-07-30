@@ -34,8 +34,7 @@ const ExampleApp = connect(
           <Route exact path='/' component={Home} />
           <Route exact path='/shop' component={ProductCards} />
           <Route exact path='/products' component={ProductList} />
-          <Route exact path='/products' component={ProductList} />
-          <Route exact path={`/single/:id`} component={ProductForm} />
+          <Route exact path='/addProduct' component={ProductForm} />
           <Route exact path={`/shop/:id`} component={SingleProduct} />
           <Route exact path={`/cart`} component={Cart} />
           <Route component={NotFound} />
