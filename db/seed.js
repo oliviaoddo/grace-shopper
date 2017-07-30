@@ -207,45 +207,45 @@ const users = seed(User, {
 
 const products = seed(Product, {
   productA: {
-    SKU: 'S15N-Clam-SR',
-    price: 9.99,
-    name: 'a necklace or something',
-    description: 'see the title?',
+    SKU: 'CNWG1',
+    price: 25.00,
+    name: 'Sea Glass Necklace: White Charm Gold Filled',
+    details: `White Charm Necklace – Gold Filled. Made with a genuine piece of white sea glass from Laguna Beach, CA. Details: 14K Gold Filled -Freshwater pearl, Multiple chain lengths available, The model is wearing a 16 inch chain, Sea glass size: small, The shape, size, and shade of sea glass will vary slightly from necklace to necklace.`,
+    description: `Our most classic sea glass necklace the charm necklace is a hallmark of Sea Candy Jewelry. We start out with a pristine piece of sea glass that was found in beautiful Laguna Beach, CA. This piece of sea glass is hand selected to ensure it is free of flaws and is at least 25 to 50 years old. The piece is carefully drilled with state of the art glass drilling equipment. Thin wire is then delicately wrapped around the sea glass in order to give it a touch of elegance. The wrapped sea glass is accompanied by a fresh water pearl and a charm on a dainty chain. Every element of this necklace is completely sterling silver or gold filled.  Because of its  high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.`,
     inventory: 11,
-    rating: 4.32
+    rating: 4.32,
+    images: ['/images/necklaces/CNWG1-6.jpg', '/images/necklaces/CNWG1-17.jpg', '/images/necklaces/CNWG1-18.jpg', '/images/necklaces/CNWG1-99.jpg', '/images/necklaces/CNWG1-100.jpg', '/images/necklaces/CNWG1-1.jpg', '/images/necklaces/CNWG1-5.jpg']
   },
   productB: {
-    SKU: 'F17B-Lobster-LR',
-    price: 29.99,
-    name: 'A bracelet made from a lobster?',
-    description: 'who even thinks to make something from a Lobster???',
-    inventory: 1,
-    rating: 2.29
+    SKU: 'CNGG2',
+    price: 25.00,
+    name: 'Sea Glass Necklace: Green Charm Gold Filled',
+    details: `Green Charm Necklace – Gold Filled. Made with a genuine piece of white sea glass from Laguna Beach, CA. Details: 14K Gold Filled, Non-tarnish, Freshwater pearl, Multiple chain lengths available, Sea glass size: small, The shape, size, and shade of sea glass will vary slightly from necklace to necklace, The model is wearing a 16 inch chain`,
+    description: `Our most classic sea glass necklace the charm necklace is a hallmark of Sea Candy Jewelry. We start out with a pristine piece of sea glass that was found in beautiful Laguna Beach, CA. This piece of sea glass is hand selected to ensure it is free of flaws and is at least 25 to 50 years old. The piece is carefully drilled with state of the art glass drilling equipment. Thin wire is then delicately wrapped around the sea glass in order to give it a touch of elegance. The wrapped sea glass is accompanied by a fresh water pearl and a charm on a dainty chain. Every element of this necklace is completely sterling silver or gold filled.  Because of its  high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.`,
+    inventory: 12,
+    rating: 4.29,
+    images: ['/images/necklaces/CNGG2-1.jpg', '/images/necklaces/CNGG2-2.jpg', '/images/necklaces/CNGG2-3.jpg', '/images/necklaces/CNGG2-4.jpg', '/images/necklaces/CNGG2-5.jpg', '/images/necklaces/CNGG2-6.jpg', '/images/necklaces/CNGG2-7.jpg']
   },
   productC: {
-    SKU: 'W15B-Mermaid-MB',
-    price: 319.24,
-    name: 'Mermaid Brooch',
-    description: 'Do mermaids exist? Where did they even find the material to make this mermaid? I am going to drone on for a bit to see how the description fairs with a relatively long description of something or a another but it really doesn\'t really matter what I am typing All my friends are dead and stuff cuz that was what Sid was wearing at the time. I think I\'m about done typing about stupid stuff.',
+    SKU: 'CNWS3',
+    price: 24.00,
+    name: 'Sea Glass Necklace: White Charm Silver Filled',
+    details: `White Charm Necklace – Sterling Silver. Made with a genuine piece of white sea glass from Laguna Beach, CA. Details: Sterling Silver, Non-tarnish, Freshwater pearl, Multiple chain lengths available, Sea glass size: small, The shape, size, and shade of sea glass will vary slightly from necklace to necklace, The model is wearing a 16 inch chain`,
+    description: 'Our most classic sea glass necklace the charm necklace is a hallmark of Sea Candy Jewelry. We start out with a pristine piece of sea glass that was found in beautiful Laguna Beach, CA. This piece of sea glass is hand selected to ensure it is free of flaws and is at least 25 to 50 years old. The piece is carefully drilled with state of the art glass drilling equipment. Thin wire is then delicately wrapped around the sea glass in order to give it a touch of elegance. The wrapped sea glass is accompanied by a fresh water pearl and a charm on a dainty chain. Every element of this necklace is completely sterling silver or gold filled.  Because of its  high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 99,
-    rating: 4.58
+    rating: 4.58,
+    images: ['/images/necklaces/CNWS3-1.jpg', '/images/necklaces/CNWS3-2.jpg', '/images/necklaces/CNWS3-3.jpg', '/images/necklaces/CNWS3-4.jpg', '/images/necklaces/CNWS3-5.jpg', '/images/necklaces/CNWS3-6.jpg', '/images/necklaces/CNWS3-7.jpg']
   },
   productD: {
-    SKU: 'F15N-Clam-LW',
-    price: 0.99,
-    name: 'Clam Necklace',
-    description: 'A literal living clam hanging from your neck. How cool is that?',
+    SKU: 'CNGS4',
+    price: 24.00,
+    name: 'Sea Glass Necklace: Green Charm Silver Filled',
+    details: `Green Charm Necklace – Sterling Silver. Made with a genuine piece of white sea glass from Laguna Beach, CA. Details: Sterling Silver, Non-tarnish, Freshwater pearl, Multiple chain lengths available, Sea glass size: small, The shape, size, and shade of sea glass will vary slightly from necklace to necklace, The model is wearing a 16 inch chain`,
+    description: 'Our most classic sea glass necklace the charm necklace is a hallmark of Sea Candy Jewelry. We start out with a pristine piece of sea glass that was found in beautiful Laguna Beach, CA. This piece of sea glass is hand selected to ensure it is free of flaws and is at least 25 to 50 years old. The piece is carefully drilled with state of the art glass drilling equipment. Thin wire is then delicately wrapped around the sea glass in order to give it a touch of elegance. The wrapped sea glass is accompanied by a fresh water pearl and a charm on a dainty chain. Every element of this necklace is completely sterling silver or gold filled.  Because of its  high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 2,
-    rating: 2.49
-  },
-  productE: {
-    SKU: 'H15R-Sponge-SZ',
-    price: 199.99,
-    name: 'Sponge Ring',
-    description: 'What kind of weird person would shop at this store? Make sure to get plenty of manicures to prevent your living sponge ring from drying out.',
-    inventory: 9,
-    rating: 1.32
-  },
+    rating: 3.49,
+    images: ['/images/necklaces/CNGS4-1.jpg', '/images/necklaces/CNGS4-2.jpg', '/images/necklaces/CNGS4-3.jpg', '/images/necklaces/CNGS4-4.jpg', '/images/necklaces/CNGS4-5.jpg', '/images/necklaces/CNGS4-6.jpg', '/images/necklaces/CNGS4-7.jpg']
+  }
 })
 
 const addresses = seed(Address,

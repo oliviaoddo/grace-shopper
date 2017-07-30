@@ -1,10 +1,5 @@
 import axios from 'axios'
 
-
-const dummyProducts = [{id: 1, SKU: 'NB1', name: 'Green Necklace', price:'$22.00', description: 'Lorem ipsum dolor sit amet, ut atomorum disputationi eam. Nec nostro ornatus complectitur in, an iudico tollit pri. Fuisset complectitur vix ex, nonumes democritum at nam. Libris vivendum maiestatis nam id.', inventory: 10, categories: [{id: 1, name:'Necklaces'}, {id: 2, name:'Gold'}]}, {id: 2, SKU: 'NB1', name: 'Blue Necklace', price:'$22.00', description: 'Lorem ipsum dolor sit amet, ut atomorum disputationi eam. Nec nostro ornatus complectitur in, an iudico tollit pri. Fuisset complectitur vix ex, nonumes democritum at nam. Libris vivendum maiestatis nam id.', inventory: 10, categories: [{id: 1, name:'Necklaces'}, {id: 2, name:'Gold'}]}, {id: 3, SKU: 'NB1', name: 'Blue Necklace', price:'$22.00', description: 'Lorem ipsum dolor sit amet, ut atomorum disputationi eam. Nec nostro ornatus complectitur in, an iudico tollit pri. Fuisset complectitur vix ex, nonumes democritum at nam. Libris vivendum maiestatis nam id.', inventory: 10, categories: [{id: 1, name:'Necklaces'}, {id: 2, name:'Gold'}]}, {id: 4, SKU: 'NB1', name: 'Blue Necklace', price:'$22.00', description: 'Lorem ipsum dolor sit amet, ut atomorum disputationi eam. Nec nostro ornatus complectitur in, an iudico tollit pri. Fuisset complectitur vix ex, nonumes democritum at nam. Libris vivendum maiestatis nam id.', inventory: 10, categories: [{id: 1, name:'Necklaces'}, {id: 2, name:'Gold'}]}, {id: 5, SKU: 'NB1', name: 'Blue Necklace', price:'$22.00', description: 'Lorem ipsum dolor sit amet, ut atomorum disputationi eam. Nec nostro ornatus complectitur in, an iudico tollit pri. Fuisset complectitur vix ex, nonumes democritum at nam. Libris vivendum maiestatis nam id.', inventory: 10, categories: [{id: 1, name:'Necklaces'}, {id: 2, name:'Gold'}]}]
-
-const dummyProduct = {id: 6, SKU: 'NB1', name: 'Green Necklace', price:'$22.00', description: 'Lorem ipsum dolor sit amet, ut atomorum disputationi eam. Nec nostro ornatus complectitur in, an iudico tollit pri. Fuisset complectitur vix ex, nonumes democritum at nam. Libris vivendum maiestatis nam id.', inventory: 10, categories: [{id: 1, name:'Necklaces'}, {id: 2, name:'Gold'}]}
-
 //  STATE
 
 const initialState = {
@@ -61,22 +56,21 @@ const editProduct = product => {
 // THUNKS
 
 export const fetchProducts = () =>
-  dispatch => {
-  // axios.get('/api/products')
-  // .then(res => res.data)
-  // .then(products => {
-  //   dispatch(getProducts(products))
-    dispatch(getProducts(dummyProducts))
-  }
+  dispatch =>
+  axios.get('/api/products')
+  .then(res => res.data)
+  .then(products => {
+    dispatch(getProducts(products))
+  })
 
 export const fetchProduct = (productId) =>
   dispatch => {
-  // axios.get(`/api/products/${productId}`)
-  // .then(res => res.data)
-  // .then(product => {
-  //   dispatch(getProduct(product))
-    dispatch(getProduct(dummyProduct))
-  }
+    return axios.get(`/api/products/${productId}`)
+    .then(res => res.data)
+    .then(product => {
+      dispatch(getProduct(product))
+    })
+}
 
 export const postProduct = product =>
   dispatch =>

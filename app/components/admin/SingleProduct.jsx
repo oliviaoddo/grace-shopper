@@ -15,7 +15,7 @@ class SingleProduct extends Component{
     this.state = {
       lightboxIsOpen: false,
       currentImage: 0,
-      images: [{ src: '/necklace.jpg' }, { src: '/necklaces_2.jpg' }]
+      images: []
     }
     this.closeLightbox = this.closeLightbox.bind(this);
     this.gotoNext = this.gotoNext.bind(this);
@@ -60,7 +60,15 @@ class SingleProduct extends Component{
   }
 
   componentDidMount() {
-    this.props.fetchProduct()
+    console.log(this.props.product)
+    const productId = this.props.match.params.id
+    this.props.fetchProduct(productId)
+    .then(() => {
+      const imageSrc = this.props.product.images.map(image =>{
+        return {src: image}
+      })
+      this.setState({images: this.state.images.concat(imageSrc) })
+    })
   }
 
   deleteCategory(event){
@@ -77,7 +85,7 @@ class SingleProduct extends Component{
   }
 
   renderGallery () {
-    console.log('renderedGallery')
+    console.log(this.state.images)
     const images = this.state.images;
 
     if (!images) return;
@@ -96,8 +104,6 @@ class SingleProduct extends Component{
   }
 
   render(){
-    const product =
-      {id: 1, SKU: 'NB1', name: 'Blue Necklace', price:'$22.00', rating: 5, description: 'Lorem ipsum dolor sit amet, ut atomorum disputationi eam. Nec nostro ornatus complectitur in, an iudico tollit pri. Fuisset complectitur vix ex, nonumes democritum at nam. Libris vivendum maiestatis nam id.', inventory: 10, categories: [{id: 1, name:'Necklaces'}, {id: 2, name:'Gold'}], reviews: [1, 2, 5]}
     const quantity = [];
     for(let i=1; i < 11; i++){
        quantity.push(<option key={i} value={i}>{i}</option>)
@@ -105,6 +111,7 @@ class SingleProduct extends Component{
       }
     return (
       <div className='container-section'>
+      {this.props.product.name ?
         <div className="container">
           <div className='row'>
               <div className='col m6 s12'>
@@ -125,16 +132,16 @@ class SingleProduct extends Component{
                 />
               </div>
               <div className='col m6 s12'>
-                <h1>{product.name}</h1>
-                <Stars id={product.id} rating={product.rating} count={product.reviews.length}/>
-                <p>{product.price}</p>
-                {product.categories.map(category => {
+                <h1>{this.props.product.name}</h1>
+                <Stars id={this.props.product.id} rating={this.props.product.rating} count={this.props.product.reviews.length}/>
+                <p>{this.props.product.price}</p>
+                {this.props.product.categories.map(category => {
                   return (
                             <Link to='/allproducts'><Chip key={category.id} close={false}>{category.name}</Chip></Link>
                           )
                   })
                 }
-                <p>{product.description}</p>
+                <p>{this.props.product.description}</p>
                 <div className='row'>
                   <div className='col m6'>
                     <Input  type='select' defaultValue='' name="quantity" required>
@@ -145,25 +152,17 @@ class SingleProduct extends Component{
                     <Modal
                      trigger={<button type="submit" className="btn waves-effect waves-light teal addButton">Add to Cart <i className="fa fa-shopping-cart" aria-hidden="true"></i></button>}
                      >
-                     <CartModal product={product} />
+                     <CartModal product={this.props.product} />
                     </Modal>
                   </div>
                 </div>
               </div>
           </div>
         </div>
+        : null}
       <div className='container'>
         <h2>Top Rated</h2>
         <div className='row'>
-          <div className='col m4'>
-            <ProductCard />
-          </div>
-          <div className='col m4'>
-            <ProductCard />
-          </div>
-          <div className='col m4'>
-            <ProductCard />
-          </div>
         </div>
         </div>
       </div>
@@ -176,7 +175,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  fetchProduct: () => dispatch(fetchProduct(ownProps.match.params.id))
+  fetchProduct: (productId) => dispatch(fetchProduct(productId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct)

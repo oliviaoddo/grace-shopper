@@ -8,7 +8,7 @@ export default props => {
         return (
             <div className="card">
               <div className="card-image">
-                <img src="/necklaces_2.jpg"/>
+                <img src={props.product.images[0]}/>
                  <Modal
                   trigger={
                     <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="fa fa-search" aria-hidden="true"></i></a>
