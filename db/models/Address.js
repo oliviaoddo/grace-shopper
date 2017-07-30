@@ -16,7 +16,7 @@ module.exports = db => db.define('addresses', {
     type: STRING(5),
     allowNull: false,
     validate: {
-      is: ['/^\d+$/']
+      isNumeric: true
     }
   },
   state: {
