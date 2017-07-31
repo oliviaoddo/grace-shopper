@@ -11,12 +11,12 @@ class QuickLook extends Component{
 
   addToCart(event){
     event.preventDefault();
-    if(!sessionStorage.cart){
+    if(!localStorage.cart){
       let cart = {}
       let cartStr = JSON.stringify(cart)
-      sessionStorage.setItem('cart', cartStr)
+      localStorage.setItem('cart', cartStr)
     }
-    let cartValue = sessionStorage.getItem('cart')
+    let cartValue = localStorage.getItem('cart')
     let cart = JSON.parse(cartValue)
     if(Object.keys(cart).includes(this.props.product.id.toString())){
       cart[this.props.product.id] += Number(event.target.quantity.value)
@@ -25,7 +25,7 @@ class QuickLook extends Component{
       cart[this.props.product.id] = Number(event.target.quantity.value)
     }
     let cartStr = JSON.stringify(cart)
-    sessionStorage.setItem('cart', cartStr)
+    localStorage.setItem('cart', cartStr)
   }
 
   render(){

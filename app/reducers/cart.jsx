@@ -49,7 +49,7 @@ export const addProductToCart = (productId, quantity) =>
 
 export const fetchCartItems = () =>
   dispatch => {
-    let cartValue = sessionStorage.getItem('cart')
+    let cartValue = localStorage.getItem('cart')
     let cart = JSON.parse(cartValue)
     Promise.all([
     Object.keys(cart).forEach(itemId => {

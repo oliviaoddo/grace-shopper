@@ -27,27 +27,27 @@ class Cart extends Component{
   }
 
   deleteItem(event){
-    let cartValue = sessionStorage.getItem('cart')
+    let cartValue = localStorage.getItem('cart')
     let cart = JSON.parse(cartValue)
     const product = this.props.items.filter(item => {
       return item.id === Number(event.target.id)
     })
     delete cart[event.target.id]
     let cartStr = JSON.stringify(cart)
-    sessionStorage.setItem('cart', cartStr)
+    localStorage.setItem('cart', cartStr)
     this.props.deleteItem(product)
 
   }
 
   quantityChange(event){
-    let cartValue = sessionStorage.getItem('cart')
+    let cartValue = localStorage.getItem('cart')
     let cart = JSON.parse(cartValue)
     const product = this.props.items.filter(item => {
       return item.id === Number(event.target.id)
     })
     cart[event.target.id] = event.target.value
     let cartStr = JSON.stringify(cart)
-    sessionStorage.setItem('cart', cartStr)
+    localStorage.setItem('cart', cartStr)
     this.props.updateItem(product, event.target.value)
 
   }
