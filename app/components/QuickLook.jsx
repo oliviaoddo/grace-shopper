@@ -26,6 +26,7 @@ class QuickLook extends Component{
     }
     let cartStr = JSON.stringify(cart)
     localStorage.setItem('cart', cartStr)
+    console.log(localStorage.cart)
   }
 
   render(){

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
-import {Input, Chip, Modal} from 'react-materialize'
+import {Input, Chip, Modal, Button, Preloader, Col} from 'react-materialize'
 import Lightbox from 'react-images';
 import ProductCard from './ProductCard'
 import Review from '../Review'
@@ -90,19 +90,6 @@ class SingleProduct extends Component {
 
   }
 
-  deleteCategory(event){
-    this.setState({categories: this.state.categories.filter(category => {
-          if(category.id !== event.target.id) return category;
-        })})
-    document.getElementById('catSelect').selectedIndex = 0;
-  }
-
-  catChange(event){
-    const index = event.target.selectedIndex;
-    this.setState({categories: this.state.categories.concat([{id: event.target.value, name: event.target.childNodes[index].text}])})
-    document.getElementById('catSelect').selectedIndex = 0;
-  }
-
   renderGallery () {
     console.log(this.state.images)
     const images = this.state.images;
@@ -169,14 +156,17 @@ class SingleProduct extends Component {
                     </Input>
                   </div>
                   <div className='col m6'>
-                    <button type="submit" className="btn waves-effect waves-light teal addButton">Add to Cart <i className="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                    <Button type='submit' className="btn waves-effect waves-light teal addButton" onClick={()=>{$('#add').modal('open');}}>Add to Cart <i className="fa fa-shopping-cart" aria-hidden="true"></i></Button>
+                    <Modal id='add'><CartModal product={this.props.product} /></Modal>
                   </div>
                 </div>
                 </form>
               </div>
           </div>
         </div>
-        : null}
+        :
+            <Preloader size='big'/>
+        }
         {this.props.product.reviews ? console.log(this.props.product.reviews, 'this is reviews') : null}
         {this.props.product.reviews ? this.props.product.reviews.map(review => <Review key={review.id} review={review} />) : null}
       {this.props.product.name ?
@@ -194,7 +184,9 @@ class SingleProduct extends Component {
           </div>
         </div>
         </div>
-        : null}
+        :
+          <Preloader size='big'/>
+        }
       </div>
     )
   }

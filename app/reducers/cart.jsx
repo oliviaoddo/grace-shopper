@@ -1,12 +1,5 @@
 import axios from 'axios'
 
-/* TODO
-
-  updating a product quantity in the cart, needs to update the items in the state, so the page
-  will get re rendered and the subtotal will update
-
-*/
-
 //  STATE
 
 const initialState = {
@@ -56,8 +49,10 @@ export const addProductToCart = (productId, quantity) =>
 
 export const fetchCartItems = () =>
   dispatch => {
+    console.log('hello')
     let cartValue = localStorage.getItem('cart')
     let cart = JSON.parse(cartValue)
+    console.log(Object.keys(cart))
     Promise.all([
     Object.keys(cart).forEach(itemId => {
         axios.get(`/api/products/${itemId}`)
@@ -66,7 +61,7 @@ export const fetchCartItems = () =>
           product.quantity = cart[itemId]
           dispatch(addProduct(product))
         })
-    })
+      })
     ])
 }
 
@@ -90,6 +85,8 @@ export default function reducer(state=initialState, action) {
   const newState = Object.assign({}, state);
   switch (action.type) {
   case ADD_PRODUCT:
+    console.log(newState)
+    console.log('one')
     newState.items = [...newState.items, action.product]
     break
   case REMOVE_PRODUCT:
@@ -101,6 +98,7 @@ export default function reducer(state=initialState, action) {
     newState.items = newState.items.map(item =>
       item.id === action.product[0].id ? action.product[0] : item
     )
+    break
   default:
     return state
   }
