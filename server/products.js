@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
 
 let upload = multer({ storage: storage })
 
-const {Product, Review, User, Category, Tag, Order, LineItem} = require('APP/db')
+const {Product, Review, User, Category, Tag, Order, LineItem, ProductsCategory, ProductTag} = require('APP/db')
 
 const {assertAdmin, mustBeLoggedIn} = require('APP/server/auth.filters.js')
 
@@ -23,7 +23,7 @@ module.exports = require('express').Router()
     Product.findAll({
       include: [{model: Category}, {model: Tag}],
       where: {
-        '$Category.name$': req.query.category,
+        // '$Category.name$': req.query.category,
         '$Tag.name$': req.query.tag
       }
     })

@@ -36,7 +36,7 @@ const editOrder = order => {
 
 // THUNKS
 
-export const fetchOrderss = () =>
+export const fetchOrders = () =>
   dispatch =>
   axios.get('/api/orders')
   .then(res => res.data)
@@ -46,6 +46,7 @@ export const fetchOrderss = () =>
 
 export const fetchOrder = (order) =>
   dispatch =>
+  axios.get(`api/orders/${order.id}`)
   .then(res => res.data)
   .then(product => {
     dispatch(getProduct(product))
