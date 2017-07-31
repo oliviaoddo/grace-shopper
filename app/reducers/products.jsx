@@ -54,55 +54,51 @@ const editProduct = product => {
 
 // THUNKS
 
-export const fetchProducts = () =>
+export const fetchProducts = (ownProps) =>
   dispatch =>
-  axios.get('/api/products')
+  axios.get('/api/products' + ownProps)
   .then(res => res.data)
   .then(products => {
     dispatch(getProducts(products))
   })
 
 export const fetchProduct = (productId) =>
-  dispatch => {
-    return axios.get(`/api/products/${productId}`)
+  dispatch =>
+    axios.get(`/api/products/${productId}`)
     .then(res => res.data)
     .then(product => {
       dispatch(getProduct(product))
     })
-}
 
 export const postProduct = product =>
-  dispatch => {
-  console.log(product)
-  return axios.post('/api/products', product)
-  .then(res => res.data)
-  .then(newProduct => {
-    dispatch(addProduct(newProduct))
-  })
-}
+  dispatch =>
+    axios.post('/api/products', product)
+    .then(res => res.data)
+    .then(newProduct => {
+      dispatch(addProduct(newProduct))
+    })
 
 export const deleteProduct = productId =>
-  dispatch => {
-  return axios.delete(`/api/products/${productId}`)
-  .then(res => res.data)
-  .then((product) => {
-    dispatch(removeProduct(product))
-  })
-}
+  dispatch =>
+    axios.delete(`/api/products/${productId}`)
+    .then(res => res.data)
+    .then((product) => {
+      dispatch(removeProduct(product))
+    })
 
-export const updateProduct =  (product, productId) => dispatch => {
-  console.log(product)
-    return axios.put(`/api/products/edit/${productId}`, product)
-      .then(res => res.data)
-      .then(updatedProduct => {
-        dispatch(editProduct(updatedProduct))
-      })
-}
+export const updateProduct = (product, productId) =>
+  dispatch =>
+    axios.put(`/api/products/edit/${productId}`, product)
+    .then(res => res.data)
+    .then(updatedProduct => {
+      dispatch(editProduct(updatedProduct))
+    })
+
 
 // REDUCER
 
 export default function reducer(state=initialState, action) {
-  const newState = Object.assign({}, state);
+  const newState = Object.assign({}, state)
   switch (action.type) {
   case GET_PRODUCTS:
     newState.products = action.products
@@ -115,8 +111,7 @@ export default function reducer(state=initialState, action) {
     break
   case REMOVE_PRODUCT:
     newState.products = newState.products.filter(product => {
-          if(product.id !== action.product.id) return product;
-        })
+      if (product.id !== action.product.id) return product })
     break
   case EDIT_PRODUCT:
     newState.products = newState.products.map(product =>

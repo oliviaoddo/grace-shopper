@@ -23,6 +23,7 @@ class SingleProduct extends Component {
     this.gotoImage = this.gotoImage.bind(this);
     this.handleClickImage = this.handleClickImage.bind(this);
     this.openLightbox = this.openLightbox.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   openLightbox (index, event) {
@@ -58,8 +59,26 @@ class SingleProduct extends Component {
     this.gotoNext();
   }
 
+  addToCart(event){
+    event.preventDefault();
+    if(!localStorage.cart){
+      let cart = {}
+      let cartStr = JSON.stringify(cart)
+      localStorage.setItem('cart', cartStr)
+    }
+    let cartValue = localStorage.getItem('cart')
+    let cart = JSON.parse(cartValue)
+    if(Object.keys(cart).includes(this.props.product.id.toString())){
+      cart[this.props.product.id] += Number(event.target.quantity.value)
+    }
+    else {
+      cart[this.props.product.id] = Number(event.target.quantity.value)
+    }
+    let cartStr = JSON.stringify(cart)
+    localStorage.setItem('cart', cartStr)
+  }
+
   componentDidMount() {
-    console.log(this.props.product)
     const productId = this.props.match.params.id
     this.props.fetchProduct(productId)
     .then(() => {
@@ -142,6 +161,7 @@ class SingleProduct extends Component {
                   })
                 }
                 <p>{this.props.product.description}</p>
+                <form onSubmit={this.addToCart}>
                 <div className='row'>
                   <div className='col m6'>
                     <Input  type='select' defaultValue='' name="quantity" required>
@@ -149,13 +169,10 @@ class SingleProduct extends Component {
                     </Input>
                   </div>
                   <div className='col m6'>
-                    <Modal
-                     trigger={<button type="submit" className="btn waves-effect waves-light teal addButton">Add to Cart <i className="fa fa-shopping-cart" aria-hidden="true"></i></button>}
-                     >
-                     <CartModal product={this.props.product} />
-                    </Modal>
+                    <button type="submit" className="btn waves-effect waves-light teal addButton">Add to Cart <i className="fa fa-shopping-cart" aria-hidden="true"></i></button>
                   </div>
                 </div>
+                </form>
               </div>
           </div>
         </div>

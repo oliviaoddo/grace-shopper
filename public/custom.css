@@ -69,8 +69,9 @@ h4 {
   width: 1px;
 }
 
-.checkout-btn {
-  float: right;
+.checkout-btn{
+    float: right;
+    margin-top: 5%;
 }
 
 .added-cart-header {
@@ -145,6 +146,7 @@ p {
   font-size: 2.2em;
 }
 
+
 .loginContainer {
   background-color: rgba(64, 183, 185, 0.32);
   border-radius: 10px;
@@ -165,4 +167,14 @@ p {
   padding-right: 4vh;
   padding-left: 4vh;
   padding-top: 2vh;
+}
+
+.cart-img{
+  height: 25%;
+  width: 25%;
+}
+
+
+footer.page-footer {
+  margin-top: 20%;
 }
