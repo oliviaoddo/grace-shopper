@@ -13,7 +13,7 @@ class ProductList extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchProducts()
+    this.props.fetchProducts(this.props.location.search)
   }
 
   render(){
@@ -45,7 +45,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchProducts: () => dispatch(fetchProducts())
+  fetchProducts: (ownProps) => dispatch(fetchProducts(ownProps))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList)

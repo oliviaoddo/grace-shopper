@@ -14,24 +14,35 @@ const storage = multer.diskStorage({
 
 let upload = multer({ storage: storage })
 
-const {Product, Review, User, Category, Tag, Order, LineItem} = require('APP/db')
+const {Product, Review, User, Category, Tag, Order, LineItem, ProductsCategory, ProductTag} = require('APP/db')
 
 const {assertAdmin, mustBeLoggedIn} = require('APP/server/auth.filters.js')
 
+// strategy: findall products -> filter by category, then tag, then sort, if none specified, just return the products found
 module.exports = require('express').Router()
   .get('/', (req, res, next) => {
     Product.findAll({
       include: [{model: Category}, {model: Tag}],
-      where: {
-        '$Category.name$': req.query.category,
-        '$Tag.name$': req.query.tag
-      }
     })
-    .then(filteredProducts =>
-      req.query.sort
-        ? filteredProducts.sort((a, b) =>
+    .then(products =>
+      req.query.category ? products.filter(product =>
+        product.categories.find((category) =>
+          category.name === req.query.category)) : products)
+    .then(categoryProducts =>
+      req.query.tag ? categoryProducts.filter(product =>
+        product.tags.find((tag) =>
+          tag.name === req.query.tag)) : categoryProducts)
+    .then(filteredProducts => {
+      if (req.query.sort && req.query.type === 'low') {
+        return filteredProducts.sort((a, b) =>
           a[req.query.sort] - b[req.query.sort])
-        : filteredProducts)
+      } else if (req.query.sort && req.query.type === 'high') {
+      return filteredProducts.sort((a, b) =>
+        b[req.query.sort] - a[req.query.sort])
+    } else {
+      return filteredProducts
+    }
+    })
     .then(sortedProducts =>
       res.json(sortedProducts))
     .catch(next)
