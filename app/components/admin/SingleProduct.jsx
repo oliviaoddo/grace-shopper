@@ -161,7 +161,7 @@ class SingleProduct extends Component {
         </div>
         : null}
         {this.props.product.reviews ? console.log(this.props.product.reviews, 'this is reviews') : null}
-        {this.props.product.reviews ? this.props.product.reviews.map(review => <Review review={review} />) : null}
+        {this.props.product.reviews ? this.props.product.reviews.map(review => <Review key={review.id} review={review} />) : null}
       {this.props.product.name ?
       <div className='container'>
         <h2>Top Rated</h2>
