@@ -110,7 +110,8 @@ export default function reducer(state=initialState, action) {
     break
   case REMOVE_PRODUCT:
     newState.products = newState.products.filter(product => {
-      if (product.id !== action.product.id) return product })
+      if (product.id !== action.product.id) return product
+    })
     break
   case EDIT_PRODUCT:
     newState.products = newState.products.map(product =>

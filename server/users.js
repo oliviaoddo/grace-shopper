@@ -73,11 +73,7 @@ module.exports = require('express').Router()
     Order.findById(req.params.orderId, {include: [LineItem]})
     .then(order => res.status(200).json(order))
     .catch(next))
-  // only single user can create
-  .post('/:id/orders', (req, res, next) =>
-    Order.create(req.body)
-    .then(order => res.status(202).json(order))
-    .catch(next))
+
   // changing order status from cart to pending, creating new cart
   .put('/:id/orders/:orderId', (req, res, next) => {
     Order.update({status: 'pending', checkoutDateTime: Date()}, {where: {id: req.params.orderId}})
@@ -87,6 +83,16 @@ module.exports = require('express').Router()
   })
 
   // LINEITEM ROUTES
+   .get('/:id/cart', (req, res, next) =>
+      Order.findOne({
+        include: [{model: LineItem}],
+        where: {
+          user_id: req.params.id,
+          status: 'cart'
+        }
+      })
+    .then((cart) => res.status(202).json(cart))
+    .catch(next))
 
   .post('/:id/product', (req, res, next) =>
     Promise.all([
@@ -117,12 +123,12 @@ module.exports = require('express').Router()
     .then(([order, product]) =>
       order.setProducts(product,
       {quantity: req.body.quantity}))
-    .then(count =>
-      res.status(202).json(count)
+    .then((count, updatedProduct) =>
+      res.status(202).json(updatedProduct)
     )
     .catch(next))
 
-  .delete('/:id/cart/product', (req, res, next) =>
+  .delete('/:id/product', (req, res, next) =>
     Promise.all([
       Order.findOne({
         where: {
@@ -134,5 +140,5 @@ module.exports = require('express').Router()
     ])
     .then(([order, product]) =>
       order.removeProduct(product))
-    .then(res.sendStatus(204))
+    .then(deletedProduct => res.status(204).json(deletedProduct))
     .catch(next))

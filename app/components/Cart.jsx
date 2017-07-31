@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import {Input, Chip} from 'react-materialize'
+import {fetchCart, updateCart, removeCart, updateOrderStatus} from '..reducers/orders'
+import {connect} from "react-redux"
 
-
-class Cart extends Component{
+class Cart extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -83,4 +84,17 @@ class Cart extends Component{
   }
 }
 
-export default Cart
+const mapStateToProps = state => ({
+  orders: state.orders,
+  singleOrder: state.singleOrder,
+  cartProducts: state.cartProducts
+})
+
+const mapDispatchToProps = dispatch => ({
+  fetchCart: () => dispatch(fetchCart()),
+  updateCart: () => dispatch(updateCart()),
+  removeCart: () => dispatch(removeCart()),
+  updateOrderStatus: () => dispatch(updateOrderStatus())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)
