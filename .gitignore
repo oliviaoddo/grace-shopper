@@ -3,7 +3,6 @@ node_modules/*
 
 .vscode
 package-lock.json
-yarn.lock
 
 # ...except the symlink to ourselves.
 !node_modules/APP
