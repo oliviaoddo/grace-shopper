@@ -49,7 +49,7 @@ export default class NavBar extends Component {
                 </Link>
               </li>
               <li>
-                <a href="badges.html">Login</a>
+                <Link to="/login">Login</Link>
               </li>
             </ul>
           </div>

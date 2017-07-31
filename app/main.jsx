@@ -33,6 +33,7 @@ const ExampleApp = connect(
       <Navbar />
         <Switch>
           <Route exact path='/' component={Home} />
+          <Route exact path='/login' component={Login} />
           <Route exact path='/shop' component={ProductCards} />
           <Route exact path='/products' component={ProductList} />
           <Route exact path='/addProduct' component={ProductForm} />

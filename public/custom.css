@@ -2,6 +2,7 @@
   padding-left: 2%;
   background-color: #40b7b9;
 }
+
 #nav-btn-container {
   position: absolute;
   top: 0vh;
@@ -41,42 +42,44 @@ footer.page-footer {
   background-color: #40b7b9;
 }
 
-h1, h2, h3, h4{
+h1,
+h2,
+h3,
+h4 {
   font-weight: 300;
 }
 
-
-.addButton, .galleryControl{
+.addButton,
+.galleryControl {
   float: right;
 }
 
-.product-img{
-    width: 90%;
+.product-img {
+  width: 90%;
 }
 
-.sr-only{
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
-.checkout-btn{
-    float: right;
+.checkout-btn {
+  float: right;
 }
 
-.added-cart-header{
-    font-size: 2.2em;
+.added-cart-header {
+  font-size: 2.2em;
 }
 
-.product-cart-header{
-    font-size: 1.8em;
+.product-cart-header {
+  font-size: 1.8em;
 }
-
 
 nav ul a,
 nav .brand-logo {
@@ -95,14 +98,14 @@ p {
   min-height: 500px;
   line-height: 0;
   height: auto;
-  color: rgba(255,255,255,.9);
+  color: rgba(255, 255, 255, .9);
 }
 
 .parallax-container .section {
-    width: 100%;
+  width: 100%;
 }
 
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width: 992px) {
   .parallax-container .section {
     position: absolute;
     top: 40%;
@@ -112,7 +115,7 @@ p {
   }
 }
 
-@media only screen and (max-width : 600px) {
+@media only screen and (max-width: 600px) {
   #index-banner .section {
     top: 0;
   }
@@ -121,16 +124,16 @@ p {
 .icon-block {
   padding: 0 15px;
 }
+
 .icon-block .material-icons {
   font-size: inherit;
 }
 
-#shop-btn{
+#shop-btn {
   margin-top: 40%;
 }
 
-
-.brand-logo{
+.brand-logo {
   font-weight: 300;
 }
 
@@ -140,4 +143,13 @@ p {
 
 .product-name {
   font-size: 2.2em;
+}
+
+.loginContainer {
+  background-color: rgba(64, 183, 185, 0.32);
+  border-radius: 10px;
+  margin-top: 3vw;
+  padding-right: 4vh;
+  padding-left: 2vh;
+  padding-top: 2vh;
 }
