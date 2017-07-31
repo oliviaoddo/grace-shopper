@@ -1,8 +1,18 @@
 'use strict'
-
+const {resolve} = require('path')
+const multer = require('multer')
 /* TO DO:
  - Add admin access to post put delete
 */
+
+const storage = multer.diskStorage({
+  destination: resolve(__dirname, '../public', 'images'),
+  filename: function(req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now())
+  }
+})
+
+let upload = multer({ storage: storage })
 
 const {Product, Review, User, Category, Tag, Order, LineItem} = require('APP/db')
 
@@ -35,13 +45,23 @@ module.exports = require('express').Router()
     .catch(next)
   })
   //  only admins should be able to create products
-  .post('/', mustBeLoggedIn, assertAdmin, (req, res, next) => {
-    Product.create(req.body)
-    .then(product => res.status(201).json(product))
+  .post('/', upload.array('images'), mustBeLoggedIn, assertAdmin, (req, res, next) => {
+    const imageFiles = req.files.map(file => {
+      return '/images/' + file.filename
+    })
+    Product.create({SKU: req.body.SKU, name: req.body.name, price: req.body.price, description: req.body.description, inventory: req.body.inventory, images: imageFiles})
+    .then(product => {
+      Category.findById(1)
+      .then(category => {
+        product.addCategory(category)
+      })
+      console.log(product)
+      res.status(201).json(product)
+    })
     .catch(next)
   })
-
-  .put('/:id', mustBeLoggedIn, assertAdmin, (req, res, next) => {
+   // only admins should be able to edit products
+  .put('/edit/:id', mustBeLoggedIn, assertAdmin, (req, res, next) => {
     Promise.all([
       Product.update(req.body, {
         where: {
@@ -67,10 +87,16 @@ module.exports = require('express').Router()
 
   //  only admins should be able to delete products
   .delete('/:id', (req, res, next) => {
-    Product.destroy({where: {id: req.params.id}})
-    .then(() => res.sendStatus(202))
+    Product.findById(req.params.id)
+    .then(product => {
+      product.destroy()
+      .then(() => {
+        res.status(202).json(product)
+      })
+      .catch(next)
+    })
+    .catch(next)
   })
-
   // REVIEWS ROUTES
 
   .get('/:id/reviews', (req, res, next) =>
