@@ -23,7 +23,7 @@ export default props => {
             })
           }
         </div>
-        <Link to='/cart'><button className='btn checkout-btn'>View Cart <i className="fa fa-chevron-circle-right" aria-hidden="true"></i></button></Link>
+        <Link to='/cart'><button onClick={()=>{$('#add').modal('close');}} className='btn checkout-btn'>View Cart <i className="fa fa-chevron-circle-right" aria-hidden="true"></i></button></Link>
       </div>
     </div>
     )

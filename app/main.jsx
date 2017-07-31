@@ -28,9 +28,9 @@ const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
 )(
   ({ user, children }) =>
-    <div>
+    <Router>
       <main>
-      <Navbar />
+        <Navbar />
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/shop' component={ProductList} />
@@ -41,16 +41,14 @@ const ExampleApp = connect(
           <Route exact path={`/cart`} component={Cart} />
           <Route component={NotFound} />
         </Switch>
-      </main>
-      <Footer />
-    </div>
+        <Footer />
+       </main>
+      </Router>
 )
 
 render(
   <Provider store={store}>
-    <Router>
       <ExampleApp />
-    </Router>
   </Provider>,
   document.getElementById('main')
 )

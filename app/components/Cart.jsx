@@ -19,7 +19,7 @@ class Cart extends Component{
 
   componentDidMount() {
     this.props.fetchCartItems()
-
+    this.setState(this.state)
   }
 
   calculatePrice(price, quantity){
@@ -54,6 +54,7 @@ class Cart extends Component{
 
 
   render(){
+    console.log('rerendered')
     const quantity = [];
     for(let i=1; i < 11; i++){
        quantity.push(<option key={i} value={i}>{i}</option>)
