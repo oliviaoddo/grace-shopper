@@ -22,11 +22,19 @@ module.exports = require('express').Router()
   .get('/', (req, res, next) => {
     Product.findAll({
       include: [{model: Category}, {model: Tag}],
-      where: {
-        // '$Category.name$': req.query.category,
-        '$Tag.name$': req.query.tag
-      }
+      // where: {
+      //   '$Category.name$': req.query.category,
+      //   '$Tag.name$': req.query.tag
+      // }
     })
+    .then(products =>
+      req.query.category ? products.filter(product =>
+        product.categories.find((category) =>
+          category.name === req.query.category)) : products)
+    .then(categoryProducts =>
+      req.query.tag ? categoryProducts.filter(product =>
+        product.tags.find((tag) =>
+          tag.name === req.query.tag)) : categoryProducts)
     .then(filteredProducts =>
       req.query.sort
         ? filteredProducts.sort((a, b) =>

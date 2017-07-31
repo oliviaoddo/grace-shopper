@@ -8,7 +8,7 @@ class Home extends Component{
 
   componentDidMount() {
      const productId = 1
-    this.props.fetchProduct(productId)
+    this.props.fetchProducts()
   }
 
   render(){
