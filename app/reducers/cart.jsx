@@ -1,5 +1,12 @@
 import axios from 'axios'
 
+/* TODO
+
+  updating a product quantity in the cart, needs to update the items in the state, so the page
+  will get re rendered and the subtotal will update
+
+*/
+
 //  STATE
 
 const initialState = {
