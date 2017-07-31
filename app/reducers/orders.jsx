@@ -21,6 +21,7 @@ const getOrders = orders => {
     orders
   }
 }
+//Maybe get all orders -NDKH
 
 const getOrder = order => {
   return {
@@ -35,10 +36,12 @@ const getUserOrders = orders => {
     orders
   }
 }
+//Can do both user_orders and get_orders in one but having both is totally fine - NDKH
 
 const editOrderStatus = order => {
   return {
     type: EDIT_ORDER_STATUS,
+    //Maybe just EDIT_ORDER - NDKH
     order
   }
 }
@@ -73,6 +76,8 @@ const deleteCart = product => {
 
 // THUNKS
 
+//Use catches! - NDKH
+
 export const fetchOrders = () =>
   dispatch =>
   axios.get('/api/orders')
@@ -97,9 +102,12 @@ export const fetchUserOrders = (user) =>
     dispatch(getUserOrders(orders))
   })
 
+//fetchOrder and fetchUserOrders CAN call same action creator but doesn't have to - NDKH
+
 export const updateOrderStatus = (user, order) =>
   dispatch =>
   axios.put(`/api/user/${user.id}/orders/${order.id}`)
+    //Supposed to be users? -  NDKH
   .then(res => res.data)
   .then(emptyCart => {
     dispatch(editOrderStatus(emptyCart))
@@ -107,7 +115,7 @@ export const updateOrderStatus = (user, order) =>
 
 export const fetchCart = (cart, user) =>
   dispatch =>
-  axios.post(`/api/users/${user.id}/cart`)
+  axios.post(`/api/users/${user.id}/cart`) //should be a get - NDKH
   .then(res => res.data)
   .then(cart => {
     dispatch(getCart(cart))
@@ -116,6 +124,7 @@ export const fetchCart = (cart, user) =>
 export const postCart = (user, product) =>
   dispatch =>
   axios.post(`/api/user/${user.id}/product/`)
+  //Users or User / Product or Products? - NDKH
   .then(res => res.data)
   .then(product => {
     dispatch(addCart(product))
@@ -124,11 +133,13 @@ export const postCart = (user, product) =>
 export const updateCart = (user) =>
   dispatch =>
   axios.put(`/api/users/${user.id}/products`)
+  //Might be a put to users/cart - NDKH
   .then((product) => {
     dispatch(editCart(product))
   })
 
 export const removeCart = user =>
+//if deleting a cart look at order users/order - NDKH
   dispatch =>
   axios.delete(`/api/user/${user.id}/product`)
   .then((product) => {
@@ -154,11 +165,13 @@ export default function reducer(state=initialState, action) {
     break
   case GET_USER_ORDERS:
     newState.orders = action.orders
+    //Can be in the same action creator as GET_ORDERS - NDKH
     break
   case EDIT_ORDER_STATUS:
     newState.order = newState.cartProducts = []
+    //Make sure to update orders that are exported,
     break
-  case GET_CART:
+  case GET_CART: //A cart is an order so it's going to be an object coming in, you can leave it as an object that has products on it - NDKH
     newState.cartProduct = action.products
     state.map(product =>
       product.id === action.product.id ? action.product : product)
