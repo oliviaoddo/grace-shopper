@@ -153,3 +153,16 @@ p {
   padding-left: 2vh;
   padding-top: 2vh;
 }
+
+#reviewTextarea {
+  border-radius: 10px;
+  height: 15vh;
+}
+
+.reviewCont{
+  background-color: rgba(64, 183, 185, 0.32);
+  border-radius: 10px;
+  padding-right: 4vh;
+  padding-left: 2vh;
+  padding-top: 2vh;
+}

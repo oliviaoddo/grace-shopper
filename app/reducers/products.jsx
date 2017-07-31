@@ -7,7 +7,6 @@ const initialState = {
   product: {}
 }
 
-
 // ACTION TYPE CONSTANT
 
 const GET_PRODUCTS = 'GET_PRODUCTS'
@@ -96,8 +95,8 @@ export const updateProduct =  (product, productId) => dispatch => {
     return axios.put(`/api/products/edit/${productId}`, product)
       .then(res => res.data)
       .then(updatedProduct => {
-        dispatch(editProduct(updatedProduct));
-      });
+        dispatch(editProduct(updatedProduct))
+      })
 }
 
 // REDUCER
