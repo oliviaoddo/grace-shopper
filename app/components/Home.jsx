@@ -27,7 +27,7 @@ class Home extends Component{
         </div>
         <div ref={(img)=>{$(img).parallax()}} className="parallax"><img src="IMG_1793.jpg" alt="Unsplashed background img 1"/></div>
       </div>
-      {this.props.product.name ?
+      {this.props.product.name ? //try && instead of ternary - NDKH
       <div className="container">
         <div className="section">
           <div className="row">
@@ -94,7 +94,7 @@ class Home extends Component{
               </div>
             </div>
           </div>
-
+        {/* Can make into a component where you send in text and src for DRYer code - NDKH */}
         </div>
       </div>
 

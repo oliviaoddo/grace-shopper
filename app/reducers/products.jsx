@@ -56,11 +56,13 @@ const editProduct = product => {
 
 export const fetchProducts = (ownProps) =>
   dispatch =>
+  // Indentation consistency! - NDKH
   axios.get('/api/products' + ownProps)
   .then(res => res.data)
   .then(products => {
     dispatch(getProducts(products))
   })
+  //Have catches and not just logging errors (consider toastr, growl, etc.) - NDKH
 
 export const fetchProduct = (productId) =>
   dispatch =>
@@ -69,6 +71,11 @@ export const fetchProduct = (productId) =>
     .then(product => {
       dispatch(getProduct(product))
     })
+
+//  const imageSrc = this.props.product.images.map(image =>{
+//         return {src: image}
+//       })
+//^Maybe I can be here! Before dispatch on 72 - NDKH
 
 export const postProduct = product =>
   dispatch =>
@@ -93,7 +100,7 @@ export const updateProduct = (product, productId) =>
     .then(updatedProduct => {
       dispatch(editProduct(updatedProduct))
     })
-
+//edit is redundant in a put route, because put means 'update' (just a thought) - NDKH
 // REDUCER
 
 export default function reducer(state=initialState, action) {
@@ -104,6 +111,7 @@ export default function reducer(state=initialState, action) {
     break
   case GET_PRODUCT:
     newState.product = action.product
+    //Just to be more clear, selectedProduct might work better - NDKH
     break
   case ADD_PRODUCT:
     newState.products = [...newState.products, action.product]

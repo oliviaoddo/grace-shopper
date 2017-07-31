@@ -75,8 +75,9 @@ class SingleProduct extends Component{
       cart[this.props.product.id] = Number(event.target.quantity.value)
     }
     let cartStr = JSON.stringify(cart)
-    localStorage.setItem('cart', cartStr)
+    localStorage.setItem('cart', cartStr) //Consider emitting a storage event and listen for changes to re-render - NDKH
   }
+  //If user is logged in, send to DB - NDKH
 
   componentDidMount() {
     const productId = this.props.match.params.id
@@ -85,6 +86,7 @@ class SingleProduct extends Component{
       const imageSrc = this.props.product.images.map(image =>{
         return {src: image}
       })
+      //This doesn't need to be here, can be in reducer - NDKH
       this.setState({images: this.state.images.concat(imageSrc) })
     })
   }
@@ -105,6 +107,7 @@ class SingleProduct extends Component{
   renderGallery () {
     console.log(this.state.images)
     const images = this.state.images;
+    //This could change to this.props.product.images - NDKH
 
     if (!images) return;
 
@@ -125,6 +128,7 @@ class SingleProduct extends Component{
     const quantity = [];
     for(let i=1; i < 11; i++){
        quantity.push(<option key={i} value={i}>{i}</option>)
+       //Might make more sense to pull quantities from the inventory instead of hard coding - NDKH
 
       }
     return (
@@ -137,6 +141,7 @@ class SingleProduct extends Component{
                   {this.renderGallery()[this.state.currentImage]}
                 </div>
               <div className='galleryControl'>
+                {/* && might work better than ? - NDKH */}
                 {this.state.images[this.state.currentImage - 1] ? <a onClick={this.gotoPrevious} disabled><i className="fa fa-chevron-circle-left fa-2x" aria-hidden="true"></i></a> : null}
                 {this.state.images[this.state.currentImage + 1] ? <a onClick={this.gotoNext}><i className="fa fa-chevron-circle-right fa-2x" aria-hidden="true"></i></a> : null}
               </div>
@@ -159,6 +164,7 @@ class SingleProduct extends Component{
                           )
                   })
                 }
+                {/* Fixing indentation, considering pulling out into smaller components might make this code less overwhelming - NDKH */}
                 <p>{this.props.product.description}</p>
                 <form onSubmit={this.addToCart}>
                 <div className='row'>
@@ -177,6 +183,7 @@ class SingleProduct extends Component{
         </div>
         : null}
       {this.props.product.name ?
+      {/* Most popular can be its own component since it's used more than once - NDKH */}
       <div className='container'>
         <h2>Top Rated</h2>
         <div className='row'>

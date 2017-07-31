@@ -36,7 +36,7 @@ const ExampleApp = connect(
           <Route exact path='/shop' component={ProductList} />
           <Route exact path='/products' component={AdminProductList} />
           <Route exact path='/addProduct' component={ProductForm} />
-          <Route exact path={`/edit/:id`} component={EditProduct} />
+          {/* <Route exact path={`/edit/:id`} component={EditProduct} /> can just be single quotes - NDKH */}
           <Route exact path={`/shop/:id`} component={SingleProduct} />
           <Route exact path={`/cart`} component={Cart} />
           <Route component={NotFound} />

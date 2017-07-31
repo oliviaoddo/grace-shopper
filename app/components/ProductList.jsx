@@ -12,6 +12,7 @@ class ProductList extends Component {
 
   }
 
+  // Kate prefers willMount, consider - NDKH
   componentDidMount() {
     this.props.fetchProducts(this.props.location.search)
   }
@@ -26,6 +27,7 @@ class ProductList extends Component {
           <div className='col m8'>
           {this.props.products.map(product => {
             return(
+            {/* Consistent styling/tabbing/spacing -NDKH */}
             <div className='col m6' key={product.id}>
               <ProductCard product={product} />
             </div>
