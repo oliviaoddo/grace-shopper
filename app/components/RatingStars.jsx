@@ -34,6 +34,7 @@ export default class RatingStars extends Component {
   }
   changeRating = function() {
     this.state.rating = this.state.onHoverRating
+    this.props.setRating(this.state.rating)
   }
   render() {
     if (!this.state) { return null }

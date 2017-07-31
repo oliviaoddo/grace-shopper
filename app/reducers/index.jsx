@@ -8,5 +8,4 @@ import users from './users'
 import auth from './auth'
 import cart from './cart'
 
-
 export default combineReducers({ products, categories, reviews, tags, users, auth, cart })

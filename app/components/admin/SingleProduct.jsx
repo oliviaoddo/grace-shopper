@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom'
 import {Input, Chip, Modal, Button, Preloader, Col} from 'react-materialize'
 import Lightbox from 'react-images';
 import ProductCard from './ProductCard'
+import Review from '../Review'
 import Stars from '../Stars'
 import CartModal from '../CartModal'
 import { connect } from "react-redux";
 import {fetchProduct} from '../../reducers/products'
 
-
-class SingleProduct extends Component{
+class SingleProduct extends Component {
   constructor(props) {
     super(props);
     this.state = {
       lightboxIsOpen: false,
       currentImage: 0,
-      images: []
+      images: [],
     }
     this.closeLightbox = this.closeLightbox.bind(this);
     this.gotoNext = this.gotoNext.bind(this);
@@ -87,6 +87,7 @@ class SingleProduct extends Component{
       })
       this.setState({images: this.state.images.concat(imageSrc) })
     })
+
   }
 
   renderGallery () {
@@ -166,6 +167,8 @@ class SingleProduct extends Component{
         :
             <Preloader size='big'/>
         }
+        {this.props.product.reviews ? console.log(this.props.product.reviews, 'this is reviews') : null}
+        {this.props.product.reviews ? this.props.product.reviews.map(review => <Review key={review.id} review={review} />) : null}
       {this.props.product.name ?
       <div className='container'>
         <h2>Top Rated</h2>
