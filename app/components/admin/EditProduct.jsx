@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import {Input, Chip} from 'react-materialize'
-import { postProduct } from '../../reducers/products'
+import { fetchProduct, updateProduct, deleteProduct } from '../../reducers/products'
 import { connect } from "react-redux";
 
 
-class ProductForm extends Component{
+class EditProduct extends Component{
   constructor(props) {
     super(props);
     this.state = {
@@ -17,13 +17,18 @@ class ProductForm extends Component{
       inventory: '',
       imageEntry: []
     }
-    this.deleteCategory = this.deleteCategory.bind(this);
+    this.deleteCategory = this.deleteCategory.bind(this)
     this.catChange = this.catChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount() {
-    console.log(this.state.categories)
+    const productId = this.props.match.params.id
+    this.props.getProduct(productId)
+    .then(() => {
+      this.setState({sku: this.props.product.SKU, name: this.props.product.name, price: this.props.product.price, description: this.props.product.description, inventory: this.props.product.inventory})
+    })
   }
 
   deleteCategory(event){
@@ -40,20 +45,23 @@ class ProductForm extends Component{
   }
 
   handleSubmit(event){
-    console.log(this.state.categories)
     event.preventDefault()
     const formData = new FormData();
-    const fileInput = document.getElementById('product-image');
+    // const fileInput = document.getElementById('product-image');
     formData.append('SKU', event.target.sku.value);
     formData.append('name',  event.target.name.value);
     formData.append('price',   Number(event.target.price.value));
-    for(let i = 0; i < fileInput.files.length; i++){
-      formData.append('images', fileInput.files[i]);
-    }
+    // for(let i = 0; i < fileInput.files.length; i++){
+    //   formData.append('images', fileInput.files[i]);
+    // }
     formData.append('description', event.target.description.value);
     formData.append('inventory', Number(event.target.inventory.value));
     formData.append('categories', [1,2]);
-    this.props.addProduct(formData)
+    this.props.update(formData)
+  }
+
+  handleDelete(event){
+    this.props.removeProduct(event.target.id);
   }
 
   render(){
@@ -65,28 +73,28 @@ class ProductForm extends Component{
       }
     return (
       <div className="container">
-        <h1 className='product-name'>Add Product</h1>
+        <h1 className='product-name'>Edit Product <a><i id={this.props.product.id} onClick={this.handleDelete} className="fa fa-times-circle" aria-hidden="true"></i></a></h1>
         <div className='row'>
             <div className='col m12 s12'>
               <form className="col s12" onSubmit={this.handleSubmit}>
                 <div className="row">
                   <div className="input-field col s12">
                     <input id="sku" type="text" name='sku' value={this.state.sku} onChange={(event) => this.setState({sku: event.target.value})} />
-                    <label htmlFor="sku">SKU</label>
+                    <label htmlFor="sku" className='active'>SKU</label>
                   </div>
                   <div className="input-field col s12">
                     <input id="prod_name" type="text" name='name' value={this.state.name} onChange={(event) => this.setState({name: event.target.value})} />
-                    <label htmlFor="prod_name">Name</label>
+                    <label htmlFor="prod_name" className='active'>Name</label>
                   </div>
                   <div className="input-field col s12">
                     <input id="price" type="text" name='price' value={this.state.price} onChange={(event) => this.setState({price: event.target.value})} />
-                    <label htmlFor="price">Price</label>
+                    <label htmlFor="price" className='active'>Price</label>
                   </div>
                   <div className="input-field col s12">
                     <textarea id="description" className="materialize-textarea" value={this.state.description} name='description' onChange={(event) => this.setState({description: event.target.value})} ></textarea>
-                    <label htmlFor="description">Description</label>
+                    <label htmlFor="description" className='active'>Description</label>
                   </div>
-                   <Input s={12} type='select' defaultValue='' name="inventory" required >
+                   <Input s={12} type='select'  defaultValue={this.state.inventory} name="inventory" required >
                        <option value="" disabled>Inventory</option>
                         {inventory}
                   </Input>
@@ -104,14 +112,14 @@ class ProductForm extends Component{
                   <div className="file-field input-field inline">
                   <div className="btn">
                     <span>File</span>
-                    <input onChange={(event)=>this.setState({imageEntry: this.imageEntry.concat(event.target.value.slice(12))})} id="product-image" name="image" type="file" multiple required/>
+                    <input onChange={(event)=>this.setState({imageEntry: this.imageEntry.concat(event.target.value.slice(12))})} id="product-image" name="image" type="file" multiple/>
                   </div>
                   <div className="file-path-wrapper">
                     <input placeholder="Upload Photos" className="file-path validate" type="text" value={this.state.imageEntry}/>
                   </div>
                 </div>
                   <div className="input-field col s12">
-                    <button type="submit" className="btn waves-effect waves-light teal addButton">CREATE</button>
+                    <button type="submit" className="btn waves-effect waves-light teal addButton">Update</button>
                   </div>
                 </div>
               </form>
@@ -123,9 +131,17 @@ class ProductForm extends Component{
   }
 }
 
-
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  addProduct: (product) => dispatch(postProduct(product))
+const mapStateToProps = state => ({
+  product: state.products.product
 });
 
-export default connect(null, mapDispatchToProps)(ProductForm)
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  getProduct: (productId) => dispatch(fetchProduct(productId)),
+  update: (product) => dispatch(updateProduct(product, ownProps.match.params.id)),
+  removeProduct: (id) => {
+    dispatch(deleteProduct(id))
+    ownProps.history.push('/products')
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditProduct)

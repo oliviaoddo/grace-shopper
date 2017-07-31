@@ -82,19 +82,23 @@ export const postProduct = product =>
   })
 }
 
-export const deleteProduct = product =>
-  dispatch =>
-  axios.delete(`/api/products/${product.id}`)
-  .then(() => {
+export const deleteProduct = productId =>
+  dispatch => {
+  return axios.delete(`/api/products/${productId}`)
+  .then(res => res.data)
+  .then((product) => {
     dispatch(removeProduct(product))
   })
+}
 
-export const updateProduct = product =>
-  dispatch =>
-  axios.put(`/api/products/${product.id}`, product)
-  .then(() => {
-    dispatch(editProduct(product))
-  })
+export const updateProduct =  (product, productId) => dispatch => {
+  console.log(product)
+    return axios.put(`/api/products/edit/${productId}`, product)
+      .then(res => res.data)
+      .then(updatedProduct => {
+        dispatch(editProduct(updatedProduct));
+      });
+}
 
 // REDUCER
 
