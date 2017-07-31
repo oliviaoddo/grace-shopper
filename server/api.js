@@ -10,7 +10,7 @@ api
   .use('/auth', require('./auth'))
   .use('/users', require('./users'))
   .use('/tags', require('./tag'))
-  .use('/products', require('./products'))
+  .use('/products?:category?:sort?:tag', require('./products'))
   .use('/users', require('./users'))
   .use('/reviews', require('./reviews'))
   .use('/categories', require('./category'))

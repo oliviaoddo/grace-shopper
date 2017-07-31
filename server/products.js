@@ -15,13 +15,28 @@ const storage = multer.diskStorage({
 let upload = multer({ storage: storage })
 
 const {Product, Review, User, Category, Tag, Order, LineItem} = require('APP/db')
+
+const {assertAdmin, mustBeLoggedIn} = require('APP/server/auth.filters.js')
+
 module.exports = require('express').Router()
   .get('/', (req, res, next) => {
-    Product.findAll({include:
-    [{model: Category}, {model: Tag}]})
-    .then(products => res.json(products))
+    Product.findAll({
+      include: [{model: Category}, {model: Tag}],
+      where: {
+        '$Category.name$': req.query.category,
+        '$Tag.name$': req.query.tag
+      }
+    })
+    .then(filteredProducts =>
+      req.query.sort
+        ? filteredProducts.sort((a, b) =>
+          a[req.query.sort] - b[req.query.sort])
+        : filteredProducts)
+    .then(sortedProducts =>
+      res.json(sortedProducts))
     .catch(next)
   })
+
   .get('/:id', (req, res, next) => {
     Product.findById(req.params.id,
       { include: [{model: Review,
@@ -30,9 +45,7 @@ module.exports = require('express').Router()
     .catch(next)
   })
   //  only admins should be able to create products
-  .post('/', upload.array('images'), (req, res, next) => {
-    console.log(req.files)
-    console.log(req.body.categories)
+  .post('/', upload.array('images'), mustBeLoggedIn, assertAdmin, (req, res, next) => {
     const imageFiles = req.files.map(file => {
       return '/images/' + file.filename
     })
@@ -48,20 +61,7 @@ module.exports = require('express').Router()
     .catch(next)
   })
    // only admins should be able to edit products
-  .put('/edit/:id', (req, res, next) => {
-    console.log(req.body)
-    Product.update(req.body, {
-      where: {
-        id: req.params.id
-      },
-      returning: true,
-      plain: true
-    })
-  .then(([count, product]) => res.status(201).json(product))
-  .catch(next)
-  })
-
-  .put('/:id', (req, res, next) => {
+  .put('/edit/:id', mustBeLoggedIn, assertAdmin, (req, res, next) => {
     Promise.all([
       Product.update(req.body, {
         where: {
