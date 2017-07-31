@@ -94,6 +94,7 @@ export const updateProduct = (product, productId) =>
       dispatch(editProduct(updatedProduct))
     })
 
+
 // REDUCER
 
 export default function reducer(state=initialState, action) {
