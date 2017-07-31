@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import {Input, Chip} from 'react-materialize'
 
 class SideBar extends Component {
@@ -29,12 +29,18 @@ class SideBar extends Component {
     return (
      <div>
      <p>Shop by Category</p>
-      <p><a onClick={()=>console.log('clicked')}>Necklaces</a></p>
-      <p><a onClick={()=>console.log('clicked')}>Rings</a></p>
-      <p><a onClick={()=>console.log('clicked')}>Bracelets</a></p>
-      <p><a onClick={()=>console.log('clicked')}>Rare Sea Glass Jewelry</a></p>
+      <Input s={12} id="category" type="select" defaultValue="0" name="category">
+          <option value="0" disabled>Select a Category</option>
+          <option value="Necklaces">Necklaces</option>
+          <option value="Rings">Rings</option>
+          <option value="Bracelets">Bracelets</option>
+          <option value="Sterling_Silver">Sterling Silver</option>
+          <option value="Gold_Filled">Gold Filled</option>
+      </Input>
+
       <p>Sort by:</p>
-      <Input s={12} id='sort' onChange={() => console.log('sort changed')} type='select' defaultValue='' name="sort">
+      <Input s={12} id="sort" onChange={() => console.log("sort changed")} type="select" defaultValue="" name="sort">
+          <option value="" disabled>Sort By</option>
           <option value="newest">Newest Arrivals</option>
           <option value="oldest">Most Popular</option>
           <option value="low">Price low to high</option>

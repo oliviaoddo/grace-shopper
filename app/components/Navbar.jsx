@@ -15,13 +15,13 @@ export default class NavBar extends Component {
       <div>
         <ul id="catDropdown" className="dropdown-content">
           <li>
-            <Link to='/shop?category=necklaces'>Necklaces</Link>
+            <Link to='/shop?category=Necklaces'>Necklaces</Link>
           </li>
           <li>
-            <Link to='/shop?category=bracelets'>Bracelets</Link>
+            <Link to='/shop?category=Bracelets'>Bracelets</Link>
           </li>
           <li>
-            <Link to='/shop?category=rings'>Rings</Link>
+            <Link to='/shop?category=Rings'>Rings</Link>
           </li>
         </ul>
         <nav>

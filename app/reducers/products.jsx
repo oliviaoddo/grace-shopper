@@ -54,9 +54,9 @@ const editProduct = product => {
 
 // THUNKS
 
-export const fetchProducts = () =>
+export const fetchProducts = (ownProps) =>
   dispatch =>
-  axios.get('/api/products')
+  axios.get('/api/products' + ownProps)
   .then(res => res.data)
   .then(products => {
     dispatch(getProducts(products))
