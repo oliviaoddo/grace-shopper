@@ -7,10 +7,10 @@
 
 const {Review, User, Order, LineItem, Product} = require('APP/db')
 
-const {mustBeLoggedIn, forbidden} = require('./auth.filters')
+const {mustBeLoggedIn, forbidden, selfOnly, assertAdmin, assertAdminOrSelfForUser} = require('APP/server/auth.filters.js')
 
 module.exports = require('express').Router()
-  .get('/',
+  .get('/', assertAdmin,
     // The forbidden middleware will fail *all* requests to list users.
     // Remove it if you want to allow anyone to list all users on the site.
     //
@@ -23,17 +23,17 @@ module.exports = require('express').Router()
     .then(users => res.status(200).json(users))
     .catch(next))
   // query to see non-admin users
-  .get('/?isAdmin="false"', (req, res, next) =>
+  .get('/?isAdmin="false"', assertAdmin, (req, res, next) =>
     User.findAll({where: {isAdmin: req.query.isAdmin}})
     .then(users => res.status(200).json(users))
     .catch(next))
   // query to see if user is admin
-  .get('/?isAdmin="true"', (req, res, next) =>
+  .get('/?isAdmin="true"', assertAdmin, (req, res, next) =>
     User.findAll({where: {isAdmin: req.query.isAdmin}})
     .then(users => res.status(200).json(users))
     .catch(next))
   // admin or actual user can view
-  .get('/:id', (req, res, next) =>
+  .get('/:id', selfOnly, (req, res, next) =>
     User.findById(req.params.id, {
       include: [Review]
     })
@@ -78,10 +78,11 @@ module.exports = require('express').Router()
     Order.create(req.body)
     .then(order => res.status(202).json(order))
     .catch(next))
-  // changing order status from cart to pending
+  // changing order status from cart to pending, creating new cart
   .put('/:id/orders/:orderId', (req, res, next) => {
-    Order.update(req.body, {where: {id: req.params.orderId}})
-    .then(([count, order]) => res.json(order))
+    Order.update({status: 'pending', checkoutDateTime: Date()}, {where: {id: req.params.orderId}})
+    .then(() => Order.create({status: 'cart', userId: req.params.id}))
+    .then((order) => res.status(202).json(order))
   .catch(next)
   })
 
