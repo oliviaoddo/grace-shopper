@@ -17,7 +17,6 @@ class ProductList extends Component {
   }
 
   render(){
-    console.log('looking for this params', this.props.location.search);
     return (
       <div className="container">
         <div className='row'>

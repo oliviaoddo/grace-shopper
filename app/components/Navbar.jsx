@@ -1,10 +1,22 @@
 /* global $ */
 
+/*
+ * TODO make the dropdown not hardcoded i.e. change them to use maps with axios requests to get all of the elements
+*/
+
 import React, {Component} from 'react'
 import Footer from './Footer'
 import { Link } from 'react-router-dom'
+import { fetchCategories } from '../reducers/categories'
+import { connect } from 'react-redux'
 
-export default class NavBar extends Component {
+class NavBar extends Component {
+  constructor(props) {
+    super(props);
+
+  }
+
+
   componentDidMount() {
     $('.dropdown-button').dropdown()
   }
@@ -58,3 +70,13 @@ export default class NavBar extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  products: state.products.products
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchCategories: (ownProps) => dispatch(fetchProducts(ownProps))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

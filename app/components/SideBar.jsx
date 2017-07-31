@@ -1,3 +1,8 @@
+/* TODO
+ * make sure that you are using map instead of hardcoding it for the dropdown menus
+ */
+
+
 import React, {Component} from 'react';
 import { Link, NavLink } from 'react-router-dom'
 import {Input, Chip} from 'react-materialize'
