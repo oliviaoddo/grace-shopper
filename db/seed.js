@@ -860,10 +860,10 @@ const categories = seed(Category, ({
     name: 'Bracelets',
   },
   categoryD: {
-    name: 'Gold Filled',
+    name: 'Gold_Filled',
   },
   categoryE: {
-    name: 'Sterling Silver',
+    name: 'Sterling_Silver',
   }
 }))
 
