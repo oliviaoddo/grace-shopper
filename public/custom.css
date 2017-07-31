@@ -67,6 +67,7 @@ h1, h2, h3, h4{
 
 .checkout-btn{
     float: right;
+    margin-top: 5%;
 }
 
 .added-cart-header{
@@ -140,4 +141,14 @@ p {
 
 .product-name {
   font-size: 2.2em;
+}
+
+.cart-img{
+  height: 25%;
+  width: 25%;
+}
+
+
+footer.page-footer {
+  margin-top: 20%;
 }

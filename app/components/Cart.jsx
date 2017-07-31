@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import {Input, Chip} from 'react-materialize'
+import { connect } from "react-redux";
+import { fetchCartItems, deleteProduct, updateProduct } from '../reducers/cart'
+
 
 
 class Cart extends Component{
@@ -11,28 +14,46 @@ class Cart extends Component{
     }
     this.calculatePrice = this.calculatePrice.bind(this)
     this.deleteItem = this.deleteItem.bind(this)
+    this.quantityChange = this.quantityChange.bind(this)
   }
 
   componentDidMount() {
-    console.log(this.state.categories)
+    this.props.fetchCartItems()
+
   }
 
   calculatePrice(price, quantity){
     return '$' + ((price * quantity).toFixed(2))
   }
 
-  deleteItem(){
-    console.log('item deleted!')
+  deleteItem(event){
+    let cartValue = sessionStorage.getItem('cart')
+    let cart = JSON.parse(cartValue)
+    const product = this.props.items.filter(item => {
+      return item.id === Number(event.target.id)
+    })
+    delete cart[event.target.id]
+    let cartStr = JSON.stringify(cart)
+    sessionStorage.setItem('cart', cartStr)
+    this.props.deleteItem(product)
+
   }
 
-  render(){
-   const products = [
-    {id: 1, SKU: 'NB1', name: 'Blue Necklace', price:'22.50', quantity: 1, photos: ['/necklace_thumbnail.jpg']},
-    {id: 2, SKU: 'NG1', name: 'Green Necklace', price:'20.00', quantity: 2, photos: ['/necklace_thumbnail.jpg']},
-    {id: 3, SKU: 'NW1', name: 'White Necklace', price:'21.00', quantity: 3, photos: ['/necklace_thumbnail.jpg']},
-    {id: 4, SKU: 'RG1', name: 'Green Ring', price:'18.00', quantity: 1, photos: ['/necklace_thumbnail.jpg']}
-    ]
+  quantityChange(event){
+    let cartValue = sessionStorage.getItem('cart')
+    let cart = JSON.parse(cartValue)
+    const product = this.props.items.filter(item => {
+      return item.id === Number(event.target.id)
+    })
+    cart[event.target.id] = event.target.value
+    let cartStr = JSON.stringify(cart)
+    sessionStorage.setItem('cart', cartStr)
+    this.props.updateItem(product, event.target.value)
 
+  }
+
+
+  render(){
     const quantity = [];
     for(let i=1; i < 11; i++){
        quantity.push(<option key={i} value={i}>{i}</option>)
@@ -42,6 +63,8 @@ class Cart extends Component{
     return (
       <div className="container">
       <h1>Cart</h1>
+        {this.props.items.length ?
+        <div>
         <table className='striped'>
           <thead>
             <tr>
@@ -55,15 +78,15 @@ class Cart extends Component{
 
           <tbody>
             {
-              products.map(product => {
+              this.props.items.map(product => {
                 return(
                   <tr>
-                    <td><img src={product.photos[0]}/></td>
+                    <td><img className='cart-img' src='http://support.yumpu.com/en/wp-content/themes/qaengine/img/default-thumbnail.jpg'/></td>
                     <td><Link to={`/shop/${product.id}`}>{product.name}</Link></td>
                     <td>
                       <div className='row'>
                         <div className='col m6'>
-                          <Input type='select' defaultValue={`${product.quantity}`} name="quantity" required>
+                          <Input type='select' id={product.id} onChange={this.quantityChange}  defaultValue={`${product.quantity}`} name="quantity" required>
                             {quantity}
                           </Input>
                         </div>
@@ -78,9 +101,28 @@ class Cart extends Component{
           </tbody>
         </table>
         <button className='btn checkout-btn'>Checkout <i className="fa fa-chevron-circle-right" aria-hidden="true"></i></button>
+        </div>
+        :
+          <div>
+            <h1 className='product-name'>Your cart is empty!</h1>
+            <Link to='/shop'><button className='btn'>Start Shopping <i className="fa fa-chevron-circle-right" aria-hidden="true"></i></button></Link>
+          </div>
+        }
       </div>
     )
   }
 }
 
-export default Cart
+const mapStateToProps = state => ({
+  items: state.cart.items
+});
+
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  fetchCartItems: () => dispatch(fetchCartItems()),
+  deleteItem: (product) => dispatch(deleteProduct(product)),
+  updateItem: (product, quantity) => dispatch(updateProduct(product, quantity))
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)

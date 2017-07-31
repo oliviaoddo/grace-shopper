@@ -6,6 +6,26 @@ import Stars from './Stars'
 class QuickLook extends Component{
   constructor(props) {
     super(props);
+    this.addToCart = this.addToCart.bind(this)
+  }
+
+  addToCart(event){
+    event.preventDefault();
+    if(!sessionStorage.cart){
+      let cart = {}
+      let cartStr = JSON.stringify(cart)
+      sessionStorage.setItem('cart', cartStr)
+    }
+    let cartValue = sessionStorage.getItem('cart')
+    let cart = JSON.parse(cartValue)
+    if(Object.keys(cart).includes(this.props.product.id.toString())){
+      cart[this.props.product.id] += Number(event.target.quantity.value)
+    }
+    else {
+      cart[this.props.product.id] = Number(event.target.quantity.value)
+    }
+    let cartStr = JSON.stringify(cart)
+    sessionStorage.setItem('cart', cartStr)
   }
 
   render(){
@@ -35,6 +55,7 @@ class QuickLook extends Component{
                 }
                 </div>
                 <div className='col s6'>
+                  <form onSubmit={this.addToCart}>
                    <div className='row'>
                     <div className='col m6'>
                       <Input  type='select' defaultValue='' name="quantity" required>
@@ -45,6 +66,7 @@ class QuickLook extends Component{
                        <button type="submit" className="btn waves-effect waves-light teal addButton">Add <i className="fa fa-shopping-cart" aria-hidden="true"></i></button>
                     </div>
                   </div>
+                  </form>
                 </div>
               </div>
               <p>{this.props.product.description}</p>
