@@ -4,7 +4,8 @@ import axios from 'axios'
 
 const initialState = {
   products: [],
-  product: {}
+  product: {},
+  topProducts: []
 }
 
 // ACTION TYPE CONSTANT
@@ -14,8 +15,18 @@ const GET_PRODUCT = 'GET_PRODUCT'
 const ADD_PRODUCT = 'ADD_PRODUCT'
 const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 const EDIT_PRODUCT = 'EDIT_PRODUCT'
+const FETCH_TOP_RATED = 'FETCH_TOP_RATED'
+
 
 // ACTION CREATORS
+
+const getTopRated = products => {
+  return {
+    type: FETCH_TOP_RATED,
+    products
+  }
+}
+
 
 const getProducts = products => {
   return {
@@ -53,6 +64,15 @@ const editProduct = product => {
 }
 
 // THUNKS
+
+export const fetchTopRated = () =>
+  dispatch =>
+  axios.get('/api/products/topRated')
+  .then(res => res.data)
+  .then(products => {
+    dispatch(getTopRated(products))
+  })
+
 
 export const fetchProducts = (ownProps) =>
   dispatch =>
@@ -117,6 +137,9 @@ export default function reducer(state=initialState, action) {
     newState.products = newState.products.map(product =>
       product.id === action.product.id ? action.product : product
     )
+    break
+  case FETCH_TOP_RATED:
+    newState.topProducts = action.products
     break
   default:
     return state

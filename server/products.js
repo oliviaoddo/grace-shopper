@@ -1,6 +1,8 @@
 'use strict'
 const {resolve} = require('path')
 const multer = require('multer')
+const sequelize = require('sequelize')
+
 /* TO DO:
  - Add admin access to post put delete
 */
@@ -47,7 +49,12 @@ module.exports = require('express').Router()
       res.json(sortedProducts))
     .catch(next)
   })
-
+  .get('/topRated', (req, res, next) => {
+    Product.findAll({order: [['rating', 'DESC']], limit: 3})
+    .then(products => {
+      res.json(products)
+    })
+  })
   .get('/:id', (req, res, next) => {
     Product.findById(req.params.id,
       { include: [{model: Review,
