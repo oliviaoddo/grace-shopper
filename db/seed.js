@@ -8,7 +8,6 @@ function seedEverything() {
   const seeded = {
     users: users(),
     products: products(),
-    orders: orders(),
     tags: tags()
   }
 
@@ -18,6 +17,7 @@ function seedEverything() {
   seeded.categories = categories(seeded)
   seeded.productCategories = productCategories(seeded)
   seeded.productTags = productTags(seeded)
+  seeded.orders = orders(seeded)
 
   return Promise.props(seeded)
 }
@@ -867,9 +867,11 @@ const categories = seed(Category, ({
   }
 }))
 
-const orders = seed(Order, {
+const orders = seed(Order, ({users, products}) => ({
   orderA: {
-    status: 'cart'
+    status: 'cart',
+    user_id: users.userA.id,
+    product_id: products.productA.id
   },
   orderB: {
     checkoutDateTime: 1501183231701,
@@ -893,7 +895,7 @@ const orders = seed(Order, {
   orderG: {
     status: 'cart'
   },
-})
+}))
 
 if (module === require.main) {
   db.didSync
