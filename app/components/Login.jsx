@@ -1,28 +1,34 @@
 import React from 'react'
 
 export const Login = ({ login }) => (
-  <div className="loginContainer container center">
-    <div className="row">
-      <form onSubmit={function(evt) { evt.preventDefault(); login(evt.target.username.value, evt.target.password.value) } } className="col s12">
-        <div className="row">
-          <div id="loginUsername" className="input-field col s6">
-            <i className="material-icons prefix">account_circle</i>
-            <input id="icon_prefix" name="username" type="text" className="validate" />
-            <label for="icon_prefix">Username</label>
-          </div>
-          <div id="loginPassword" className="input-field col s6">
-            <i className="material-icons prefix">lock_outline</i>
-            <input id="icon_telephone" name="password" type="text" className="validate" />
-            <label for="icon_telephone">Password</label>
-          </div>
-        </div>
-        <div className="row">
-          <button className="btn waves-effect waves-light" type="submit" name="action" value="Login">Login
-            <i className="material-icons right">lock_open</i>
-          </button>
-        </div>
-      </form>
+  <div className="login-box">
+    <div className="lb-header">
+      <a href="#" className="active" id="login-box-link">Login</a>
     </div>
+    <div className="social-login">
+      <a href="#">
+        <i className="fa fa-facebook fa-lg"></i>
+        Login in with facebook
+      </a>
+      <a href="#">
+        <i className="fa fa-google-plus fa-lg"></i>
+        log in with Google
+      </a>
+    </div>
+    <form className="email-login">
+      <div className="u-form-group">
+        <input type="email" placeholder="Email"/>
+      </div>
+      <div className="u-form-group">
+        <input type="password" placeholder="Password"/>
+      </div>
+      <div className="u-form-group">
+        <button>Log in</button>
+      </div>
+      <div className="u-form-group">
+        <a href="#" className="forgot-password">Forgot password?</a>
+      </div>
+    </form>
   </div>
 )
 import {login} from 'APP/app/reducers/auth'
