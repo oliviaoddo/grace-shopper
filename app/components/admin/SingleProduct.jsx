@@ -94,7 +94,7 @@ class SingleProduct extends Component {
 
   renderGallery () {
     console.log(this.state.images)
-    const images = this.state.images;
+    const images = this.state.images.slice(1);
 
     if (!images) return;
 
