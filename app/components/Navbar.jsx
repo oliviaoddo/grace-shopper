@@ -65,7 +65,6 @@ class NavBar extends Component {
                <li onClick={this.props.logout}>
                 Logout
               </li>
-              :
                 <li>
                   <Link to="/signup">Signup</Link>
                 </li>
