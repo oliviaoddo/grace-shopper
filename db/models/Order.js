@@ -1,12 +1,13 @@
 'use strict'
 
-const {DATE, ENUM, DECIMAL} = require('sequelize')
+const {DATE, ENUM, DECIMAL, STRING} = require('sequelize')
 
 module.exports = db => db.define('orders', {
   checkoutDateTime: DATE,
   subtotal: {
     type: DECIMAL(10, 2)
   },
+  orderNumber: STRING,
   status: {
     type: ENUM('cart', 'pending', 'shipped', 'delivered'),
     allowNull: false,

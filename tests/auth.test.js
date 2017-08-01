@@ -4,8 +4,8 @@ const db = require('APP/db'), {User} = db
 const app = require('../server/start')
 
 const alice = {
-  username: 'alice@secrets.org',
-  password: '12345'
+  username: 'god@god.god',
+  password: 'godgodgodgod'
 }
 
 /* global describe it before afterEach beforeEach */
