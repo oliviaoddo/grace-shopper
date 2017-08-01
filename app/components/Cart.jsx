@@ -4,9 +4,7 @@ import {Input, Chip} from 'react-materialize'
 import { connect } from "react-redux";
 import { fetchCartItems, deleteProduct, updateProduct } from '../reducers/cart'
 
-
-
-class Cart extends Component{
+class Cart extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -124,6 +122,5 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   deleteItem: (product) => dispatch(deleteProduct(product)),
   updateItem: (product, quantity) => dispatch(updateProduct(product, quantity))
 });
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)

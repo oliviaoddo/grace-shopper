@@ -105,7 +105,7 @@ module.exports = require('express').Router()
   })
 
   //  only admins should be able to delete products
-  .delete('/:id', (req, res, next) => {
+  .delete('/:id', mustBeLoggedIn, assertAdmin, (req, res, next) => {
     Product.findById(req.params.id)
     .then(product => {
       product.destroy()
