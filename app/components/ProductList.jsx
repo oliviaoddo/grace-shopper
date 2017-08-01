@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import ProductCard from './admin/ProductCard'
+import {Preloader} from 'react-materialize'
 import SideBar from './SideBar'
 import { connect } from "react-redux";
 import {fetchProducts} from '../reducers/products'
@@ -13,7 +14,7 @@ class ProductList extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchProducts()
+    this.props.fetchProducts(this.props.location.search)
   }
 
   render(){
@@ -23,16 +24,18 @@ class ProductList extends Component {
           <div className='col m4'>
             <SideBar />
           </div>
-          <div className='col m8'>
-          {this.props.products.map(product => {
-            return(
-            <div className='col m6' key={product.id}>
-              <ProductCard product={product} />
+          {this.props.products.length ?
+            <div className='col m8'>
+            {this.props.products.map(product => {
+              return(
+                <div className='col m6' key={product.id}>
+                  <ProductCard product={product} />
+                </div>
+              )
+              })
+            }
             </div>
-            )
-          })
-          }
-        </div>
+            : <Preloader size='big'/>}
         </div>
       </div>
     )
@@ -45,7 +48,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchProducts: () => dispatch(fetchProducts())
+  fetchProducts: (ownProps) => dispatch(fetchProducts(ownProps))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList)

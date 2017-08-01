@@ -1,21 +1,23 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
-import {Input, Chip, Modal} from 'react-materialize'
+import {Input, Chip, Modal, Button, Preloader, Col} from 'react-materialize'
 import Lightbox from 'react-images';
 import ProductCard from './ProductCard'
+import Review from '../Review'
 import Stars from '../Stars'
 import CartModal from '../CartModal'
 import { connect } from "react-redux";
 import {fetchProduct} from '../../reducers/products'
+import TopRated from '../TopRated'
 
 
-class SingleProduct extends Component{
+class SingleProduct extends Component {
   constructor(props) {
     super(props);
     this.state = {
       lightboxIsOpen: false,
       currentImage: 0,
-      images: []
+      images: [],
     }
     this.closeLightbox = this.closeLightbox.bind(this);
     this.gotoNext = this.gotoNext.bind(this);
@@ -23,6 +25,7 @@ class SingleProduct extends Component{
     this.gotoImage = this.gotoImage.bind(this);
     this.handleClickImage = this.handleClickImage.bind(this);
     this.openLightbox = this.openLightbox.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   openLightbox (index, event) {
@@ -58,8 +61,26 @@ class SingleProduct extends Component{
     this.gotoNext();
   }
 
+  addToCart(event){
+    event.preventDefault();
+    if(!localStorage.cart){
+      let cart = {}
+      let cartStr = JSON.stringify(cart)
+      localStorage.setItem('cart', cartStr)
+    }
+    let cartValue = localStorage.getItem('cart')
+    let cart = JSON.parse(cartValue)
+    if(Object.keys(cart).includes(this.props.product.id.toString())){
+      cart[this.props.product.id] += Number(event.target.quantity.value)
+    }
+    else {
+      cart[this.props.product.id] = Number(event.target.quantity.value)
+    }
+    let cartStr = JSON.stringify(cart)
+    localStorage.setItem('cart', cartStr)
+  }
+
   componentDidMount() {
-    console.log(this.props.product)
     const productId = this.props.match.params.id
     this.props.fetchProduct(productId)
     .then(() => {
@@ -68,24 +89,12 @@ class SingleProduct extends Component{
       })
       this.setState({images: this.state.images.concat(imageSrc) })
     })
-  }
 
-  deleteCategory(event){
-    this.setState({categories: this.state.categories.filter(category => {
-          if(category.id !== event.target.id) return category;
-        })})
-    document.getElementById('catSelect').selectedIndex = 0;
-  }
-
-  catChange(event){
-    const index = event.target.selectedIndex;
-    this.setState({categories: this.state.categories.concat([{id: event.target.value, name: event.target.childNodes[index].text}])})
-    document.getElementById('catSelect').selectedIndex = 0;
   }
 
   renderGallery () {
     console.log(this.state.images)
-    const images = this.state.images;
+    const images = this.state.images.slice(1);
 
     if (!images) return;
 
@@ -141,6 +150,7 @@ class SingleProduct extends Component{
                   })
                 }
                 <p>{this.props.product.description}</p>
+                <form onSubmit={this.addToCart}>
                 <div className='row'>
                   <div className='col m6'>
                     <Input  type='select' defaultValue='' name="quantity" required>
@@ -148,33 +158,23 @@ class SingleProduct extends Component{
                     </Input>
                   </div>
                   <div className='col m6'>
-                    <Modal
-                     trigger={<button type="submit" className="btn waves-effect waves-light teal addButton">Add to Cart <i className="fa fa-shopping-cart" aria-hidden="true"></i></button>}
-                     >
-                     <CartModal product={this.props.product} />
-                    </Modal>
+                    <Button type='submit' className="btn waves-effect waves-light teal addButton" onClick={()=>{$('#add').modal('open');}}>Add to Cart <i className="fa fa-shopping-cart" aria-hidden="true"></i></Button>
+                    <Modal id='add'><CartModal product={this.props.product} /></Modal>
                   </div>
                 </div>
+                </form>
               </div>
           </div>
         </div>
-        : null}
-      {this.props.product.name ?
+        :
+            <Preloader size='big'/>
+        }
+        {this.props.product.reviews ? console.log(this.props.product.reviews, 'this is reviews') : null}
+        {this.props.product.reviews ? this.props.product.reviews.map(review => <Review key={review.id} review={review} />) : null}
       <div className='container'>
         <h2>Top Rated</h2>
-        <div className='row'>
-          <div className='col m4'>
-            <ProductCard product={this.props.product} />
-          </div>
-          <div className='col m4'>
-            <ProductCard product={this.props.product} />
-          </div>
-          <div className='col m4'>
-            <ProductCard product={this.props.product} />
-          </div>
-        </div>
-        </div>
-        : null}
+        <TopRated />
+      </div>
       </div>
     )
   }

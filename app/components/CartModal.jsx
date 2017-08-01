@@ -7,7 +7,7 @@ export default props => {
     return (
      <div className='row'>
       <div className='col m6'>
-        <img className='product-img' src={props.product.images[0]}/>
+        <img className='product-img' src={props.product.images[1]}/>
       </div>
       <div className='col m6'>
         <h1 className='added-cart-header'>Added to your cart!</h1>
@@ -23,7 +23,7 @@ export default props => {
             })
           }
         </div>
-        <Link to='/cart'><button className='btn checkout-btn'>View Cart <i className="fa fa-chevron-circle-right" aria-hidden="true"></i></button></Link>
+        <Link to='/cart'><button onClick={()=>{$('#add').modal('close');}} className='btn checkout-btn'>View Cart <i className="fa fa-chevron-circle-right" aria-hidden="true"></i></button></Link>
       </div>
     </div>
     )

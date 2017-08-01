@@ -1,10 +1,23 @@
 /* global $ */
 
+/*
+ * TODO make the dropdown not hardcoded i.e. change them to use maps with axios requests to get all of the elements
+*/
+
 import React, {Component} from 'react'
 import Footer from './Footer'
 import { Link } from 'react-router-dom'
+import { fetchCategories } from '../reducers/categories'
+import { connect } from 'react-redux'
+import { logout } from '../reducers/auth'
 
-export default class NavBar extends Component {
+class NavBar extends Component {
+  constructor(props) {
+    super(props);
+
+  }
+
+
   componentDidMount() {
     $('.dropdown-button').dropdown()
   }
@@ -15,13 +28,13 @@ export default class NavBar extends Component {
       <div>
         <ul id="catDropdown" className="dropdown-content">
           <li>
-            <Link to='/shop?category=necklaces'>Necklaces</Link>
+            <Link to='/shop?category=Necklaces'>Necklaces</Link>
           </li>
           <li>
-            <Link to='/shop?category=bracelets'>Bracelets</Link>
+            <Link to='/shop?category=Bracelets'>Bracelets</Link>
           </li>
           <li>
-            <Link to='/shop?category=rings'>Rings</Link>
+            <Link to='/shop?category=Rings'>Rings</Link>
           </li>
         </ul>
         <nav>
@@ -48,9 +61,19 @@ export default class NavBar extends Component {
                   <i className="material-icons">shopping_cart</i>
                 </Link>
               </li>
-              <li>
-                <a href="badges.html">Login</a>
+              {this.props.currentUser ?
+               <li onClick={this.props.logout}>
+                Logout
               </li>
+                <li>
+                  <Link to="/signup">Signup</Link>
+                </li>
+              }
+              {!this.props.currentUser &&
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+              }
             </ul>
           </div>
         </nav>
@@ -58,3 +81,11 @@ export default class NavBar extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({currentUser: state.auth})
+
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(logout())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

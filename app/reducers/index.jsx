@@ -6,6 +6,6 @@ import reviews from './reviews'
 import tags from './tags'
 import users from './users'
 import auth from './auth'
-import orders from './orders'
+import cart from './cart'
 
-export default combineReducers({ products, categories, reviews, tags, users, auth, orders })
+export default combineReducers({ products, categories, reviews, tags, users, auth, cart })

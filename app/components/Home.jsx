@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import ProductCard from './admin/ProductCard'
+import TopRated from './TopRated'
 import { Link } from 'react-router-dom'
 import { fetchProduct } from '../reducers/products'
 import { connect } from "react-redux";
@@ -8,7 +9,7 @@ class Home extends Component{
 
   componentDidMount() {
      const productId = 1
-    this.props.fetchProducts()
+    this.props.fetchProduct(productId)
   }
 
   render(){
@@ -31,17 +32,7 @@ class Home extends Component{
       <div className="container">
         <div className="section">
           <div className="row">
-            <div className="col s12 m4">
-              <ProductCard product={this.props.product}/>
-            </div>
-
-            <div className="col s12 m4">
-             <ProductCard product={this.props.product} />
-            </div>
-
-            <div className="col s12 m4">
-              <ProductCard product={this.props.product} />
-            </div>
+            <TopRated />
           </div>
 
         </div>
@@ -68,7 +59,7 @@ class Home extends Component{
                     <img src="images/necklaces/BNWG3-3.jpg"/>
                   </div>
                 </div>
-                <Link to='/shop'><h5 className="center">Necklaces</h5></Link>
+                <Link to='/shop?category=Necklaces'><h5 className="center">Necklaces</h5></Link>
               </div>
             </div>
 
@@ -79,7 +70,7 @@ class Home extends Component{
                     <img src="images/rings/RWG3-1.jpg"/>
                   </div>
                 </div>
-                <Link to='/shop'><h5 className="center">Rings</h5></Link>
+                <Link to='/shop?category=Rings'><h5 className="center">Rings</h5></Link>
               </div>
             </div>
 
@@ -90,7 +81,7 @@ class Home extends Component{
                     <img src="/images/bracelets/SBAG1-2.jpg"/>
                   </div>
                 </div>
-                <Link to='/shop'><h5 className="center">Bracelets</h5></Link>
+                <Link to='/shop?category=Bracelets'><h5 className="center">Bracelets</h5></Link>
               </div>
             </div>
           </div>
@@ -141,16 +132,6 @@ class Home extends Component{
           </div>
 
         </div>
-      </div>
-
-      <div className="parallax-container valign-wrapper">
-        <div className="section no-pad-bot">
-          <div className="container">
-            <div className="row center">
-            </div>
-          </div>
-        </div>
-        <div ref={(img)=>{$(img).parallax()}} className="parallax"><img src="IMG_7286.jpg" alt="Unsplashed background img 3"/></div>
       </div>
     </div>
       )
