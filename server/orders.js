@@ -2,11 +2,11 @@
 const {Product, Review, User, Category, Tag, Order, Address, LineItem} = require('APP/db')
 const Promise = require('bluebird')
 
-const {assertAdminOrSelfForOrder, mustBeLoggedIn} = require('APP/server/auth.filters.js')
+const {assertAdminOrSelfForOrder, mustBeLoggedIn, assertAdmin} = require('APP/server/auth.filters.js')
 
 module.exports = require('express').Router()
   //  fetch all of the orders for admin order list view, make sure the user requesting this is an admin
-  .param('id', (req, res, next, id) => {
+  .param('id', assertAdmin, (req, res, next, id) => {
     Order.findById(id,
       { include: [{model: User,
         include: [{model: Address}]}, {model: LineItem}]})

@@ -1,6 +1,4 @@
 'use strict'
-
-// all of these are in users not really necessary
 const {Product, Review, User, Category, Tag, Order, Address, LineItem} = require('APP/db')
 const Promise = require('bluebird')
 
