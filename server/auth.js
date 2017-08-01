@@ -127,6 +127,7 @@ auth.get('/whoami', (req, res) => res.send(req.user))
 
 auth.post('/login/local', (req, res, next) => {
   const {email, password} = req.body
+  console.log(email, password)
   User.findOne({
     where: {email},
     attributes: {include: ['password_digest']}
