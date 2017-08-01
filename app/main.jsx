@@ -15,6 +15,7 @@ import store from './store'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Login from './components/Login'
+import Signup from './components/Signup'
 import Review from './components/Review'
 import NotFound from './components/NotFound'
 import AdminProductList from './components/admin/ProductList'
@@ -37,6 +38,7 @@ const ExampleApp = connect(
           <Route exact path='/' component={Home} />
           <Route exact path='/review' component={Review} />
           <Route exact path='/login' component={Login} />
+          <Route exact path='/signup' component={Signup} />
           <Route exact path='/addReview' component={addReview} />
           <Route exact path='/shop' component={ProductList} />
           <Route exact path='/products' component={AdminProductList} />
