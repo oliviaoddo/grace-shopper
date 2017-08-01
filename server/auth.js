@@ -1,7 +1,7 @@
 const app = require('APP'), {env} = app
 const debug = require('debug')(`${app.name}:auth`)
 const passport = require('passport')
-require('APP/secret')
+if (env.NODE_ENV === 'development') require('APP/secret')
 const {User, OAuth} = require('APP/db')
 const auth = require('express').Router()
 
@@ -127,6 +127,7 @@ auth.get('/whoami', (req, res) => res.send(req.user))
 
 auth.post('/login/local', (req, res, next) => {
   const {email, password} = req.body
+  console.log(email, password)
   User.findOne({
     where: {email},
     attributes: {include: ['password_digest']}

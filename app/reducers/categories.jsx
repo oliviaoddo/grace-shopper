@@ -54,6 +54,7 @@ export const fetchCategories = () =>
   .then(categories => {
     dispatch(getCategories(categories))
   })
+  .catch(err => console.log('fetch categories error', err))
 
 export const fetchCategory = (category) =>
   dispatch =>
@@ -62,6 +63,7 @@ export const fetchCategory = (category) =>
   .then(category => {
     dispatch(getCategory(category))
   })
+  .catch(err => console.log('fetch Category error', err))
 
 export const postCategory = category =>
   dispatch =>
@@ -70,6 +72,7 @@ export const postCategory = category =>
   .then(newCategory => {
     dispatch(addCategory(newCategory))
   })
+  .catch(err => console.log('post category error', err))
 
 export const deleteCategory = category =>
   dispatch =>
@@ -77,6 +80,7 @@ export const deleteCategory = category =>
   .then(() => {
     dispatch(removeCategory(category))
   })
+  .catch(err => console.log('delete category error', err))
 
 export const updateCategory = category =>
   dispatch =>
@@ -84,6 +88,7 @@ export const updateCategory = category =>
   .then(() => {
     dispatch(editCategory(category))
   })
+  .catch(err => console.log('update category error', err))
 
 // REDUCER
 

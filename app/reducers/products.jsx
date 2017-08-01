@@ -81,6 +81,7 @@ export const fetchProducts = (ownProps) =>
   .then(products => {
     dispatch(getProducts(products))
   })
+  .catch(err => console.log('fetch all products error', err))
 
 export const fetchProduct = (productId) =>
   dispatch =>
@@ -89,6 +90,7 @@ export const fetchProduct = (productId) =>
     .then(product => {
       dispatch(getProduct(product))
     })
+    .catch(err => console.log('fetch product error', err))
 
 export const postProduct = product =>
   dispatch =>
@@ -97,6 +99,7 @@ export const postProduct = product =>
     .then(newProduct => {
       dispatch(addProduct(newProduct))
     })
+    .catch(err => console.log('post products error', err))
 
 export const deleteProduct = productId =>
   dispatch =>
@@ -105,6 +108,7 @@ export const deleteProduct = productId =>
     .then((product) => {
       dispatch(removeProduct(product))
     })
+    .catch(err => console.log('delete products error', err))
 
 export const updateProduct = (product, productId) =>
   dispatch =>
@@ -113,6 +117,7 @@ export const updateProduct = (product, productId) =>
     .then(updatedProduct => {
       dispatch(editProduct(updatedProduct))
     })
+    .catch(err => console.log('update products error', err))
 
 
 // REDUCER
@@ -131,7 +136,8 @@ export default function reducer(state=initialState, action) {
     break
   case REMOVE_PRODUCT:
     newState.products = newState.products.filter(product => {
-      if (product.id !== action.product.id) return product })
+      if (product.id !== action.product.id) return product
+    })
     break
   case EDIT_PRODUCT:
     newState.products = newState.products.map(product =>

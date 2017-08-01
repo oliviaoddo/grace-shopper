@@ -54,6 +54,7 @@ export const fetchTags = () =>
   .then(tags => {
     dispatch(getTags(tags))
   })
+  .catch(err => console.log('fetch tags error', err))
 
 export const fetchTag = (tag) =>
   dispatch =>
@@ -62,6 +63,7 @@ export const fetchTag = (tag) =>
   .then(tag => {
     dispatch(getTag(tag))
   })
+  .catch(err => console.log('fetch tag error', err))
 
 export const postTag = tag =>
   dispatch =>
@@ -70,6 +72,7 @@ export const postTag = tag =>
   .then(newTag => {
     dispatch(addTag(newTag))
   })
+  .catch(err => console.log('post tags error', err))
 
 export const deleteTag = tag =>
   dispatch =>
@@ -77,6 +80,7 @@ export const deleteTag = tag =>
   .then(() => {
     dispatch(removeTag(tag))
   })
+  .catch(err => console.log('delete tags error', err))
 
 export const updateTags = tags =>
   dispatch =>
@@ -84,6 +88,7 @@ export const updateTags = tags =>
   .then(() => {
     dispatch(editTag(tags))
   })
+  .catch(err => console.log('update tags error', err))
 
 // REDUCER
 

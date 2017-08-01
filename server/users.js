@@ -41,9 +41,24 @@ module.exports = require('express').Router()
     .catch(next))
   // cant create a new user with admin status
   .post('/', (req, res, next) =>
-      User.create({firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email, password: req.body.password})
-      .then(user => res.status(201).json(user))
-      .catch(next))
+    User.findOrCreate({where: {email: req.body.email},
+      defaults: {// if we are creating the user include the
+        password: req.body.password,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName
+      }
+    })
+    .spread((user, created) => {
+      if (created) {
+        req.logIn(user, err => {
+          if (err) return next(err)
+          res.json(user)
+        })
+      } else {
+        res.sendStatus(401) // a user with that email already exists, which means they cannot sign up
+      }
+    })
+    .catch(next))
   .put('/:id', (req, res, next) =>
     User.update(req.body, {where: {id: req.params.id}})
     .then(([count, user]) => res.json(user))
@@ -73,66 +88,4 @@ module.exports = require('express').Router()
     Order.findById(req.params.orderId, {include: [LineItem]})
     .then(order => res.status(200).json(order))
     .catch(next))
-  // only single user can create
-  .post('/:id/orders', (req, res, next) =>
-    Order.create(req.body)
-    .then(order => res.status(202).json(order))
-    .catch(next))
-  // changing order status from cart to pending, creating new cart
-  .put('/:id/orders/:orderId', (req, res, next) => {
-    Order.update({status: 'pending', checkoutDateTime: Date()}, {where: {id: req.params.orderId}})
-    .then(() => Order.create({status: 'cart', userId: req.params.id}))
-    .then((order) => res.status(202).json(order))
-  .catch(next)
-  })
 
-  // LINEITEM ROUTES
-
-  .post('/:id/product', (req, res, next) =>
-    Promise.all([
-      Order.findOne({
-        where: {
-          user_id: req.params.id,
-          status: 'cart'
-        }
-      }),
-      Product.findById(req.body.productId)
-    ])
-    .then(([order, product]) =>
-      order.addProduct(product,
-      {price: product.price, quantity: req.body.quantity}))
-    .then(lineItem => res.status(202).json(lineItem))
-    .catch(next))
-
-  .put('/:id/product', (req, res, next) =>
-    Promise.all([
-      Order.findOne({
-        where: {
-          user_id: req.params.id,
-          status: 'cart'
-        }
-      }),
-      Product.findById(req.body.productId)
-    ])
-    .then(([order, product]) =>
-      order.setProducts(product,
-      {quantity: req.body.quantity}))
-    .then(count =>
-      res.status(202).json(count)
-    )
-    .catch(next))
-
-  .delete('/:id/cart/product', (req, res, next) =>
-    Promise.all([
-      Order.findOne({
-        where: {
-          user_id: req.params.id,
-          status: 'cart'
-        }
-      }),
-      Product.findById(req.body.productId)
-    ])
-    .then(([order, product]) =>
-      order.removeProduct(product))
-    .then(res.sendStatus(204))
-    .catch(next))

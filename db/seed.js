@@ -18,6 +18,7 @@ function seedEverything() {
   seeded.categories = categories(seeded)
   seeded.productCategories = productCategories(seeded)
   seeded.productTags = productTags(seeded)
+  seeded.orders = orders(seeded)
 
   return Promise.props(seeded)
 }

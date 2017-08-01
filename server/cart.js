@@ -7,7 +7,7 @@ const Promise = require('bluebird')
 module.exports = require('express').Router()
   // get the user's cart
   /*  when a user logs in, get an existing cart or create an empty one */
-  .get('/user/:userId', (req, res, next) => {
+  .get('/login', (req, res, next) => {
     Order.findOrCreate({where:
     {userId: req.params.userId,
       status: 'cart'},
@@ -16,6 +16,75 @@ module.exports = require('express').Router()
     .then(order => res.json(order))
     .catch(next)
   })
+
+  .get('/', (req, res, next) =>
+  Order.findOne({
+    include: [{model: LineItem}],
+    where: {
+      user_id: req.params.id,
+      status: 'cart'
+    }
+  })
+  .then((cart) => res.status(202).json(cart))
+  .catch(next))
+
+  .post('/', (req, res, next) =>
+    Promise.all([
+      Order.findOne({
+        where: {
+          user_id: req.params.id,
+          status: 'cart'
+        }
+      }),
+      Product.findById(req.body.productId)
+    ])
+    .then(([order, product]) =>
+      order.addProduct(product,
+      {price: product.price, quantity: req.body.quantity}))
+    .then(lineItem => res.status(202).json(lineItem))
+    .catch(next))
+
+  .put('/', (req, res, next) =>
+    Promise.all([
+      Order.findOne({
+        where: {
+          user_id: req.params.id,
+          status: 'cart'
+        }
+      }),
+      Product.findById(req.body.productId)
+    ])
+    .then(([order, product]) =>
+      order.setProducts(product,
+      {quantity: req.body.quantity}))
+    .then((count, updatedProduct) =>
+      res.status(202).json(updatedProduct)
+    )
+    .catch(next))
+
+  .delete('/', (req, res, next) =>
+    Promise.all([
+      Order.findOne({
+        where: {
+          user_id: req.params.id,
+          status: 'cart'
+        }
+      }),
+      Product.findById(req.body.productId)
+    ])
+    .then(([order, product]) =>
+      order.removeProduct(product))
+    .then(deletedProduct => res.status(204).json(deletedProduct))
+    .catch(next))
+
+    // changing order status from cart to pending, creating new cart
+  .put('/ordered', (req, res, next) => {
+    Order.update({status: 'pending', checkoutDateTime: Date()}, {where: {id: req.params.orderId}})
+    .then(() => Order.create({status: 'cart', userId: req.params.id}))
+    .then((order) => res.status(202).json(order))
+  .catch(next)
+  })
+
   // save the user's cart
   /*  if someone logs out we need to save the local storage cart */
   .post('/', (req, res, next) => {

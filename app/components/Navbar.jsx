@@ -64,14 +64,14 @@ class NavBar extends Component {
               {this.props.currentUser ?
                <li onClick={this.props.logout}>
                 Logout
-              </li>
+              </li> :
                 <li>
-                  <Link to="/signup">Signup</Link>
+                  <Link to="/login">Login</Link>
                 </li>
               }
               {!this.props.currentUser &&
-                <li>
-                  <Link to="/login">Login</Link>
+                                <li>
+                  <Link to="/signup">Signup</Link>
                 </li>
               }
             </ul>
