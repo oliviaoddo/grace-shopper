@@ -60,7 +60,8 @@ class ProductList extends Component {
 }
 
 const mapStateToProps = state => ({
-  products: state.products.products
+  products: state.products.products,
+  currentUser: state.auth
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
