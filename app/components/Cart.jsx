@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import {Input, Chip} from 'react-materialize'
-import {fetchCart, updateCart, removeCart, updateOrderStatus} from '..reducers/orders'
-import {connect} from "react-redux"
+import {fetchCart, updateCart, removeCart, updateOrderStatus} from '../reducers/orders'
+import {connect} from 'react-redux'
 
 class Cart extends Component {
   constructor(props) {

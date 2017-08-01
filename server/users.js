@@ -94,7 +94,7 @@ module.exports = require('express').Router()
     .then((cart) => res.status(202).json(cart))
     .catch(next))
 
-  .post('/:id/product', (req, res, next) =>
+  .post('/:id/cart', (req, res, next) =>
     Promise.all([
       Order.findOne({
         where: {
@@ -110,7 +110,7 @@ module.exports = require('express').Router()
     .then(lineItem => res.status(202).json(lineItem))
     .catch(next))
 
-  .put('/:id/product', (req, res, next) =>
+  .put('/:id/cart', (req, res, next) =>
     Promise.all([
       Order.findOne({
         where: {
@@ -128,7 +128,7 @@ module.exports = require('express').Router()
     )
     .catch(next))
 
-  .delete('/:id/product', (req, res, next) =>
+  .delete('/:id/cart', (req, res, next) =>
     Promise.all([
       Order.findOne({
         where: {
