@@ -40,7 +40,7 @@ class QuickLook extends Component{
       {this.props.product.name ?
         <div className='row'>
             <div className='col m12'>
-              <img className='product-img' src={`${this.props.product.images[0]}`} />
+              <img className='product-img' src={`${this.props.product.images[1]}`} />
             </div>
             <div className='col m12'>
               <Link to={`/shop/${this.props.product.id}`}><h1 className='product-name'>{this.props.product.name}</h1></Link>
