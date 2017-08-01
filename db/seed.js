@@ -11,6 +11,7 @@ function seedEverything() {
     tags: tags()
   }
 
+  seeded.orders = orders(seeded)
   seeded.addresses = addresses(seeded)
   seeded.reviews = reviews(seeded)
   seeded.lineItems = lineItems(seeded)
@@ -867,33 +868,45 @@ const categories = seed(Category, ({
   }
 }))
 
-const orders = seed(Order, ({users, products}) => ({
+const orders = seed(Order, ({users}) => ({
   orderA: {
     status: 'cart',
+    orderNumber: '1202',
     user_id: users.userA.id,
-    product_id: products.productA.id
   },
   orderB: {
     checkoutDateTime: 1501183231701,
-    status: 'pending'
+    status: 'pending',
+    orderNumber: '1240',
+    user_id: users.userB.id
   },
   orderC: {
     checkoutDateTime: 1501183672370,
-    status: 'pending'
+    status: 'pending',
+    orderNumber: '1732',
+    user_id: users.userC.id
   },
   orderD: {
     checkoutDateTime: 1298310298489,
-    status: 'pending'
+    status: 'pending',
+    orderNumber: '0389',
+    user_id: users.userD.id
   },
   orderE: {
     checkoutDateTime: 1209812039812,
-    status: 'pending'
+    status: 'pending',
+    orderNumber: '1923',
+    user_id: users.userE.id
   },
   orderF: {
-    status: 'cart'
+    status: 'cart',
+    orderNumber: '5809',
+    user_id: users.userB.id
   },
   orderG: {
-    status: 'cart'
+    status: 'cart',
+    orderNumber: '1892',
+    user_id: users.userC.id
   },
 }))
 
