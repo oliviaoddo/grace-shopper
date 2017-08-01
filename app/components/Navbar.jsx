@@ -9,6 +9,7 @@ import Footer from './Footer'
 import { Link } from 'react-router-dom'
 import { fetchCategories } from '../reducers/categories'
 import { connect } from 'react-redux'
+import { logout } from '../reducers/auth'
 
 class NavBar extends Component {
   constructor(props) {
@@ -60,12 +61,19 @@ class NavBar extends Component {
                   <i className="material-icons">shopping_cart</i>
                 </Link>
               </li>
-              <li>
-                <Link to="/login">Login</Link>
+              {this.props.currentUser ?
+               <li onClick={this.props.logout}>
+                Logout
               </li>
-               <li>
-                <Link to="/signup">SignUp</Link>
-              </li>
+                <li>
+                  <Link to="/signup">Signup</Link>
+                </li>
+              }
+              {!this.props.currentUser &&
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+              }
             </ul>
           </div>
         </nav>
@@ -74,12 +82,10 @@ class NavBar extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  products: state.products.products
-});
+const mapStateToProps = state => ({currentUser: state.auth})
 
 const mapDispatchToProps = dispatch => ({
-  fetchCategories: (ownProps) => dispatch(fetchProducts(ownProps))
-});
+  logout: () => dispatch(logout())
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

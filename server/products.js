@@ -54,6 +54,7 @@ module.exports = require('express').Router()
     .then(products => {
       res.json(products)
     })
+    .catch(next)
   })
   .get('/:id', (req, res, next) => {
     Product.findById(req.params.id,
