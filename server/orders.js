@@ -27,8 +27,8 @@ module.exports = require('express').Router()
   .get('/:id', (req, res, next) => {
     // res.json(order) // if allowed
     Order.findById(req.params.id,
-      { include: [{model: User,
-        include: [{model: Address}]}, {model: LineItem}]})
+      { include: [{model: LineItem, include: {model: Product}}, {model: User,
+        include: [{model: Address}]}]})
     .then(order => res.json(order))
     .catch(next)
   })

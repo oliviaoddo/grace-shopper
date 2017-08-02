@@ -50,7 +50,7 @@ module.exports = require('express').Router()
     .catch(next)
   })
   .get('/topRated', (req, res, next) => {
-    Product.findAll({order: [['rating', 'DESC']], limit: 3})
+    Product.findAll({order: [['rating', 'DESC']], limit: 3, include: {model: Category}})
     .then(products => {
       res.json(products)
     })

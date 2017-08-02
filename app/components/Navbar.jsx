@@ -50,6 +50,9 @@ class NavBar extends Component {
                     Orders
                   </Link>
                 </li>
+                <li onClick={this.props.logout}>
+                    Logout
+                </li>
               </ul>
             </div>
           </nav>
