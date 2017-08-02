@@ -22,24 +22,30 @@ module.exports = require('express').Router()
     User.findAll()
     .then(users => res.status(200).json(users))
     .catch(next))
+
   // query to see non-admin users
   .get('/?isAdmin="false"', assertAdmin, (req, res, next) =>
     User.findAll({where: {isAdmin: req.query.isAdmin}})
     .then(users => res.status(200).json(users))
     .catch(next))
+
   // query to see if user is admin
   .get('/?isAdmin="true"', assertAdmin, (req, res, next) =>
     User.findAll({where: {isAdmin: req.query.isAdmin}})
     .then(users => res.status(200).json(users))
     .catch(next))
+
   // admin or actual user can view
   .get('/:id', selfOnly, (req, res, next) =>
     User.findById(req.params.id, {
       include: [Review]
     })
     .then(user => res.json(user))
-    .catch(next))
+    .catch(err => {
+      next(err)}))
+
   // cant create a new user with admin status
+
   .post('/', (req, res, next) =>
     User.findOrCreate({where: {email: req.body.email},
       defaults: {// if we are creating the user include the
@@ -52,13 +58,14 @@ module.exports = require('express').Router()
       if (created) {
         req.logIn(user, err => {
           if (err) return next(err)
-          res.json(user)
+          res.status(201).json(user)
         })
       } else {
         res.sendStatus(401) // a user with that email already exists, which means they cannot sign up
       }
     })
     .catch(next))
+
   .put('/:id', (req, res, next) =>
     User.update(req.body, {where: {id: req.params.id}})
     .then(([count, user]) => res.json(user))
@@ -78,10 +85,12 @@ module.exports = require('express').Router()
   // ORDER ROUTES
   // list of users orders
   // specific user and admin access
+  //
   .get('/:id/orders', (req, res, next) =>
     Order.findAll({where: {userId: req.params.id}})
     .then(orders => res.status(200).json(orders))
     .catch(next))
+
   // single user order with line items
   // specific user and admin access
   .get('/:id/orders/:orderId', (req, res, next) =>
