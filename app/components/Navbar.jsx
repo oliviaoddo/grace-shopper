@@ -28,17 +28,6 @@ class NavBar extends Component {
           <nav>
             <div id="logo" className="nav-wrapper">
               <Link to='/' className="brand-logo">Sea Candy</Link>
-              <a>
-                <form>
-                  <div id="search-bar" className="input-field">
-                    <input id="search" type="search" placeholder="search" required/>
-                    <label className="label-icon" htmlFor="search">
-                      <i className="material-icons">search</i>
-                    </label>
-                    <i className="material-icons">close</i>
-                  </div>
-                </form>
-              </a>
               <ul id="nav-btn-container" className="right hide-on-med-and-down">
                 <li>
                   <Link to='/products'>
@@ -76,17 +65,6 @@ class NavBar extends Component {
             <nav>
               <div id="logo" className="nav-wrapper">
                 <Link to='/' className="brand-logo">Sea Candy</Link>
-                <a>
-                  <form>
-                    <div id="search-bar" className="input-field">
-                      <input id="search" type="search" placeholder="search" required/>
-                      <label className="label-icon" htmlFor="search">
-                        <i className="material-icons">search</i>
-                      </label>
-                      <i className="material-icons">close</i>
-                    </div>
-                  </form>
-                </a>
                 <ul id="nav-btn-container" className="right hide-on-med-and-down">
                   <li>
                     <a className="dropdown-button" href="#!" data-activates="catDropdown">Shop<i className="material-icons right">arrow_drop_down</i>

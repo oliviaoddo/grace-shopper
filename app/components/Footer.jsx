@@ -9,6 +9,17 @@ export default class Footer extends Component {
               <div className="col l6 s12">
                 <h5 className="white-text">Footer Content</h5>
                 <p className="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                <a>
+                <form>
+                  <div id="search-bar" className="input-field">
+                    <input id="search" type="search" placeholder="search" required/>
+                    <label className="label-icon" htmlFor="search">
+                      <i className="material-icons">search</i>
+                    </label>
+                    <i className="material-icons">close</i>
+                  </div>
+                </form>
+              </a>
               </div>
               <div className="col l4 offset-l2 s12">
                 <h5 className="white-text">Links</h5>
