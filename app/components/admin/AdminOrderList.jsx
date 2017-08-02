@@ -10,7 +10,6 @@ class AdminOrderList extends Component {
   }
 
   componentDidMount() {
-    if (!this.props.currentUser || !this.props.currentUser.isAdmin) this.props.history.replace("/")
     this.props.fetchAllOrders()
   }
 

@@ -21610,7 +21610,6 @@ var AdminOrderList = function (_Component) {
   _createClass(AdminOrderList, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      if (!this.props.currentUser || !this.props.currentUser.isAdmin) this.props.history.replace("/");
       this.props.fetchAllOrders();
     }
   }, {
@@ -21816,7 +21815,6 @@ var EditProduct = function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      if (!this.props.currentUser || !this.props.currentUser.isAdmin) this.props.history.replace("/");
       var productId = this.props.match.params.id;
       this.props.getProduct(productId).then(function () {
         _this2.setState({ sku: _this2.props.product.SKU, name: _this2.props.product.name, price: _this2.props.product.price, description: _this2.props.product.description, inventory: _this2.props.product.inventory });
@@ -22108,9 +22106,7 @@ var ProductForm = function (_Component) {
 
   _createClass(ProductForm, [{
     key: 'componentDidMount',
-    value: function componentDidMount() {
-      if (!this.props.currentUser || !this.props.currentUser.isAdmin) this.props.history.replace("/");
-    }
+    value: function componentDidMount() {}
   }, {
     key: 'deleteCategory',
     value: function deleteCategory(event) {
@@ -22315,7 +22311,8 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   return {
     addProduct: function addProduct(product) {
-      return dispatch((0, _products.postProduct)(product));
+      dispatch((0, _products.postProduct)(product));
+      ownProps.history.push('/products');
     }
   };
 };
@@ -22368,7 +22365,6 @@ var ProductList = function (_Component) {
   _createClass(ProductList, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      if (!this.props.currentUser || !this.props.currentUser.isAdmin) this.props.history.replace("/");
       this.props.getProducts();
     }
   }, {
@@ -22459,7 +22455,7 @@ var ProductList = function (_Component) {
                     null,
                     _react2.default.createElement(
                       _reactRouterDom.Link,
-                      { to: '/single/' + product.id },
+                      { to: '/shop/' + product.id },
                       product.name
                     )
                   ),
@@ -22568,7 +22564,6 @@ var SingleOrder = function (_Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       var orderId = this.props.match.params.id;
-      if (!this.props.currentUser || !this.props.currentUser.isAdmin) this.props.history.replace("/");
       this.props.fetchOrder(orderId);
     }
   }, {

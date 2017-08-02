@@ -24,7 +24,6 @@ class EditProduct extends Component{
   }
 
   componentDidMount() {
-    if (!this.props.currentUser || !this.props.currentUser.isAdmin) this.props.history.replace("/")
     const productId = this.props.match.params.id
     this.props.getProduct(productId)
     .then(() => {

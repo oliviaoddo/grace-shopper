@@ -23,7 +23,6 @@ class ProductForm extends Component{
   }
 
   componentDidMount() {
-    if (!this.props.currentUser || !this.props.currentUser.isAdmin) this.props.history.replace("/")
   }
 
   deleteCategory(event){
@@ -129,7 +128,10 @@ const mapStateToProps = state => ({
 
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  addProduct: (product) => dispatch(postProduct(product))
+  addProduct: (product) => {
+    dispatch(postProduct(product))
+    ownProps.history.push('/products')
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductForm)

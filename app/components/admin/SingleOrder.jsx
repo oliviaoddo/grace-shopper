@@ -11,7 +11,6 @@ class SingleOrder extends Component {
 
   componentDidMount() {
     const orderId = this.props.match.params.id
-    if (!this.props.currentUser || !this.props.currentUser.isAdmin) this.props.history.replace("/")
     this.props.fetchOrder(orderId)
   }
 
