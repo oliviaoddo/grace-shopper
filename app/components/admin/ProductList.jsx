@@ -11,7 +11,6 @@ class ProductList extends Component {
   }
 
   componentDidMount() {
-    if (!this.props.currentUser || !this.props.currentUser.isAdmin) this.props.history.replace("/")
     this.props.getProducts()
   }
 
@@ -43,7 +42,7 @@ class ProductList extends Component {
                 return (
                         <tr key={product.id}>
                           <td>{product.SKU}</td>
-                          <td><Link to={`/single/${product.id}`}>{product.name}</Link></td>
+                          <td><Link to={`/shop/${product.id}`}>{product.name}</Link></td>
                           <td>{product.price}</td>
                           <td>{product.inventory}</td>
                           <td><Link to={`/edit/${product.id}`}><i className="fa fa-pencil" aria-hidden="true"></i></Link></td>
