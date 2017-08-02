@@ -71,7 +71,7 @@ module.exports = require('express').Router()
   // REVIEWS ROUTE
 
   .get('/:id/reviews', (req, res, next) =>
-    Review.findAll({where: {userId: req.params.reviews}})
+    Review.findAll({where: {user_id: req.params.reviews}})
     .then(reviews => res.status(200).json(reviews))
     .catch(next))
 
@@ -79,7 +79,7 @@ module.exports = require('express').Router()
   // list of users orders
   // specific user and admin access
   .get('/:id/orders', (req, res, next) =>
-    Order.findAll({where: {userId: req.params.id}})
+    Order.findAll({where: {user_id: req.params.id}})
     .then(orders => res.status(200).json(orders))
     .catch(next))
   // single user order with line items
