@@ -467,7 +467,7 @@ const products = seed(Product, {
     description: `Our most classic sea glass necklace the charm necklace is a hallmark of Sea Candy Jewelry. We start out with a pristine piece of sea glass that was found in beautiful Laguna Beach, CA. This piece of sea glass is hand selected to ensure it is free of flaws and is at least 25 to 50 years old. The piece is carefully drilled with state of the art glass drilling equipment. Thin wire is then delicately wrapped around the sea glass in order to give it a touch of elegance. The wrapped sea glass is accompanied by a fresh water pearl and a charm on a dainty chain. Every element of this necklace is completely sterling silver or gold filled.  Because of its  high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.`,
     inventory: 11,
     rating: 4.32,
-    images: ['/images/necklaces/CNWG1-thumbnail.jpg', '/images/necklaces/CNWG1-6.jpg', '/images/necklaces/CNWG1-17.jpg', '/images/necklaces/CNWG1-18.jpg', '/images/necklaces/CNWG1-99.jpg', '/images/necklaces/CNWG1-100.jpg', '/images/necklaces/CNWG1-1.jpg', '/images/necklaces/CNWG1-5.jpg']
+    images: ['/images/necklaces/CNWG1-6.jpg', '/images/necklaces/CNWG1-17.jpg', '/images/necklaces/CNWG1-18.jpg', '/images/necklaces/CNWG1-99.jpg', '/images/necklaces/CNWG1-100.jpg', '/images/necklaces/CNWG1-1.jpg', '/images/necklaces/CNWG1-5.jpg', '/images/necklaces/CNWG1-thumbnail.jpg']
   },
   productB: {
     SKU: 'CNGG2',
@@ -477,7 +477,7 @@ const products = seed(Product, {
     description: `Our most classic sea glass necklace the charm necklace is a hallmark of Sea Candy Jewelry. We start out with a pristine piece of sea glass that was found in beautiful Laguna Beach, CA. This piece of sea glass is hand selected to ensure it is free of flaws and is at least 25 to 50 years old. The piece is carefully drilled with state of the art glass drilling equipment. Thin wire is then delicately wrapped around the sea glass in order to give it a touch of elegance. The wrapped sea glass is accompanied by a fresh water pearl and a charm on a dainty chain. Every element of this necklace is completely sterling silver or gold filled.  Because of its  high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.`,
     inventory: 12,
     rating: 4.29,
-    images: ['/images/necklaces/CNGG2-thumbnail.jpg', '/images/necklaces/CNGG2-1.jpg', '/images/necklaces/CNGG2-2.jpg', '/images/necklaces/CNGG2-3.jpg', '/images/necklaces/CNGG2-4.jpg', '/images/necklaces/CNGG2-5.jpg', '/images/necklaces/CNGG2-6.jpg', '/images/necklaces/CNGG2-7.jpg']
+    images: ['/images/necklaces/CNGG2-1.jpg', '/images/necklaces/CNGG2-2.jpg', '/images/necklaces/CNGG2-3.jpg', '/images/necklaces/CNGG2-4.jpg', '/images/necklaces/CNGG2-5.jpg', '/images/necklaces/CNGG2-6.jpg', '/images/necklaces/CNGG2-7.jpg', '/images/necklaces/CNGG2-thumbnail.jpg']
   },
   productC: {
     SKU: 'CNWS3',
@@ -487,7 +487,7 @@ const products = seed(Product, {
     description: 'Our most classic sea glass necklace the charm necklace is a hallmark of Sea Candy Jewelry. We start out with a pristine piece of sea glass that was found in beautiful Laguna Beach, CA. This piece of sea glass is hand selected to ensure it is free of flaws and is at least 25 to 50 years old. The piece is carefully drilled with state of the art glass drilling equipment. Thin wire is then delicately wrapped around the sea glass in order to give it a touch of elegance. The wrapped sea glass is accompanied by a fresh water pearl and a charm on a dainty chain. Every element of this necklace is completely sterling silver or gold filled.  Because of its  high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 99,
     rating: 4.58,
-    images: ['/images/necklaces/CNWS3-thumbnail.jpg', '/images/necklaces/CNWS3-1.jpg', '/images/necklaces/CNWS3-2.jpg', '/images/necklaces/CNWS3-3.jpg', '/images/necklaces/CNWS3-4.jpg', '/images/necklaces/CNWS3-5.jpg', '/images/necklaces/CNWS3-6.jpg', '/images/necklaces/CNWS3-7.jpg']
+    images: ['/images/necklaces/CNWS3-1.jpg', '/images/necklaces/CNWS3-2.jpg', '/images/necklaces/CNWS3-3.jpg', '/images/necklaces/CNWS3-4.jpg', '/images/necklaces/CNWS3-5.jpg', '/images/necklaces/CNWS3-6.jpg', '/images/necklaces/CNWS3-7.jpg', '/images/necklaces/CNWS3-thumbnail.jpg']
   },
   productD: {
     SKU: 'CNGS4',
@@ -497,7 +497,7 @@ const products = seed(Product, {
     description: 'Our most classic sea glass necklace the charm necklace is a hallmark of Sea Candy Jewelry. We start out with a pristine piece of sea glass that was found in beautiful Laguna Beach, CA. This piece of sea glass is hand selected to ensure it is free of flaws and is at least 25 to 50 years old. The piece is carefully drilled with state of the art glass drilling equipment. Thin wire is then delicately wrapped around the sea glass in order to give it a touch of elegance. The wrapped sea glass is accompanied by a fresh water pearl and a charm on a dainty chain. Every element of this necklace is completely sterling silver or gold filled.  Because of its  high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 2,
     rating: 3.49,
-    images: ['/images/necklaces/CNGS4-thumbnail.jpg', '/images/necklaces/CNGS4-1.jpg', '/images/necklaces/CNGS4-2.jpg', '/images/necklaces/CNGS4-3.jpg', '/images/necklaces/CNGS4-4.jpg', '/images/necklaces/CNGS4-5.jpg', '/images/necklaces/CNGS4-6.jpg', '/images/necklaces/CNGS4-7.jpg']
+    images: ['/images/necklaces/CNGS4-1.jpg', '/images/necklaces/CNGS4-2.jpg', '/images/necklaces/CNGS4-3.jpg', '/images/necklaces/CNGS4-4.jpg', '/images/necklaces/CNGS4-5.jpg', '/images/necklaces/CNGS4-6.jpg', '/images/necklaces/CNGS4-7.jpg', '/images/necklaces/CNGS4-thumbnail.jpg']
   },
   productH: {
     SKU: 'CNSG5',
@@ -507,7 +507,7 @@ const products = seed(Product, {
     description: 'Our most classic sea glass necklace the charm necklace is a hallmark of Sea Candy Jewelry. We start out with a pristine piece of sea glass that was found in beautiful Laguna Beach, CA. This piece of sea glass is hand selected to ensure it is free of flaws and is at least 25 to 50 years old. The piece is carefully drilled with state of the art glass drilling equipment. Thin wire is then delicately wrapped around the sea glass in order to give it a touch of elegance. The wrapped sea glass is accompanied by a fresh water pearl and a charm on a dainty chain. Every element of this necklace is completely sterling silver or gold filled. Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 2,
     rating: 4.50,
-    images: ['/images/necklaces/CNSG5-thumbnail.jpg', '/images/necklaces/CNSG5-1.jpg', '/images/necklaces/CNSG5-2.jpg']
+    images: ['/images/necklaces/CNSG5-1.jpg', '/images/necklaces/CNSG5-2.jpg', '/images/necklaces/CNSG5-thumbnail.jpg']
   },
   productI: {
     SKU: 'CNSS6',
@@ -517,7 +517,7 @@ const products = seed(Product, {
     description: 'Our most classic sea glass necklace the charm necklace is a hallmark of Sea Candy Jewelry. We start out with a pristine piece of sea glass that was found in beautiful Laguna Beach, CA. This piece of sea glass is hand selected to ensure it is free of flaws and is at least 25 to 50 years old. The piece is carefully drilled with state of the art glass drilling equipment. Thin wire is then delicately wrapped around the sea glass in order to give it a touch of elegance. The wrapped sea glass is accompanied by a fresh water pearl and a charm on a dainty chain. Every element of this necklace is completely sterling silver or gold filled. Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 2,
     rating: 4.00,
-    images: ['/images/necklaces/CNSS6-thumbnail.jpg', '/images/necklaces/CNSS6-1.jpg', '/images/necklaces/CNSS6-2.jpg', '/images/necklaces/CNSS6-3.jpg']
+    images: ['/images/necklaces/CNSS6-1.jpg', '/images/necklaces/CNSS6-2.jpg', '/images/necklaces/CNSS6-3.jpg', '/images/necklaces/CNSS6-thumbnail.jpg']
   },
   productE: {
     SKU: 'SNGG5',
@@ -527,7 +527,7 @@ const products = seed(Product, {
     description: 'The stack necklace is perhaps one of our most creative necklace styles. We start out with three pristine pebble shaped pieces of sea glass that were found in beautiful Laguna Beach, CA. These pieces of glass were hand selected to ensure they are free of flaws and are at least 25 to 50 years old. The glass is then carefully drilled with state of the art glass drilling equipment. The drilled sea glass is stacked onto a hand made head pin. The sea glass stack is accompanied by a fresh water pearl and a beach inspired charm. Every metal component of this sea glass necklace is either gold filled or sterling silver. Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 2,
     rating: 4.00,
-    images: ['/images/necklaces/SNGG5-thumbnail.jpg', '/images/necklaces/SNGG5-1.jpg', '/images/necklaces/SNGG5-2.jpg', '/images/necklaces/SNGG5-3.jpg', '/images/necklaces/SNGG5-4.jpg', '/images/necklaces/SNGG5-5.jpg']
+    images: ['/images/necklaces/SNGG5-1.jpg', '/images/necklaces/SNGG5-2.jpg', '/images/necklaces/SNGG5-3.jpg', '/images/necklaces/SNGG5-4.jpg', '/images/necklaces/SNGG5-5.jpg', '/images/necklaces/SNGG5-thumbnail.jpg']
   },
   productF: {
     SKU: 'SNWG1',
@@ -537,7 +537,7 @@ const products = seed(Product, {
     description: 'The stack necklace is perhaps one of our most creative necklace styles. We start out with three pristine pebble shaped pieces of sea glass that were found in beautiful Laguna Beach, CA. These pieces of glass were hand selected to ensure they are free of flaws and are at least 25 to 50 years old. The glass is then carefully drilled with state of the art glass drilling equipment. The drilled sea glass is stacked onto a hand made head pin. The sea glass stack is accompanied by a fresh water pearl and a beach inspired charm. Every metal component of this sea glass necklace is either gold filled or sterling silver. Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 12,
     rating: 3.49,
-    images: ['/images/necklaces/SNWG1-thumbnail.jpg', '/images/necklaces/SNWG1-1.jpg', '/images/necklaces/SNWG1-2.jpg', '/images/necklaces/SNWG1-3.jpg', '/images/necklaces/SNWG1-4.jpg', '/images/necklaces/SNWG1-5.jpg', '/images/necklaces/SNWG1-6.jpg']
+    images: ['/images/necklaces/SNWG1-1.jpg', '/images/necklaces/SNWG1-2.jpg', '/images/necklaces/SNWG1-3.jpg', '/images/necklaces/SNWG1-4.jpg', '/images/necklaces/SNWG1-5.jpg', '/images/necklaces/SNWG1-6.jpg', '/images/necklaces/SNWG1-thumbnail.jpg']
   },
   productG: {
     SKU: 'SNSG2',
@@ -547,7 +547,7 @@ const products = seed(Product, {
     description: 'The stack necklace is perhaps one of our most creative necklace styles. We start out with three pristine pebble shaped pieces of sea glass that were found in beautiful Laguna Beach, CA. These pieces of glass were hand selected to ensure they are free of flaws and are at least 25 to 50 years old. The glass is then carefully drilled with state of the art glass drilling equipment. The drilled sea glass is stacked onto a hand made head pin. The sea glass stack is accompanied by a fresh water pearl and a beach inspired charm. Every metal component of this sea glass necklace is either gold filled or sterling silver. Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 2,
     rating: 3.49,
-    images: ['/images/necklaces/SNSG2-thumbnail.jpg', '/images/necklaces/SNSG2-1.jpg', '/images/necklaces/SNSG2-2.jpg', '/images/necklaces/SNSG2-3.jpg', '/images/necklaces/SNSG2-4.jpg', '/images/necklaces/SNSG2-5.jpg']
+    images: ['/images/necklaces/SNSG2-1.jpg', '/images/necklaces/SNSG2-2.jpg', '/images/necklaces/SNSG2-3.jpg', '/images/necklaces/SNSG2-4.jpg', '/images/necklaces/SNSG2-5.jpg', '/images/necklaces/SNSG2-thumbnail.jpg']
   },
   productJ: {
     SKU: 'SNSS3',
@@ -557,7 +557,7 @@ const products = seed(Product, {
     description: 'The stack necklace is perhaps one of our most creative necklace styles. We start out with three pristine pebble shaped pieces of sea glass that were found in beautiful Laguna Beach, CA. These pieces of glass were hand selected to ensure they are free of flaws and are at least 25 to 50 years old. The glass is then carefully drilled with state of the art glass drilling equipment. The drilled sea glass is stacked onto a hand made head pin. The sea glass stack is accompanied by a fresh water pearl and a beach inspired charm. Every metal component of this sea glass necklace is either gold filled or sterling silver. Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 2,
     rating: 4.49,
-    images: ['/images/necklaces/SNSS3-thumbnail.jpg', '/images/necklaces/SNSS3-1.jpg', '/images/necklaces/SNSS3-2.jpg', '/images/necklaces/SNSS3-3.jpg', '/images/necklaces/SNSS3-4.jpg', '/images/necklaces/SNSS3-5.jpg', '/images/necklaces/SNSS3-6.jpg']
+    images: ['/images/necklaces/SNSS3-1.jpg', '/images/necklaces/SNSS3-2.jpg', '/images/necklaces/SNSS3-3.jpg', '/images/necklaces/SNSS3-4.jpg', '/images/necklaces/SNSS3-5.jpg', '/images/necklaces/SNSS3-6.jpg', '/images/necklaces/SNSS3-thumbnail.jpg']
   },
   productK: {
     SKU: 'SNGS4',
@@ -567,7 +567,7 @@ const products = seed(Product, {
     description: 'The stack necklace is perhaps one of our most creative necklace styles. We start out with three pristine pebble shaped pieces of sea glass that were found in beautiful Laguna Beach, CA. These pieces of glass were hand selected to ensure they are free of flaws and are at least 25 to 50 years old. The glass is then carefully drilled with state of the art glass drilling equipment. The drilled sea glass is stacked onto a hand made head pin. The sea glass stack is accompanied by a fresh water pearl and a beach inspired charm. Every metal component of this sea glass necklace is either gold filled or sterling silver. Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 2,
     rating: 4.49,
-    images: ['/images/necklaces/SNGS4-thumbnail.jpg', '/images/necklaces/SNGS4-1.jpg', '/images/necklaces/SNGS4-2.jpg', '/images/necklaces/SNGS4-3.jpg', '/images/necklaces/SNGS4-4.jpg', '/images/necklaces/SNGS4-5.jpg', '/images/necklaces/SNGS4-6.jpg']
+    images: ['/images/necklaces/SNGS4-1.jpg', '/images/necklaces/SNGS4-2.jpg', '/images/necklaces/SNGS4-3.jpg', '/images/necklaces/SNGS4-4.jpg', '/images/necklaces/SNGS4-5.jpg', '/images/necklaces/SNGS4-6.jpg', '/images/necklaces/SNGS4-thumbnail.jpg']
   },
   productL: {
     SKU: 'SNWS6',
@@ -577,7 +577,7 @@ const products = seed(Product, {
     description: 'The stack necklace is perhaps one of our most creative necklace styles. We start out with three pristine pebble shaped pieces of sea glass that were found in beautiful Laguna Beach, CA. These pieces of glass were hand selected to ensure they are free of flaws and are at least 25 to 50 years old. The glass is then carefully drilled with state of the art glass drilling equipment. The drilled sea glass is stacked onto a hand made head pin. The sea glass stack is accompanied by a fresh water pearl and a beach inspired charm. Every metal component of this sea glass necklace is either gold filled or sterling silver. Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 2,
     rating: 4.49,
-    images: ['/images/necklaces/SNWS6-thumbnail.jpg', '/images/necklaces/SNWS6-1.jpg', '/images/necklaces/SNWS6-2.jpg', '/images/necklaces/SNWS6-3.jpg', '/images/necklaces/SNWS6-4.jpg', '/images/necklaces/SNWS6-5.jpg', '/images/necklaces/SNWS6-6.jpg']
+    images: ['/images/necklaces/SNWS6-1.jpg', '/images/necklaces/SNWS6-2.jpg', '/images/necklaces/SNWS6-3.jpg', '/images/necklaces/SNWS6-4.jpg', '/images/necklaces/SNWS6-5.jpg', '/images/necklaces/SNWS6-6.jpg', '/images/necklaces/SNWS6-thumbnail.jpg']
   },
   productM: {
     SKU: 'BNGG1',
@@ -587,7 +587,7 @@ const products = seed(Product, {
     description: 'The bar necklace is the newest edition to our line of dainty sea glass necklaces. We start out with 4 pristine uniquely shaped pieces of sea glass that are found in beautiful Laguna Beach, CA. These pieces of glass are hand selected to ensure they are free of flaws and are at least 25 to 50 years old. The glass is then carefully drilled with state of the art glass drilling equipment. The sea glass accompanied by small golden beads are stacked onto a hand made head pin. Lastly, we attach a high quality chain to both sides of the bar in the size of your choice. Every metal component of this sea glass necklace is either gold filled or sterling silver. Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/necklaces/BNGG1-thumbnail.jpg', '/images/necklaces/BNGG1-1.jpg', '/images/necklaces/BNGG1-2.jpg', '/images/necklaces/BNGG1-3.jpg', '/images/necklaces/BNGG1-4.jpg', '/images/necklaces/BNGG1-5.jpg', '/images/necklaces/BNGG1-6.jpg']
+    images: ['/images/necklaces/BNGG1-1.jpg', '/images/necklaces/BNGG1-2.jpg', '/images/necklaces/BNGG1-3.jpg', '/images/necklaces/BNGG1-4.jpg', '/images/necklaces/BNGG1-5.jpg', '/images/necklaces/BNGG1-6.jpg','/images/necklaces/BNGG1-thumbnail.jpg']
   },
   productN: {
     SKU: 'BNSG2',
@@ -597,7 +597,7 @@ const products = seed(Product, {
     description: 'The bar necklace is the newest edition to our line of dainty sea glass necklaces. We start out with 4 pristine uniquely shaped pieces of sea glass that are found in beautiful Laguna Beach, CA. These pieces of glass are hand selected to ensure they are free of flaws and are at least 25 to 50 years old. The glass is then carefully drilled with state of the art glass drilling equipment. The sea glass accompanied by small golden beads are stacked onto a hand made head pin. Lastly, we attach a high quality chain to both sides of the bar in the size of your choice. Every metal component of this sea glass necklace is either gold filled or sterling silver. Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/necklaces/BNGG1-thumbnail.jpg', '/images/necklaces/BNGG1-1.jpg', '/images/necklaces/BNGG1-2.jpg', '/images/necklaces/BNGG1-3.jpg', '/images/necklaces/BNGG1-4.jpg', '/images/necklaces/BNGG1-5.jpg']
+    images: ['/images/necklaces/BNGG1-1.jpg', '/images/necklaces/BNGG1-2.jpg', '/images/necklaces/BNGG1-3.jpg', '/images/necklaces/BNGG1-4.jpg', '/images/necklaces/BNGG1-5.jpg', '/images/necklaces/BNGG1-thumbnail.jpg']
   },
   productO: {
     SKU: 'BNWG3',
@@ -607,7 +607,7 @@ const products = seed(Product, {
     description: 'The bar necklace is the newest edition to our line of dainty sea glass necklaces. We start out with 4 pristine uniquely shaped pieces of sea glass that are found in beautiful Laguna Beach, CA. These pieces of glass are hand selected to ensure they are free of flaws and are at least 25 to 50 years old. The glass is then carefully drilled with state of the art glass drilling equipment. The sea glass accompanied by small golden beads are stacked onto a hand made head pin. Lastly, we attach a high quality chain to both sides of the bar in the size of your choice. Every metal component of this sea glass necklace is either gold filled or sterling silver. Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/necklaces/BNWG3-thumbnail.jpg', '/images/necklaces/BNWG3-1.jpg', '/images/necklaces/BNWG3-2.jpg', '/images/necklaces/BNWG3-3.jpg', '/images/necklaces/BNWG3-4.jpg']
+    images: ['/images/necklaces/BNWG3-1.jpg', '/images/necklaces/BNWG3-2.jpg', '/images/necklaces/BNWG3-3.jpg', '/images/necklaces/BNWG3-4.jpg', '/images/necklaces/BNWG3-thumbnail.jpg']
   },
   productP: {
     SKU: 'BNWS4',
@@ -617,7 +617,7 @@ const products = seed(Product, {
     description: 'The bar necklace is the newest edition to our line of dainty sea glass necklaces. We start out with 4 pristine uniquely shaped pieces of sea glass that are found in beautiful Laguna Beach, CA. These pieces of glass are hand selected to ensure they are free of flaws and are at least 25 to 50 years old. The glass is then carefully drilled with state of the art glass drilling equipment. The sea glass accompanied by small golden beads are stacked onto a hand made head pin. Lastly, we attach a high quality chain to both sides of the bar in the size of your choice. Every metal component of this sea glass necklace is either gold filled or sterling silver. Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/necklaces/BNWS4-thumbnail.jpg', '/images/necklaces/BNWS4-1.jpg', '/images/necklaces/BNWS4-2.jpg', '/images/necklaces/BNWS4-3.jpg', '/images/necklaces/BNWS4-4.jpg']
+    images: ['/images/necklaces/BNWS4-1.jpg', '/images/necklaces/BNWS4-2.jpg', '/images/necklaces/BNWS4-3.jpg', '/images/necklaces/BNWS4-4.jpg', '/images/necklaces/BNWS4-thumbnail.jpg']
   },
   productQ: {
     SKU: 'BNSS5',
@@ -627,7 +627,7 @@ const products = seed(Product, {
     description: 'The bar necklace is the newest edition to our line of dainty sea glass necklaces. We start out with 4 pristine uniquely shaped pieces of sea glass that are found in beautiful Laguna Beach, CA. These pieces of glass are hand selected to ensure they are free of flaws and are at least 25 to 50 years old. The glass is then carefully drilled with state of the art glass drilling equipment. The sea glass accompanied by small golden beads are stacked onto a hand made head pin. Lastly, we attach a high quality chain to both sides of the bar in the size of your choice. Every metal component of this sea glass necklace is either gold filled or sterling silver. Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/necklaces/BNSS5-thumbnail.jpg', '/images/necklaces/BNSS5-1.jpg', '/images/necklaces/BNSS5-2.jpg', '/images/necklaces/BNSS5-3.jpg', '/images/necklaces/BNSS5-4.jpg', '/images/necklaces/BNSS5-5.jpg']
+    images: ['/images/necklaces/BNSS5-1.jpg', '/images/necklaces/BNSS5-2.jpg', '/images/necklaces/BNSS5-3.jpg', '/images/necklaces/BNSS5-4.jpg', '/images/necklaces/BNSS5-5.jpg', '/images/necklaces/BNSS5-thumbnail.jpg']
   },
   productR: {
     SKU: 'BNGS6',
@@ -637,7 +637,7 @@ const products = seed(Product, {
     description: 'The bar necklace is the newest edition to our line of dainty sea glass necklaces. We start out with 4 pristine uniquely shaped pieces of sea glass that are found in beautiful Laguna Beach, CA. These pieces of glass are hand selected to ensure they are free of flaws and are at least 25 to 50 years old. The glass is then carefully drilled with state of the art glass drilling equipment. The sea glass accompanied by small golden beads are stacked onto a hand made head pin. Lastly, we attach a high quality chain to both sides of the bar in the size of your choice. Every metal component of this sea glass necklace is either gold filled or sterling silver. Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/necklaces/BNGS6-thumbnail.jpg', '/images/necklaces/BNGS6-1.jpg', '/images/necklaces/BNGS6-2.jpg', '/images/necklaces/BNGS6-3.jpg', '/images/necklaces/BNGS6-4.jpg', '/images/necklaces/BNGS6-5.jpg']
+    images: ['/images/necklaces/BNGS6-1.jpg', '/images/necklaces/BNGS6-2.jpg', '/images/necklaces/BNGS6-3.jpg', '/images/necklaces/BNGS6-4.jpg', '/images/necklaces/BNGS6-5.jpg', '/images/necklaces/BNGS6-thumbnail.jpg']
   },
   productS: {
     SKU: 'RGS1',
@@ -647,7 +647,7 @@ const products = seed(Product, {
     description: 'The sea glass ring is one of our best selling products because it is trendy and affordable. The ring features a hand picked piece of sea glass that was found in beautiful Laguna Beach, CA. The piece of sea glass is at least 25-50 years old and in some cases up to 100 years old. We use a thin wire to secure the sea glass onto our hand made ring band. Both the ring band and the wire are either sterling silver or gold filled. Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will not tarnish or fade and stay looking good for years to come.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/rings/RGS1-thumbnail.jpg', '/images/rings/RGS1-1.jpg', '/images/rings/RGS1-2.jpg', '/images/rings/RGS1-3.jpg', '/images/rings/RGS1-4.jpg']
+    images: ['/images/rings/RGS1-1.jpg', '/images/rings/RGS1-2.jpg', '/images/rings/RGS1-3.jpg', '/images/rings/RGS1-4.jpg', '/images/rings/RGS1-thumbnail.jpg']
   },
   productT: {
     SKU: 'RWS2',
@@ -657,7 +657,7 @@ const products = seed(Product, {
     description: 'The sea glass ring is one of our best selling products because it is trendy and affordable. The ring features a hand picked piece of sea glass that was found in beautiful Laguna Beach, CA. The piece of sea glass is at least 25-50 years old and in some cases up to 100 years old. We use a thin wire to secure the sea glass onto our hand made ring band. Both the ring band and the wire are either sterling silver or gold filled. Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will not tarnish or fade and stay looking good for years to come.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/rings/RWS2-thumbnail.jpg', '/images/rings/RWS2-1.jpg', '/images/rings/RWS2-2.jpg', '/images/rings/RWS2-3.jpg', '/images/rings/RWS2-4.jpg']
+    images: ['/images/rings/RWS2-1.jpg', '/images/rings/RWS2-2.jpg', '/images/rings/RWS2-3.jpg', '/images/rings/RWS2-4.jpg', '/images/rings/RWS2-thumbnail.jpg']
   },
   productU: {
     SKU: 'RWG3',
@@ -667,7 +667,7 @@ const products = seed(Product, {
     description: 'The sea glass ring is one of our best selling products because it is trendy and affordable. The ring features a hand picked piece of sea glass that was found in beautiful Laguna Beach, CA. The piece of sea glass is at least 25-50 years old and in some cases up to 100 years old. We use a thin wire to secure the sea glass onto our hand made ring band. Both the ring band and the wire are either sterling silver or gold filled. Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will not tarnish or fade and stay looking good for years to come.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/rings/RWG3-thumbnail.jpg', '/images/rings/RWG3-1.jpg', '/images/rings/RWG3-2.jpg', '/images/rings/RWG3-3.jpg', '/images/rings/RWG3-4.jpg']
+    images: ['/images/rings/RWG3-1.jpg', '/images/rings/RWG3-2.jpg', '/images/rings/RWG3-3.jpg', '/images/rings/RWG3-4.jpg', '/images/rings/RWG3-thumbnail.jpg']
   },
   productW: {
     SKU: 'RGG4',
@@ -677,7 +677,7 @@ const products = seed(Product, {
     description: 'The sea glass ring is one of our best selling products because it is trendy and affordable. The ring features a hand picked piece of sea glass that was found in beautiful Laguna Beach, CA. The piece of sea glass is at least 25-50 years old and in some cases up to 100 years old. We use a thin wire to secure the sea glass onto our hand made ring band. Both the ring band and the wire are either sterling silver or gold filled. Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will not tarnish or fade and stay looking good for years to come.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/rings/RGG4-thumbnail.jpg', '/images/rings/RGG4-1.jpg', '/images/rings/RGG4-2.jpg', '/images/rings/RGG4-3.jpg', '/images/rings/RGG4-4.jpg']
+    images: ['/images/rings/RGG4-1.jpg', '/images/rings/RGG4-2.jpg', '/images/rings/RGG4-3.jpg', '/images/rings/RGG4-4.jpg', '/images/rings/RGG4-thumbnail.jpg']
   },
   productX: {
     SKU: 'RSG5',
@@ -687,7 +687,7 @@ const products = seed(Product, {
     description: 'The sea glass ring is one of our best selling products because it is trendy and affordable. The ring features a hand picked piece of sea glass that was found in beautiful Laguna Beach, CA. The piece of sea glass is at least 25-50 years old and in some cases up to 100 years old. We use a thin wire to secure the sea glass onto our hand made ring band. Both the ring band and the wire are either sterling silver or gold filled. Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will not tarnish or fade and stay looking good for years to come.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/rings/RSG5-thumbnail.jpg', '/images/rings/RSG5-1.jpg', '/images/rings/RSG5-2.jpg', '/images/rings/RSG5-3.jpg', '/images/rings/RSG5-4.jpg']
+    images: ['/images/rings/RSG5-1.jpg', '/images/rings/RSG5-2.jpg', '/images/rings/RSG5-3.jpg', '/images/rings/RSG5-4.jpg', '/images/rings/RSG5-thumbnail.jpg']
   },
   productY: {
     SKU: 'RSS6',
@@ -697,7 +697,7 @@ const products = seed(Product, {
     description: 'The sea glass ring is one of our best selling products because it is trendy and affordable. The ring features a hand picked piece of sea glass that was found in beautiful Laguna Beach, CA. The piece of sea glass is at least 25-50 years old and in some cases up to 100 years old. We use a thin wire to secure the sea glass onto our hand made ring band. Both the ring band and the wire are either sterling silver or gold filled. Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will not tarnish or fade and stay looking good for years to come.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/rings/RSS6-thumbnail.jpg', '/images/rings/RSS6-1.jpg', '/images/rings/RSS6-2.jpg', '/images/rings/RSS6-3.jpg', '/images/rings/RSS6-4.jpg']
+    images: ['/images/rings/RSS6-1.jpg', '/images/rings/RSS6-2.jpg', '/images/rings/RSS6-3.jpg', '/images/rings/RSS6-4.jpg', '/images/rings/RSS6-thumbnail.jpg']
   },
   product1: {
     SKU: 'WBLG1',
@@ -707,7 +707,7 @@ const products = seed(Product, {
     description: 'Our beachiest sea glass bracelet, the wood bead bracelet, lets you bring the beachy vibes where ever you go. It consists of two wooden bead bracelets; one with sea glass and the other without. The wood beads are hand cut, dyed, and waxed in the Philippines. Yes, we said hand cut! No machines were used in the making of these beads, a human being hand cut each and every one. These beads are strung onto elastic cord along with 7 pristine pieces of sea glass that were found in Laguna Beach, CA. These pieces of sea glass are at least 25-50 years old and are hand selected to ensure they free of flaws. The combination of natural wood and natural sea glass create a natural, beach inspired look.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/bracelets/WBLG1-thumbnail.jpg', '/images/bracelets/WBLG1-1.jpg', '/images/bracelets/WBLG1-2.jpg', '/images/bracelets/WBLG1-3.jpg']
+    images: ['/images/bracelets/WBLG1-1.jpg', '/images/bracelets/WBLG1-2.jpg', '/images/bracelets/WBLG1-3.jpg', '/images/bracelets/WBLG1-thumbnail.jpg']
   },
   product2: {
     SKU: 'WBDG2',
@@ -717,7 +717,7 @@ const products = seed(Product, {
     description: 'Our beachiest sea glass bracelet, the wood bead bracelet, lets you bring the beachy vibes where ever you go. It consists of two wooden bead bracelets; one with sea glass and the other without. The wood beads are hand cut, dyed, and waxed in the Philippines. Yes, we said hand cut! No machines were used in the making of these beads, a human being hand cut each and every one. These beads are strung onto elastic cord along with 7 pristine pieces of sea glass that were found in Laguna Beach, CA. These pieces of sea glass are at least 25-50 years old and are hand selected to ensure they free of flaws. The combination of natural wood and natural sea glass create a natural, beach inspired look.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/bracelets/WBDG2-thumbnail.jpg', '/images/bracelets/WBDG2-1.jpg', '/images/bracelets/WBDG2-2.jpg', '/images/bracelets/WBDG2-3.jpg']
+    images: ['/images/bracelets/WBDG2-1.jpg', '/images/bracelets/WBDG2-2.jpg', '/images/bracelets/WBDG2-3.jpg', '/images/bracelets/WBDG2-thumbnail.jpg']
   },
   product3: {
     SKU: 'WBLS3',
@@ -727,7 +727,7 @@ const products = seed(Product, {
     description: 'Our beachiest sea glass bracelet, the wood bead bracelet, lets you bring the beachy vibes where ever you go. It consists of two wooden bead bracelets; one with sea glass and the other without. The wood beads are hand cut, dyed, and waxed in the Philippines. Yes, we said hand cut! No machines were used in the making of these beads, a human being hand cut each and every one. These beads are strung onto elastic cord along with 7 pristine pieces of sea glass that were found in Laguna Beach, CA. These pieces of sea glass are at least 25-50 years old and are hand selected to ensure they free of flaws. The combination of natural wood and natural sea glass create a natural, beach inspired look.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/bracelets/WBLS3-thumbnail.jpg', '/images/bracelets/WBLS3-1.jpg', '/images/bracelets/WBLS3-2.jpg', '/images/bracelets/WBLS3-3.jpg']
+    images: ['/images/bracelets/WBLS3-1.jpg', '/images/bracelets/WBLS3-2.jpg', '/images/bracelets/WBLS3-3.jpg', '/images/bracelets/WBLS3-thumbnail.jpg']
   },
   product4: {
     SKU: 'WBDS4',
@@ -737,7 +737,7 @@ const products = seed(Product, {
     description: 'Our beachiest sea glass bracelet, the wood bead bracelet, lets you bring the beachy vibes where ever you go. It consists of two wooden bead bracelets; one with sea glass and the other without. The wood beads are hand cut, dyed, and waxed in the Philippines. Yes, we said hand cut! No machines were used in the making of these beads, a human being hand cut each and every one. These beads are strung onto elastic cord along with 7 pristine pieces of sea glass that were found in Laguna Beach, CA. These pieces of sea glass are at least 25-50 years old and are hand selected to ensure they free of flaws. The combination of natural wood and natural sea glass create a natural, beach inspired look.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/bracelets/WBDS4-thumbnail.jpg', '/images/bracelets/WBDS4-1.jpg', '/images/bracelets/WBDS4-2.jpg', '/images/bracelets/WBDS4-3.jpg']
+    images: ['/images/bracelets/WBDS4-1.jpg', '/images/bracelets/WBDS4-2.jpg', '/images/bracelets/WBDS4-3.jpg', '/images/bracelets/WBDS4-thumbnail.jpg']
   },
   product5: {
     SKU: 'SBAG1',
@@ -747,7 +747,7 @@ const products = seed(Product, {
     description: 'Our most popular sea glass bracelet, the beaded stretch bracelet, is the perfect accessory to any outfit. It consists of two bracelets; one with sea glass and a starfish charm, and the other with a beach inspired charm of your choice. For the first sea glass bracelet we start out with a pristine piece of sea glass that was found in beautiful Laguna Beach, CA. The sea glass is at least 25-50 years old and is hand selected to make sure it is free of flaws and fully aged. The glass is then carefully drilled with state of the art glass drilling equipment. After being drilled, the sea glass is delicately wrapped in thin wire to give it a touch of elegance. The wire wrapped sea glass is accompanied by a starfish charm on an elastic cord. Dyed marble beads are used, which are commonly called Mountain Jade Beads.  Lastly, another bracelet is made with smaller beads and a beach inspired charm. Together, these two bracelets make the perfect set! Every metal element on these bracelets is either gold filled or sterling silver.  Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/bracelets/SBAG1-thumbnail.jpg', '/images/bracelets/SBAG1-1.jpg', '/images/bracelets/SBAG1-2.jpg', '/images/bracelets/SBAG1-3.jpg']
+    images: ['/images/bracelets/SBAG1-1.jpg', '/images/bracelets/SBAG1-2.jpg', '/images/bracelets/SBAG1-3.jpg', '/images/bracelets/SBAG1-thumbnail.jpg']
   },
   product6: {
     SKU: 'SBTG2',
@@ -757,7 +757,7 @@ const products = seed(Product, {
     description: 'Our most popular sea glass bracelet, the beaded stretch bracelet, is the perfect accessory to any outfit. It consists of two bracelets; one with sea glass and a starfish charm, and the other with a beach inspired charm of your choice. For the first sea glass bracelet we start out with a pristine piece of sea glass that was found in beautiful Laguna Beach, CA. The sea glass is at least 25-50 years old and is hand selected to make sure it is free of flaws and fully aged. The glass is then carefully drilled with state of the art glass drilling equipment. After being drilled, the sea glass is delicately wrapped in thin wire to give it a touch of elegance. The wire wrapped sea glass is accompanied by a starfish charm on an elastic cord. Dyed marble beads are used, which are commonly called Mountain Jade Beads.  Lastly, another bracelet is made with smaller beads and a beach inspired charm. Together, these two bracelets make the perfect set! Every metal element on these bracelets is either gold filled or sterling silver.  Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/bracelets/SBTG2-thumbnail.jpg', '/images/bracelets/SBTG2-1.jpg', '/images/bracelets/SBTG2-2.jpg', '/images/bracelets/SBTG2-3.jpg']
+    images: ['/images/bracelets/SBTG2-1.jpg', '/images/bracelets/SBTG2-2.jpg', '/images/bracelets/SBTG2-3.jpg', '/images/bracelets/SBTG2-thumbnail.jpg']
   },
   product7: {
     SKU: 'SBNG3',
@@ -767,7 +767,7 @@ const products = seed(Product, {
     description: 'Our most popular sea glass bracelet, the beaded stretch bracelet, is the perfect accessory to any outfit. It consists of two bracelets; one with sea glass and a starfish charm, and the other with a beach inspired charm of your choice. For the first sea glass bracelet we start out with a pristine piece of sea glass that was found in beautiful Laguna Beach, CA. The sea glass is at least 25-50 years old and is hand selected to make sure it is free of flaws and fully aged. The glass is then carefully drilled with state of the art glass drilling equipment. After being drilled, the sea glass is delicately wrapped in thin wire to give it a touch of elegance. The wire wrapped sea glass is accompanied by a starfish charm on an elastic cord. Dyed marble beads are used, which are commonly called Mountain Jade Beads.  Lastly, another bracelet is made with smaller beads and a beach inspired charm. Together, these two bracelets make the perfect set! Every metal element on these bracelets is either gold filled or sterling silver.  Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/bracelets/SBNG3-thumbnail.jpg', '/images/bracelets/SBNG3-1.jpg', '/images/bracelets/SBNG3-2.jpg', '/images/bracelets/SBNG3-3.jpg']
+    images: ['/images/bracelets/SBNG3-1.jpg', '/images/bracelets/SBNG3-2.jpg', '/images/bracelets/SBNG3-3.jpg','/images/bracelets/SBNG3-thumbnail.jpg']
   },
   product8: {
     SKU: 'SBAS4',
@@ -777,7 +777,7 @@ const products = seed(Product, {
     description: 'Our most popular sea glass bracelet, the beaded stretch bracelet, is the perfect accessory to any outfit. It consists of two bracelets; one with sea glass and a starfish charm, and the other with a beach inspired charm of your choice. For the first sea glass bracelet we start out with a pristine piece of sea glass that was found in beautiful Laguna Beach, CA. The sea glass is at least 25-50 years old and is hand selected to make sure it is free of flaws and fully aged. The glass is then carefully drilled with state of the art glass drilling equipment. After being drilled, the sea glass is delicately wrapped in thin wire to give it a touch of elegance. The wire wrapped sea glass is accompanied by a starfish charm on an elastic cord. Dyed marble beads are used, which are commonly called Mountain Jade Beads.  Lastly, another bracelet is made with smaller beads and a beach inspired charm. Together, these two bracelets make the perfect set! Every metal element on these bracelets is either gold filled or sterling silver.  Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/bracelets/SBAS4-thumbnail.jpg', '/images/bracelets/SBAS4-1.jpg', '/images/bracelets/SBAS4-2.jpg', '/images/bracelets/SBAS4-3.jpg']
+    images: ['/images/bracelets/SBAS4-1.jpg', '/images/bracelets/SBAS4-2.jpg', '/images/bracelets/SBAS4-3.jpg', '/images/bracelets/SBAS4-thumbnail.jpg']
   },
   product9: {
     SKU: 'SBTS5',
@@ -787,7 +787,7 @@ const products = seed(Product, {
     description: 'Our most popular sea glass bracelet, the beaded stretch bracelet, is the perfect accessory to any outfit. It consists of two bracelets; one with sea glass and a starfish charm, and the other with a beach inspired charm of your choice. For the first sea glass bracelet we start out with a pristine piece of sea glass that was found in beautiful Laguna Beach, CA. The sea glass is at least 25-50 years old and is hand selected to make sure it is free of flaws and fully aged. The glass is then carefully drilled with state of the art glass drilling equipment. After being drilled, the sea glass is delicately wrapped in thin wire to give it a touch of elegance. The wire wrapped sea glass is accompanied by a starfish charm on an elastic cord. Dyed marble beads are used, which are commonly called Mountain Jade Beads.  Lastly, another bracelet is made with smaller beads and a beach inspired charm. Together, these two bracelets make the perfect set! Every metal element on these bracelets is either gold filled or sterling silver.  Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/bracelets/SBTS5-thumbnail.jpg', '/images/bracelets/SBTS5-1.jpg', '/images/bracelets/SBTS5-2.jpg', '/images/bracelets/SBTS5-3.jpg']
+    images: ['/images/bracelets/SBTS5-1.jpg', '/images/bracelets/SBTS5-2.jpg', '/images/bracelets/SBTS5-3.jpg', '/images/bracelets/SBTS5-thumbnail.jpg']
   },
   product10: {
     SKU: 'SBNS6',
@@ -797,7 +797,7 @@ const products = seed(Product, {
     description: 'Our most popular sea glass bracelet, the beaded stretch bracelet, is the perfect accessory to any outfit. It consists of two bracelets; one with sea glass and a starfish charm, and the other with a beach inspired charm of your choice. For the first sea glass bracelet we start out with a pristine piece of sea glass that was found in beautiful Laguna Beach, CA. The sea glass is at least 25-50 years old and is hand selected to make sure it is free of flaws and fully aged. The glass is then carefully drilled with state of the art glass drilling equipment. After being drilled, the sea glass is delicately wrapped in thin wire to give it a touch of elegance. The wire wrapped sea glass is accompanied by a starfish charm on an elastic cord. Dyed marble beads are used, which are commonly called Mountain Jade Beads.  Lastly, another bracelet is made with smaller beads and a beach inspired charm. Together, these two bracelets make the perfect set! Every metal element on these bracelets is either gold filled or sterling silver.  Because of its high quality, you can be rest assured that this beautiful piece of Sea Candy jewelry will stay looking good for years to come.',
     inventory: 20,
     rating: 4.49,
-    images: ['/images/bracelets/SBNS6-thumbnail.jpg', '/images/bracelets/SBNS6-1.jpg', '/images/bracelets/SBNS6-2.jpg', '/images/bracelets/SBNS6-3.jpg']
+    images: ['/images/bracelets/SBNS6-1.jpg', '/images/bracelets/SBNS6-2.jpg', '/images/bracelets/SBNS6-3.jpg', '/images/bracelets/SBNS6-thumbnail.jpg']
   }
 
 })
