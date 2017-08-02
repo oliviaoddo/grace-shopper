@@ -24,6 +24,7 @@ import AdminOrderList from './components/admin/AdminOrderList'
 import SingleOrder from './components/admin/SingleOrder'
 import ProductForm from './components/admin/ProductForm'
 import addReview from './components/addReview'
+import UserOrders from './components/UserOrders'
 import SingleProduct from './components/admin/SingleProduct'
 import EditProduct from './components/admin/EditProduct'
 import ProductList from './components/ProductList'
@@ -47,6 +48,7 @@ const ExampleApp = connect(
           <Route exact path='/products' component={AdminProductList} />
           <Route exact path='/orders' component={AdminOrderList} />
           <Route exact path='/order/:id' component={SingleOrder} />
+          <Route exact path='/user/:id/orders' component={UserOrders} />
           <Route exact path='/addProduct' component={ProductForm} />
           <Route exact path='/edit/:id' component={EditProduct} />
           <Route exact path='/shop/:id' component={SingleProduct} />

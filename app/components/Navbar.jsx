@@ -70,6 +70,11 @@ class NavBar extends Component {
                     <a className="dropdown-button" href="#!" data-activates="catDropdown">Shop<i className="material-icons right">arrow_drop_down</i>
                     </a>
                   </li>
+                  {this.props.currentUser &&
+                    <li>
+                      <Link to={`/user/${this.props.currentUser.id}/orders`}><i className="material-icons right">person</i></Link>
+                    </li>
+                  }
                   <li>
                     <Link to='/cart'>
                       <i className="material-icons">shopping_cart</i>
