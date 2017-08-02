@@ -1,7 +1,7 @@
 const app = require('APP'), {env} = app
 const debug = require('debug')(`${app.name}:auth`)
 const passport = require('passport')
-if (env.NODE_ENV === 'development') require('APP/secret')
+if (env.NODE_ENV !== 'production') require('APP/secret')
 const {User, OAuth} = require('APP/db')
 const auth = require('express').Router()
 

@@ -80,7 +80,7 @@ class Cart extends Component {
               this.props.items.map(product => {
                 return(
                   <tr>
-                    <td><img className='cart-img' src={product.images[0]}/></td>
+                    <td><img className='cart-img' src={product.images.slice(-1)}/></td>
                     <td><Link to={`/shop/${product.id}`}>{product.name}</Link></td>
                     <td>
                       <div className='row'>

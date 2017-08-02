@@ -11,20 +11,21 @@ class ProductList extends Component {
   }
 
   componentDidMount() {
+    if (!this.props.currentUser || !this.props.currentUser.isAdmin) this.props.history.replace("/")
     this.props.getProducts()
   }
 
   handleDelete(event){
-    console.log(event.target)
     this.props.removeProduct(event.target.id);
   }
 
   render(){
     return (
+      <div>
+      {this.props.currentUser && this.props.currentUser.isAdmin ?
       <div className="container">
         <h1>Products</h1>
         <Link to='/addProduct' className="btn-floating btn-large waves-effect waves-light teal"><i className="material-icons">add</i></Link>
-
         <table className="highlight responsive-table">
           <thead>
             <tr>
@@ -36,7 +37,6 @@ class ProductList extends Component {
               <th>Delete</th>
             </tr>
           </thead>
-
           <tbody>
             {
               this.props.products.map(product => {
@@ -55,6 +55,8 @@ class ProductList extends Component {
           </tbody>
         </table>
       </div>
+      : null }
+      </div>
     )
   }
 }
@@ -71,4 +73,3 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList)
-

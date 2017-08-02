@@ -4,11 +4,10 @@ import {Modal} from 'react-materialize'
 import QuickLook from '../QuickLook'
 
 export default props => {
-        console.log(props.product.images[1])
         return (
             <div className="card">
               <div className="card-image">
-                <img src={props.product.images[1]}/>
+                <img src={props.product.images[0]}/>
                  <Modal
                   trigger={
                     <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="fa fa-search" aria-hidden="true"></i></a>

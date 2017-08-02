@@ -42,9 +42,9 @@ export const fetchAllOrders = () =>
   })
   .catch(err => console.log('fetch orders error', err))
 
-export const fetchOrder = (order) =>
+export const fetchOrder = (orderId) =>
   dispatch =>
-  axios.get(`api/orders/${order.id}`)
+  axios.get(`api/orders/${orderId}`)
   .then(res => res.data)
   .then(order => {
     dispatch(getOrder(order))
@@ -71,7 +71,7 @@ export const updateOrderStatus = (user, order) =>
 
 const initialState = {
   orders: [],
-  singleOrder: {}
+  order: {}
 }
 
 // REDUCER

@@ -13,12 +13,15 @@ import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom
 
 import store from './store'
 import Navbar from './components/Navbar'
+import createBrowserHistory from 'history/lib/createBrowserHistory'
 import Footer from './components/Footer'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Review from './components/Review'
 import NotFound from './components/NotFound'
 import AdminProductList from './components/admin/ProductList'
+import AdminOrderList from './components/admin/AdminOrderList'
+import SingleOrder from './components/admin/SingleOrder'
 import ProductForm from './components/admin/ProductForm'
 import addReview from './components/addReview'
 import SingleProduct from './components/admin/SingleProduct'
@@ -31,7 +34,7 @@ const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
 )(
   ({ user, children }) =>
-    <Router>
+    <Router history={createBrowserHistory()}>
       <main>
         <Navbar />
         <Switch>
@@ -42,6 +45,8 @@ const ExampleApp = connect(
           <Route exact path='/addReview' component={addReview} />
           <Route exact path='/shop' component={ProductList} />
           <Route exact path='/products' component={AdminProductList} />
+          <Route exact path='/orders' component={AdminOrderList} />
+          <Route exact path='/order/:id' component={SingleOrder} />
           <Route exact path='/addProduct' component={ProductForm} />
           <Route exact path='/edit/:id' component={EditProduct} />
           <Route exact path='/shop/:id' component={SingleProduct} />

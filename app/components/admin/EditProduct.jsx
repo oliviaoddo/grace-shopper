@@ -24,6 +24,7 @@ class EditProduct extends Component{
   }
 
   componentDidMount() {
+    if (!this.props.currentUser || !this.props.currentUser.isAdmin) this.props.history.replace("/")
     const productId = this.props.match.params.id
     this.props.getProduct(productId)
     .then(() => {
@@ -132,7 +133,8 @@ class EditProduct extends Component{
 }
 
 const mapStateToProps = state => ({
-  product: state.products.product
+  product: state.products.product,
+  currentUser: state.auth
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
